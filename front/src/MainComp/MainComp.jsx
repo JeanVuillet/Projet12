@@ -1,6 +1,7 @@
 import logo from '../assets/logo.svg'
 import './MainComp.scss'
 import logo1 from'../assets/logo1.svg'
+import { TestComp } from '../TestComp/TestComp';
 <assets />
 
 
@@ -55,6 +56,7 @@ function MainComp() {
 
         </div>
       </div>
+      <TestComp></TestComp>
     </div>
   );
 }
