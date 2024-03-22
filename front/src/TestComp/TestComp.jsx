@@ -23,12 +23,15 @@ export function TestComp() {
             kilograms.push(data[i].kilogram);
             calories.push(data[i].calories);
         }
+        let tester =[77, 78,76,77,78,79,78];
         console.log(calories);
         console.log(kilograms);
 
         const minYValue = Math.min(...kilograms);
         const maxYValue = Math.max(...kilograms);
 
+        const minYCalories= Math.min(...calories);
+        const maxYCalories=Math.max(...calories);
         const x = d3.scaleBand()
             .domain(d3.range(1, 9)) // Utilisation de range de 1 à 8 pour avoir huit bandes
             .range([0, width - margin.left - margin.right])
@@ -65,10 +68,10 @@ export function TestComp() {
             .attr("x", (d, i) => x(i+1) + x.bandwidth() / 2 ) // Positionner au centre de chaque bande
             .attr("y", d => y(d))
             .attr("width", 7)
-            .attr("height", d => (height - margin.top - margin.bottom - y(d)) )
+            .attr("height", d => height - margin.top - margin.bottom -y(d)/2+1000)
             .attr("fill", "#E60000")
             .attr("transform", "translate(" + xOffset2 + ", 0)");
-
+console.log()
         const xAxis = d3.axisBottom(x)
             .tickValues(d3.range(1, 8)) // Utiliser d3.range(1, 9) pour placer les étiquettes au début de chaque bande
             .tickFormat(d3.format('d'));
