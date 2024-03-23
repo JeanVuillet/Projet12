@@ -66,9 +66,9 @@ export function TestComp() {
             .append("rect")
             .attr('class', 'calories')
             .attr("x", (d, i) => x(i+1) + x.bandwidth() / 2 ) // Positionner au centre de chaque bande
-            .attr("y", d => y(d))
+            .attr("y", d => y(d/100+minYValue))
             .attr("width", 7)
-            .attr("height", d => height - margin.top - margin.bottom -y(d)/2+1000)
+            .attr("height", d => height - margin.top - margin.bottom -y(d/100+minYValue))
             .attr("fill", "#E60000")
             .attr("transform", "translate(" + xOffset2 + ", 0)");
 console.log()
@@ -90,7 +90,12 @@ console.log()
             .attr("transform", "translate(" + (width - margin.left - margin.right + leftGap) + ",0)")
             .call(yAxis)
             .selectAll("line, path")
-            .attr("stroke", "transparent");
+            .attr("stroke", "red")
+     
+            .selectAll(".tick") // Sélectionne toutes les lignes de marqueur de l'axe y
+            .attr("stroke-dasharray", "2,2") // Applique le style pointillé
+            .attr("stroke", "rgba(0, 0, 0, 0.5)"); // Ajoute la couleur pour la visibilité
+        
 
     }, []);
 
