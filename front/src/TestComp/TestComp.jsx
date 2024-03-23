@@ -9,6 +9,7 @@ import {
     ResponsiveContainer
 } from 'recharts';
 import { USER_ACTIVITY } from './../data/data';
+import'./TestComp.scss';
 
 export function TestComp() {
     const data = USER_ACTIVITY[0].sessions.map((session, index) => ({
@@ -24,12 +25,30 @@ export function TestComp() {
                     data={data}
                     margin={{ top: 20, right: 30, left: 40, bottom: 30 }}
                 >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
+  
+  <YAxis
+  yAxisId="right"
+  orientation="right"
+  domain={['dataMin', 'dataMax']}
+  tick={({ x, y, payload }) => (
+    <text
+      x={x+15}
+      y={y}
+      dy={4}
+      textAnchor="start"
+      fill="#666"
+      className="couou"
+    >
+      {payload.value}
+    </text>
+  )}
+/>
+                    
+                    <YAxis yAxisId="right" orientation="right" />
                     <Tooltip />
-                    <Bar dataKey="kilograms" fill="#282D30" />
-                    <Bar dataKey="calories" fill="#E60000" />
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} /> {/* Seulement les lignes horizontales */}
+                    <Bar dataKey="calories" fill="#E60000" yAxisId="right" />
+                    <Bar dataKey="kilograms" fill="#E60000" yAxisId="right" />
                 </BarChart>
             </ResponsiveContainer>
         </div>
