@@ -15,7 +15,7 @@ export function TestComp() {
     const data = USER_ACTIVITY[0].sessions.map((session, index) => ({
         name: `Session ${index + 1}`,
         kilograms: session.kilogram,
-        calories: session.calories,
+        calories: session.calories/4,
     }));
 
     return (
@@ -34,7 +34,7 @@ export function TestComp() {
     <text
       x={x+15}
       y={y}
-      dy={4}
+      dy={3}
       textAnchor="start"
       fill="#666"
       className="couou"
