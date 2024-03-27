@@ -31,9 +31,13 @@ export function TestComp() {
     console.log(data);
 
     return (
-        <div className='leDiv' style={{ width: '500px', height: '400px' }}>
+        <div className='leDiv' style={{ width: '1400px', height: '400px' }}>
             <ResponsiveContainer>
                 {/* Création du graphique */}
+                <div className='header'>
+                <text> Activité quotidienne</text>
+                <text> <span className='circle1 round'></span>poids<span className='circle2 round'></span>Calories brûlées (Kcal)</text>
+                </div>
                 <BarChart
                     data={data} // Données à afficher
                     margin={{ top: 20, right: 30, left: 40, bottom: 30 }} // Marge autour du graphique
@@ -47,6 +51,7 @@ export function TestComp() {
     yAxisId="kilograms" // Identifiant de l'axe pour les kilogrammes
     orientation="right" // Orientation de l'axe (côté droit)
     domain={yAxisDomain} // Définit le domaine personnalisé pour les kilogrammes
+    tickCount={4}
     tick={({ x, y, payload }) => ( // Configuration des étiquettes
         <text
             x={x + 15} // Position horizontale du texte décalée de 15 pixels par rapport à l'axe
@@ -66,7 +71,8 @@ export function TestComp() {
                     <YAxis
                         yAxisId="calories" // Identifiant de l'axe pour les calories
                         orientation="right" // Orientation de l'axe
-                        domain={[0, Math.ceil(Math.max(...data.map(entry => entry.calories)) / 4.81)]} // Définit le domaine personnalisé pour les calories
+                        hide
+                        domain={[0, Math.ceil(Math.max(...data.map(entry => entry.calories)) )*1.1]} // Définit le domaine personnalisé pour les calories
                         tick={({ x, y, payload }) => ( // Configuration des étiquettes
                             <text
                                 x={x + 15}
@@ -76,7 +82,8 @@ export function TestComp() {
                                 fill="#666"
                                 className="couou"
                             >
-                                {Math.round(payload.value * 4.81)} {/* Conversion des calories en pixels */}
+                                {Math.round(payload.value )} {/* Conversion des calories en pixels */}
+                                
                             </text>
                         )}
                     />

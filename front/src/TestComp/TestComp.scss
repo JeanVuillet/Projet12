@@ -5,6 +5,11 @@
 border:solid pink;
 width: fit-content;
 }
+.header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
 
 
 .recharts-cartesian-axis-tick-line{
@@ -17,4 +22,23 @@ stroke:transparent;
 .couou{
     color:red;
     border:solid green;
+}
+
+text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.round{
+    display: flex;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+.circle1{
+    background-color: black;
+}
+.circle2{
+    background-color: red;
 }
