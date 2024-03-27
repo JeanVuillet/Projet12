@@ -31,12 +31,12 @@ export function TestComp() {
     console.log(data);
 
     return (
-        <div className='leDiv' style={{ width: '1400px', height: '400px' }}>
+        <div className='leDiv' >
             <ResponsiveContainer>
                 {/* Création du graphique */}
                 <div className='header'>
-                <text> Activité quotidienne</text>
-                <text> <span className='circle1 round'></span>poids<span className='circle2 round'></span>Calories brûlées (Kcal)</text>
+                <text className='title'> Activité quotidienne</text>
+                <text className='legend'> <span className='circle1 round'></span>poids (kg)<span className='circle2 round'></span>Calories brûlées (Kcal)</text>
                 </div>
                 <BarChart
                     data={data} // Données à afficher
@@ -93,13 +93,13 @@ export function TestComp() {
                     
                     {/* Affichage des barres pour les kilogrammes */}
                     {hasSeventhDayData && (
-                        <Bar dataKey="kilograms" fill="#282D30" yAxisId="kilograms" />
+                        <Bar dataKey="kilograms" fill="#282D30" yAxisId="kilograms" radius={[10, 10, 0, 0]} />
                       
                     )}
                     
                     {/* Affichage des barres pour les calories */}
                     {hasSeventhDayData && (
-                        <Bar dataKey="calories" fill="#E60000" yAxisId="calories" />
+                        <Bar dataKey="calories" fill="#E60000" yAxisId="calories" radius={[10, 10, 0, 0]}  />
                     )}
                 </BarChart>
             </ResponsiveContainer>

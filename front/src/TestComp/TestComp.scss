@@ -3,7 +3,8 @@
     top : 5rem;
     left:10rem;
 border:solid pink;
-width: fit-content;
+width: 835px;
+height: 320px;
 }
 .header{
     display: flex;
@@ -23,8 +24,17 @@ stroke:transparent;
     color:red;
     border:solid green;
 }
-
-text{
+.title{
+    padding-top:15px;
+    padding-left:15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.legend{
+    padding-top:15px;
+    padding-right: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
