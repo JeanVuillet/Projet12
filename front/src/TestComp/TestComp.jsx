@@ -27,7 +27,8 @@ export function TestComp() {
     const minKilograms = Math.floor(Math.min(...data.map(entry => entry.kilograms)));
 
     // Définition du domaine de l'axe Y pour les kilogrammes en commençant à minKilograms
-    const yAxisDomain = [minKilograms, Math.ceil(Math.max(...data.map(entry => entry.kilograms)))];
+    const yAxisDomain = [minKilograms-1, Math.ceil(Math.max(...data.map(entry => entry.kilograms)))+1];
+    console.log(data);
 
     return (
         <div className='leDiv' style={{ width: '500px', height: '400px' }}>
@@ -85,6 +86,7 @@ export function TestComp() {
                     {/* Affichage des barres pour les kilogrammes */}
                     {hasSeventhDayData && (
                         <Bar dataKey="kilograms" fill="#282D30" yAxisId="kilograms" />
+                      
                     )}
                     
                     {/* Affichage des barres pour les calories */}
