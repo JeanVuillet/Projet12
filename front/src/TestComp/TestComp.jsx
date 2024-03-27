@@ -19,6 +19,21 @@ export function TestComp() {
         calories: session.calories, // Calories brûlées
     }));
 
+
+const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      const data = payload[0].payload; // Données de la barre survolée
+      return (
+        <div className="custom-tooltip">
+          <p>{` ${data.kilograms}kg`}</p>
+          <p>{` ${data.calories}Kcal`}</p>
+        </div>
+      );
+    }
+  
+    return null;
+  };
+
     // Vérification si les données pour le septième jour existent
     const seventhDayData = data[6]; // Les indices commencent à 0, donc le septième jour est à l'indice 6
     const hasSeventhDayData = seventhDayData !== undefined;
@@ -30,7 +45,11 @@ export function TestComp() {
     const yAxisDomain = [minKilograms-1, Math.ceil(Math.max(...data.map(entry => entry.kilograms)))+1];
     console.log(data);
 
+
+
     return (
+
+
         <div className='leDiv' >
             <ResponsiveContainer>
                 {/* Création du graphique */}
@@ -88,7 +107,7 @@ export function TestComp() {
                         )}
                     />
                     
-                    <Tooltip /> {/* Affichage des infobulles au survol */}
+                    <Tooltip content={CustomTooltip}/> 
                     <CartesianGrid strokeDasharray="3 3" vertical={false} /> {/* Lignes de grille horizontales */}
                     
                     {/* Affichage des barres pour les kilogrammes */}
