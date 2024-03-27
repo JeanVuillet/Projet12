@@ -7,41 +7,46 @@ import {
     CartesianGrid,
     Tooltip,
     ResponsiveContainer
-} from 'recharts';
-import { USER_ACTIVITY } from './../data/data';
-import './TestComp.scss';
+} from 'recharts'; // Importation des composants de Recharts
+import { USER_ACTIVITY } from './../data/data'; // Importation des données
+import './TestComp.scss'; // Importation du fichier de style CSS
 
 export function TestComp() {
+    // Transformation des données pour les adapter au format utilisé par Recharts
     const data = USER_ACTIVITY[0].sessions.map((session, index) => ({
-        name: `${index + 1}`,
-        kilograms: session.kilogram,
-        calories: session.calories,
+        name: `${index + 1}`, // Nom du jour
+        kilograms: session.kilogram, // Poids en kilogrammes
+        calories: session.calories, // Calories brûlées
     }));
 
-    // Vérifier si les données pour le septième jour existent
+    // Vérification si les données pour le septième jour existent
     const seventhDayData = data[6]; // Les indices commencent à 0, donc le septième jour est à l'indice 6
     const hasSeventhDayData = seventhDayData !== undefined;
 
-    // Trouver le poids minimum dans les données
+    // Recherche du poids minimum dans les données
     const minKilograms = Math.floor(Math.min(...data.map(entry => entry.kilograms)));
 
-    // Définir le domaine de l'axe Y pour les kilogrammes en démarrant à minKilograms
+    // Définition du domaine de l'axe Y pour les kilogrammes en commençant à minKilograms
     const yAxisDomain = [minKilograms, Math.ceil(Math.max(...data.map(entry => entry.kilograms)))];
 
     return (
         <div className='leDiv' style={{ width: '500px', height: '400px' }}>
             <ResponsiveContainer>
+                {/* Création du graphique */}
                 <BarChart
-                    data={data}
-                    margin={{ top: 20, right: 30, left: 40, bottom: 30 }}
-                    barSize={8} // Définir la largeur des barres à 8 pixels
+                    data={data} // Données à afficher
+                    margin={{ top: 20, right: 30, left: 40, bottom: 30 }} // Marge autour du graphique
+                    barSize={8} // Taille des barres
                 >
-                    <XAxis dataKey="name" />
+                    {/* Configuration de l'axe X */}
+                    <XAxis dataKey="name" /> {/* Utilise les noms des jours comme étiquettes */}
+                    
+                    {/* Configuration de l'axe Y pour les kilogrammes */}
                     <YAxis
                         yAxisId="kilograms" // Identifiant de l'axe pour les kilogrammes
-                        orientation="right"
-                        domain={yAxisDomain} // Définir le domaine personnalisé pour les kilogrammes
-                        tick={({ x, y, payload }) => (
+                        orientation="right" // Orientation de l'axe
+                        domain={yAxisDomain} // Définit le domaine personnalisé pour les kilogrammes
+                        tick={({ x, y, payload }) => ( // Configuration des étiquettes
                             <text
                                 x={x + 15}
                                 y={y}
@@ -54,11 +59,13 @@ export function TestComp() {
                             </text>
                         )}
                     />
+                    
+                    {/* Configuration de l'axe Y pour les calories */}
                     <YAxis
                         yAxisId="calories" // Identifiant de l'axe pour les calories
-                        orientation="right"
-                        domain={[0, Math.ceil(Math.max(...data.map(entry => entry.calories)) / 4.81)]} // Définir le domaine personnalisé pour les calories
-                        tick={({ x, y, payload }) => (
+                        orientation="right" // Orientation de l'axe
+                        domain={[0, Math.ceil(Math.max(...data.map(entry => entry.calories)) / 4.81)]} // Définit le domaine personnalisé pour les calories
+                        tick={({ x, y, payload }) => ( // Configuration des étiquettes
                             <text
                                 x={x + 15}
                                 y={y}
@@ -71,11 +78,16 @@ export function TestComp() {
                             </text>
                         )}
                     />
-                    <Tooltip />
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} /> {/* Seulement les lignes horizontales */}
+                    
+                    <Tooltip /> {/* Affichage des infobulles au survol */}
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} /> {/* Lignes de grille horizontales */}
+                    
+                    {/* Affichage des barres pour les kilogrammes */}
                     {hasSeventhDayData && (
                         <Bar dataKey="kilograms" fill="#282D30" yAxisId="kilograms" />
                     )}
+                    
+                    {/* Affichage des barres pour les calories */}
                     {hasSeventhDayData && (
                         <Bar dataKey="calories" fill="#E60000" yAxisId="calories" />
                     )}
