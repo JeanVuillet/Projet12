@@ -44,22 +44,23 @@ export function TestComp() {
                     
                     {/* Configuration de l'axe Y pour les kilogrammes */}
                     <YAxis
-                        yAxisId="kilograms" // Identifiant de l'axe pour les kilogrammes
-                        orientation="right" // Orientation de l'axe
-                        domain={yAxisDomain} // Définit le domaine personnalisé pour les kilogrammes
-                        tick={({ x, y, payload }) => ( // Configuration des étiquettes
-                            <text
-                                x={x + 15}
-                                y={y}
-                                dy={4}
-                                textAnchor="start"
-                                fill="#666"
-                                className="couou"
-                            >
-                                {payload.value} {/* Affichage des valeurs des kilogrammes */}
-                            </text>
-                        )}
-                    />
+    yAxisId="kilograms" // Identifiant de l'axe pour les kilogrammes
+    orientation="right" // Orientation de l'axe (côté droit)
+    domain={yAxisDomain} // Définit le domaine personnalisé pour les kilogrammes
+    tick={({ x, y, payload }) => ( // Configuration des étiquettes
+        <text
+            x={x + 15} // Position horizontale du texte décalée de 15 pixels par rapport à l'axe
+            y={y} // Position verticale du texte alignée avec l'axe
+            dy={4} // Décalage vertical supplémentaire du texte de 4 unités vers le bas
+            textAnchor="start" // Ancrage du texte à "start" (alignement à gauche)
+            fill="#666" // Couleur de remplissage du texte en gris foncé
+            className="couou" // Classe CSS attribuée au texte
+        >
+            {payload.value} {/* Affichage des valeurs des kilogrammes */}
+        </text>
+    )}
+/>
+
                     
                     {/* Configuration de l'axe Y pour les calories */}
                     <YAxis
