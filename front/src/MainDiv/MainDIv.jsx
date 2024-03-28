@@ -1,12 +1,22 @@
 import './MainDiv.scss'
 import { Welcome } from '../Welcome/Welcome'
 import { FirstGraph } from '../FirstGraph/FirstGraph'
-import { StatZone } from '../StatZone/StatZone'
-import { StatComp } from '../StatZone/StatComp/StatComp'
+
+import { StatComp } from '../StatComp/StatComp'
+import { USER_MAIN_DATA } from '../data/data'
+import calories from '../assets/calories.svg'
+import carbs from '../assets/carbs.svg'
+import fats from '../assets/fat.svg'
+import proteins from '../assets/proteins.svg'
 
 export function MainDiv(){
 
-    return(<div className="mainDiv">
+    const data=USER_MAIN_DATA;
+    const calorieCount = data[0].keyData.calorieCount;
+    const formattedCalorieCount = calorieCount.toLocaleString("en-US", { minimumFractionDigits: 0 });
+
+    return(
+<div className="mainDiv">
 <div className='header'>
         <Welcome></Welcome>
 </div>
@@ -16,10 +26,10 @@ export function MainDiv(){
         <FirstGraph/>
     </div>
  <div className="statZone">
-    <StatComp/>
-    <StatComp/>
-    <StatComp/>
-    
+    <StatComp icon={calories} mesure={`${formattedCalorieCount}` +'kCal'} unite={'Calories'}/>
+    <StatComp icon={proteins} mesure={data[0].keyData.proteinCount+'g'} unite='Proteines'/>
+    <StatComp icon={carbs} mesure={data[0].keyData.carbohydrateCount+'g'} unite='Glucides'/>
+    <StatComp icon={fats} mesure={data[0].keyData.lipidCount+'g'} unite='Lipides'/>
  </div>
 </div>
         

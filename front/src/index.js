@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { FirstGraph } from './FirstGraph/FirstGraph.jsx';
 import { Welcome } from './Welcome/Welcome.jsx';
 import { MainDiv } from './MainDiv/MainDIv.jsx';
-import { StatZone } from './StatZone/StatZone.jsx';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
