@@ -1,6 +1,7 @@
 import './MainDiv.scss'
 import { Welcome } from '../Welcome/Welcome'
 import { FirstGraph } from '../FirstGraph/FirstGraph'
+import Pie from '../PieGraph/PieGraph'
 
 import { StatComp } from '../StatComp/StatComp'
 import { USER_MAIN_DATA } from '../data/data'
@@ -24,6 +25,7 @@ export function MainDiv(){
 <div className="main">
     <div className="graphs">
         <FirstGraph/>
+   
     </div>
  <div className="statZone">
     <StatComp icon={calories} mesure={`${formattedCalorieCount}` +'kCal'} unite={'Calories'}/>
