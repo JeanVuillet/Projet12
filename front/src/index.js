@@ -1,17 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import MainComp from './MainComp/MainComp.jsx';
+import { HeaderFooter } from './HeaderFooter/HeaderFooter.jsx';
 import reportWebVitals from './reportWebVitals';
 import { FirstGraph } from './FirstGraph/FirstGraph.jsx';
 import { Welcome } from './Welcome/Welcome.jsx';
 import { MainDiv } from './MainDiv/MainDIv.jsx';
+import { StatZone } from './StatZone/StatZone.jsx';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<MainComp/>
+
+<HeaderFooter/>
+
+<MainDiv></MainDiv>
+
 
 
 

@@ -1,5 +1,5 @@
 import logo from "../assets/logo.svg";
-import "./MainComp.scss";
+import "./HeaderFooter.scss";
 import logo1 from "../assets/logo1.svg";
 import logo2 from "../assets/logo2.svg";
 import logo3 from "../assets/logo3.svg";
@@ -8,7 +8,7 @@ import { FirstGraph, TestComp } from "../FirstGraph/FirstGraph";
 
 import { MainDiv } from "../MainDiv/MainDIv";
 
-function MainComp() {
+export function HeaderFooter() {
   return (
     <div className="App">
       <header className="App__header">
@@ -62,9 +62,9 @@ function MainComp() {
           </div>
         </div>
       </div>
-   <MainDiv/>
+
     </div>
   );
 }
 
-export default MainComp;
+

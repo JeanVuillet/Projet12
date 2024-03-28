@@ -5,4 +5,23 @@
     position: absolute;
     left:117px;
     top: 91px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.main{
+   display:flex;
+    border: solid orange;
+    width: 100%;
+    height: -webkit-fill-available;
+    .graphs{
+        height: 100%;
+        width: 80%;
+    }
+    .statZone{
+        width: 20%;
+        height: 100%;
+    }
+
 }
