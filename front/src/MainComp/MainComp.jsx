@@ -1,6 +1,9 @@
 import logo from '../assets/logo.svg'
 import './MainComp.scss'
 import logo1 from'../assets/logo1.svg'
+import logo2 from'../assets/logo2.svg'
+import logo3 from'../assets/logo3.svg'
+import logo4 from'../assets/logo4.svg'
 import { TestComp } from '../TestComp/TestComp';
 <assets />
 
@@ -41,13 +44,13 @@ function MainComp() {
             <img src={logo1} className='App__sideBarre__nav__logoContainer__logo'></img>
             </div>
             <div className='App__sideBarre__nav__logoContainer'>
-            <img src={logo1} className='App__sideBarre__nav__logoContainer__logo'></img>
+            <img src={logo2} className='App__sideBarre__nav__logoContainer__logo'></img>
             </div>
             <div className='App__sideBarre__nav__logoContainer'>
-            <img src={logo1} className='App__sideBarre__nav__logoContainer__logo'></img>
+            <img src={logo3} className='App__sideBarre__nav__logoContainer__logo'></img>
             </div>
             <div className='App__sideBarre__nav__logoContainer'>
-            <img src={logo1} className='App__sideBarre__nav__logoContainer__logo'></img>
+            <img src={logo4} className='App__sideBarre__nav__logoContainer__logo'></img>
             </div>
           </nav>
           <div className='App__sideBarre__wrapper__textContainer'>
