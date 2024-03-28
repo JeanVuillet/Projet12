@@ -52,6 +52,19 @@ stroke:transparent;
 .circle2{
     background-color: red;
 }
-.recharts-tooltip-wrapper{
-    background-color: pink;
+.custom-tooltip {
+
+top:5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 39px;
+    height: 63px;
+    color:white;
+    background-color: #E60000;
+    font-family: roboto;
+    font-weight: medium;
+    font-size: 7px;
 }
