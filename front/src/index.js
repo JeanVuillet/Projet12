@@ -3,13 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import MainComp from './MainComp/MainComp.jsx';
 import reportWebVitals from './reportWebVitals';
-import { TestComp } from './TestComp/TestComp.jsx';
+import { FirstGraph } from './FirstGraph/FirstGraph.jsx';
+import { Welcome } from './Welcome/Welcome.jsx';
+import { MainDiv } from './MainDiv/MainDIv.jsx';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <MainComp />
-  
+<MainComp/>
+
+
+
   </React.StrictMode>
 );
 
