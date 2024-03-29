@@ -17,8 +17,8 @@ export function PolygonGraph() {
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
           <PolarGrid gridType='polygon' radialLines={false} polarRadius={[0, 30, 60, 90, 120, 150]} />
           <PolarAngleAxis dataKey="subject" />
-          <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
-          <Radar name="Lily" dataKey="B" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6} />
+          <Radar name="Mike" dataKey="A"  fill="#FF0101" fillOpacity={0.7} />
+
           <Tooltip />
         </RadarChart>
       </ResponsiveContainer>
