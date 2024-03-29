@@ -1,35 +1,53 @@
-import { ResponsiveContainer } from "recharts";
-import { PieChart } from "recharts";
-import { Pie } from "recharts";
-
-import {USER_MAIN_DATA} from '../data/data.js';
+import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { USER_MAIN_DATA } from "../data/data.js";
 import "./PieGraph.scss";
 
-const data=USER_MAIN_DATA;
+const data = USER_MAIN_DATA;
 
-const todayScore=data[0].todayScore;
+const todayScore = data[0].todayScore * 100;
+const endAngle = 220 + (todayScore * 360) / 100;
 
-const pieData=[
-    {
-    name:'TodayScore',
-    value:todayScore
-    }
-]
+const pieData = [
+  {
+    name: "Zone1",
+    value: todayScore
+  }
+ 
+];
+
 export function PieGraph() {
   return (
-    <div className="pieDiv" >
-      <ResponsiveContainer>
+    <div className="pieDiv">
+      <ResponsiveContainer className="pieContainer">
+        <div className="whiteCircle">
+            <div className="score">
+            {todayScore}%
+            </div>
+            <div className="text">
+             de votre objectif
+            </div>
+        </div>
         <PieChart>
-            <Pie   data={pieData} dataKey="value"
-                            nameKey="name" // Valeur utilisée pour étiqueter chaque secteur
-                            cx="50%" // Position horizontale du centre du cercle
-                            cy="50%" // Position verticale du centre du cercle
-                            outerRadius={150} // Rayon externe du cercle
-                            fill="#8884d8" // Couleur de remplissage des secteurs
-                            label // Activation de l'affichage des étiquettes
-            >
-
-            </Pie>
+          <Pie
+            data={pieData}
+            dataKey="value"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            innerRadius={140}
+            outerRadius={150}
+            label={false}
+            labelLine={false}
+            startAngle={endAngle-30}
+            endAngle={190}
+           
+          >
+            <Cell
+              fill="#FF0000" // Ici, la couleur de remplissage est définie en #FBFBFB
+              className={todayScore > 50 ? "outer-green" : ""}
+              cornerRadius={10}
+            />
+          </Pie>
         </PieChart>
       </ResponsiveContainer>
     </div>

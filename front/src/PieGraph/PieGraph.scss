@@ -1,4 +1,6 @@
 .pieDiv{
+ 
+    background-color:#FBFBFB;
     border:solid;
     position:absolute;
 
@@ -6,4 +8,32 @@
     height: 500px;
     left:100px;
     top:500px;
+    .pieContainer{
+        position: relative;
+    .whiteCircle{
+        top: 111px;
+    left: 112px;
+    position: absolute;
+    background-color: white;
+    width: 279px;
+    height: 279px;
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+    }
+
+
+    .recharts-pie-label-line {
+        stroke: red; // Couleur de la bordure rouge
+        stroke-width: 1px; // Épaisseur de la bordure
+        stroke-dasharray: 4; // Style de la bordure (pointillés)
+        rx: 5px; // Rayon de courbure horizontal
+        ry: 5px; // Rayon de courbure vertical
+      }
+
+    }
