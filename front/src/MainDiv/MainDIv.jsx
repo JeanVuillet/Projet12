@@ -10,6 +10,7 @@ import carbs from '../assets/carbs.svg'
 import fats from '../assets/fat.svg'
 import proteins from '../assets/proteins.svg'
 import { PieGraph } from '../PieGraph/PieGraph'
+import { PolygonGraph } from '../PolygonGraph/PolygonGraph.jsx'
 
 export function MainDiv(){
 
@@ -27,6 +28,7 @@ export function MainDiv(){
     <div className="graphs">
         <FirstGraph/>
         <PieGraph/>
+        <PolygonGraph></PolygonGraph>
    
     </div>
  <div className="statZone">
