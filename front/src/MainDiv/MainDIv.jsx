@@ -9,6 +9,7 @@ import calories from '../assets/calories.svg'
 import carbs from '../assets/carbs.svg'
 import fats from '../assets/fat.svg'
 import proteins from '../assets/proteins.svg'
+import { PieGraph } from '../PieGraph/PieGraph'
 
 export function MainDiv(){
 
@@ -25,6 +26,7 @@ export function MainDiv(){
 <div className="main">
     <div className="graphs">
         <FirstGraph/>
+        <PieGraph/>
    
     </div>
  <div className="statZone">
