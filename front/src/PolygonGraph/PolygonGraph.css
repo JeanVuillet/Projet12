@@ -7,7 +7,7 @@
   height: 263px;
   top: 500px;
   left: 700px;
-  background-color: #282D30;
+  background-color: #282d30;
   color: white;
   stroke: white;
 }
@@ -18,6 +18,10 @@
 .polygonGraph .recharts-polar-grid {
   width: 156px;
   height: 180px;
+}
+.polygonGraph .recharts-polar-angle-axis-tick-value {
+  fill: white;
+  font-size: 14px;
 }
 .polygonGraph tspan {
   font-size: 12px;
