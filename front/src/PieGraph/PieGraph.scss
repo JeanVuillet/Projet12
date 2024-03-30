@@ -4,19 +4,19 @@
     border:solid;
     position:absolute;
 
-    width: 500px;
-    height: 500px;
+    width: 258px;
+    height: 263px;
     left:100px;
     top:500px;
     .pieContainer{
-        position: relative;
+     display: flex;
+     justify-content: center;
+     align-items: center;
     .whiteCircle{
-        top: 111px;
-    left: 112px;
-    position: absolute;
+position: absolute;
     background-color: white;
-    width: 279px;
-    height: 279px;
+    width: 159px;
+    height: 159px;
     border-radius: 50%;
 
     display: flex;

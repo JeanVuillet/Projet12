@@ -8,7 +8,12 @@
   top: 500px;
   left: 700px;
   background-color: #282D30;
+  color: white;
   stroke: white;
+}
+.polygonGraph .recharts-responsive-container {
+  width: 100%;
+  height: 263px;
 }
 .polygonGraph .recharts-polar-grid {
   width: 156px;

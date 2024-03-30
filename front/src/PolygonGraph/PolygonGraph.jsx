@@ -17,10 +17,10 @@ export function PolygonGraph() {
   const newValues=values.reverse();
   return (
     <div className="polygonGraph">
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer width={258} height={263}>
         <RadarChart cx="50%" cy="50%" outerRadius='60%' data={newValues} style={{border:'solid'}}>
           <PolarGrid gridType='polygon' radialLines={false} polarRadius={[0, 8.5, 18, 38, 57, 77]} />
-          <PolarAngleAxis dataKey="subject" className="keys"  />
+          <PolarAngleAxis dataKey="subject" className="keys"  tick={{ fill: "white" }}/>
           <Radar name="Mike" dataKey="value"  fill="#FF0101" fillOpacity={0.7} />
 
           <Tooltip />

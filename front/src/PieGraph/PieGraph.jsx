@@ -34,8 +34,8 @@ export function PieGraph() {
             nameKey="name"
             cx="50%"
             cy="50%"
-            innerRadius={140}
-            outerRadius={150}
+            innerRadius={79}
+            outerRadius={85}
             label={false}
             labelLine={false}
             startAngle={endAngle-30}
