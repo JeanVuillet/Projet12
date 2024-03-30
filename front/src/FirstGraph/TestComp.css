@@ -1,0 +1,75 @@
+.leDiv {
+  position: absolute;
+  top: 5rem;
+  left: 10rem;
+  border: solid pink;
+  width: 835px;
+  height: 320px;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.recharts-cartesian-axis-tick-line {
+  stroke: transparent;
+}
+
+.recharts-cartesian-axis-line {
+  stroke: transparent;
+}
+
+.couou {
+  color: red;
+  border: solid green;
+}
+
+.title {
+  padding-top: 15px;
+  padding-left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend {
+  padding-top: 15px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.round {
+  display: flex;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.circle1 {
+  background-color: black;
+}
+
+.circle2 {
+  background-color: red;
+}
+
+.custom-tooltip {
+  top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 39px;
+  height: 63px;
+  color: white;
+  background-color: #E60000;
+  font-family: roboto;
+  font-weight: medium;
+  font-size: 7px;
+}/*# sourceMappingURL=TestComp.css.map */

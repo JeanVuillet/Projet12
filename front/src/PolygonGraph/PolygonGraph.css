@@ -1,0 +1,22 @@
+.polygonGraph {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 258px;
+  height: 263px;
+  top: 500px;
+  left: 700px;
+  background-color: #282D30;
+  stroke: white;
+}
+.polygonGraph .recharts-polar-grid {
+  width: 156px;
+  height: 180px;
+}
+.polygonGraph tspan {
+  font-size: 12px;
+}
+.polygonGraph .angleAxis {
+  stroke: transparent;
+}/*# sourceMappingURL=PolygonGraph.css.map */

@@ -1,0 +1,28 @@
+.mainDiv {
+  width: calc(100vw - 117px);
+  height: calc(100vh - 91px);
+  border: solid red;
+  position: absolute;
+  left: 117px;
+  top: 91px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  border: solid orange;
+  width: 100%;
+  height: -webkit-fill-available;
+}
+.main .graphs {
+  height: 100%;
+  width: 80%;
+}
+.main .statZone {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}/*# sourceMappingURL=MainDiv.css.map */

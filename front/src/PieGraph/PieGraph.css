@@ -1,0 +1,32 @@
+.pieDiv {
+  background-color: #FBFBFB;
+  border: solid;
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  left: 100px;
+  top: 500px;
+}
+.pieDiv .pieContainer {
+  position: relative;
+}
+.pieDiv .pieContainer .whiteCircle {
+  top: 111px;
+  left: 112px;
+  position: absolute;
+  background-color: white;
+  width: 279px;
+  height: 279px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.pieDiv .recharts-pie-label-line {
+  stroke: red;
+  stroke-width: 1px;
+  stroke-dasharray: 4;
+  rx: 5px;
+  ry: 5px;
+}/*# sourceMappingURL=PieGraph.css.map */
