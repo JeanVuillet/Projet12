@@ -11,6 +11,9 @@ export function PolygonGraph() {
     subject: mySubject[index],
     value: element.value
   }));
+
+
+
   const newValues=values.reverse();
   return (
     <div className="polygonGraph">
