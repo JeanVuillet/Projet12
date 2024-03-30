@@ -19,8 +19,8 @@ export function PolygonGraph() {
     <div className="polygonGraph">
       <ResponsiveContainer width="100%" height={400}>
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={newValues}>
-          <PolarGrid gridType='polygon' radialLines={false} polarRadius={[0, 30, 60, 90, 120, 150]} />
-          <PolarAngleAxis dataKey="subject" />
+          <PolarGrid gridType='polygon' radialLines={false} polarRadius={[0, 10, 27, 49, 72, 95]} />
+          <PolarAngleAxis dataKey="subject" className="keys"  radius={560} />
           <Radar name="Mike" dataKey="value"  fill="#FF0101" fillOpacity={0.7} />
 
           <Tooltip />
