@@ -6,9 +6,13 @@
     left: 390px;
     height:260px;
   } 
+  .custom-tooltip{
+    background-color: white;
+    color: black;
+  }
 
     .container{
-        border:solid red;
+        background-color: red;
 
         
     }
@@ -25,14 +29,9 @@
 
  .rightDiv{
     position: absolute;
-    background-color: green;
+    background-color: black;
+    opacity: 0.1;
     height: 268px;
     right: 0;
  }
 
- .leftDiv{
-    position: absolute;
-    background-color: orange;
-    height: 268px;
-    left: 0;
- }

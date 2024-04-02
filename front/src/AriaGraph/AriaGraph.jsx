@@ -25,7 +25,7 @@ export function AriaGraph() {
         const leftSpace= index *(258/7);
 
       setRightDiv(rightSpace);
-      setLeftDiv(leftSpace);
+
 
       return (
         <div className="custom-tooltip">
@@ -39,14 +39,14 @@ export function AriaGraph() {
   return (
     <div className='containerDiv'>
         <div className='rightDiv' style={{width:`${rightDiv}px`}}  ></div>
-        <div className='leftDiv' style={{width:`${leftDiv}px`}}  ></div>
+     
       <ResponsiveContainer width={258} height={260} className='container'>
         <AreaChart data={newData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }} fill='none'>
 
           <XAxis dataKey="day" domain={[-1, 8]} padding={{ left: 20, right: 20 }} />
           <YAxis domain={[-10, maxValue]} hide={true} />
           <Tooltip content={<CustomTooltip />} isAnimationActive={false} />
-          <Area dataKey="time" stroke="red" strokeWidth="2" fill="none" type='natural' />
+          <Area dataKey="time" stroke="white" strokeWidth="2" fill="none" type='natural' />
         </AreaChart>
       </ResponsiveContainer>
     </div>
