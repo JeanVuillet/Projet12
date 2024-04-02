@@ -4,11 +4,28 @@
     height: 260px;
     top: 500px;
     left: 390px;
-
+    height:260px;
+  } 
 
     .container{
-        background-color: red;
+        border:solid red;
 
         
     }
-}
+
+
+
+   
+.custom-tooltip .recharts-tooltip-cursor {
+    display: none;
+  }
+
+  .remaining{ background-color: orange;
+ height: 263px;}
+
+ .payload{
+    position: absolute;
+    background-color: green;
+    height: 268px;
+    right: 0;
+ }
