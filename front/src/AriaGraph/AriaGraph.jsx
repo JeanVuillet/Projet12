@@ -12,27 +12,24 @@ export function AriaGraph() {
   const minValue = Math.min(...newData.map((element) => element.time));
 
 
-  const [tooltipPayload, setTooltipPayload] = useState(null);
+  const [rightDiv, setRightDiv] = useState(null);
+  const [leftDiv, setLeftDiv] = useState(null);
 
-  useEffect(() => {
-    if (tooltipPayload !== null) {
-      console.log("Tooltip Payload:", tooltipPayload);
-    }
-  }, [tooltipPayload]);
 
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       const { day, time, index } = payload[0].payload;
 
       // Calcul de la largeur restante jusqu'à dimanche
-      const remainingWidth = (7 - index) * (258 / 7); // 258 est la largeur du graphique
+      const rightSpace = (7 - index) * (258 / 7); // 258 est la largeur du graphique
+        const leftSpace= index *(258/7);
 
-      setTooltipPayload(remainingWidth);
+      setRightDiv(rightSpace);
+      setLeftDiv(leftSpace);
 
       return (
         <div className="custom-tooltip">
           <p className="label">{`${time} min`}</p>
-          <div className="remaining" style={{ width:`${remainingWidth}px` , color: 'orange' }}></div>
         </div>
       );
     }
@@ -41,7 +38,8 @@ export function AriaGraph() {
 
   return (
     <div className='containerDiv'>
-        <div className='payload' style={{width:`${tooltipPayload}px`}} height={200} ></div>
+        <div className='rightDiv' style={{width:`${rightDiv}px`}}  ></div>
+        <div className='leftDiv' style={{width:`${leftDiv}px`}}  ></div>
       <ResponsiveContainer width={258} height={260} className='container'>
         <AreaChart data={newData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }} fill='none'>
 

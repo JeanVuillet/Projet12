@@ -23,9 +23,16 @@
   .remaining{ background-color: orange;
  height: 263px;}
 
- .payload{
+ .rightDiv{
     position: absolute;
     background-color: green;
     height: 268px;
     right: 0;
+ }
+
+ .leftDiv{
+    position: absolute;
+    background-color: orange;
+    height: 268px;
+    left: 0;
  }
