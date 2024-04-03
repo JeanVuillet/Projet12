@@ -12,6 +12,7 @@ import proteins from '../assets/proteins.svg'
 import { PieGraph } from '../PieGraph/PieGraph'
 import { PolygonGraph } from '../PolygonGraph/PolygonGraph.jsx'
 import { AriaGraph } from '../AriaGraph/AriaGraph.jsx'
+import { Api } from '../Api/Api.jsx'
 
 export function MainDiv(){
 
@@ -39,6 +40,7 @@ export function MainDiv(){
     <StatComp icon={carbs} mesure={data[0].keyData.carbohydrateCount+'g'} unite='Glucides'/>
     <StatComp icon={fats} mesure={data[0].keyData.lipidCount+'g'} unite='Lipides'/>
  </div>
+ <Api userId={12}/>
 </div>
         
     </div>)
