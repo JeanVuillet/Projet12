@@ -7,7 +7,8 @@ export function ApiTester(){
 let [apiData, setApiData]= useState()
  function getData(param){
     setApiData(param);
-     console.log('dataIs:'+param.data.userId);
+    console.log('tester'+param)
+ 
 
 }
 

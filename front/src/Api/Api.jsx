@@ -2,7 +2,7 @@ import { index } from "d3";
 import "./Api.scss";
 import { useState, useEffect } from "react";
 
-export function Api({ userId, getData }) {
+export function Api({ userId, getData, setter }) {
   let [userData, setUserData] = useState(null);
 
   useEffect(() => {

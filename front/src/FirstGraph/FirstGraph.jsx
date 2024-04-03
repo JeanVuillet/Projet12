@@ -8,49 +8,69 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts"; // Importation des composants de Recharts
-import { USER_ACTIVITY } from "../data/data"; // Importation des données
+
 import "./TestComp.scss"; // Importation du fichier de style CSS
+import { Api } from "../Api/Api";
 
 export function FirstGraph() {
+ // Initialisation avec une valeur par défaut
+  let yAxisDomain = []; // Initialisation avec une valeur par défaut
+  let CustomTooltip = null;
 
+  var [apiData, setApiData]= useState()
+  var[localData,setLocalData]=useState([])
+  function getData(param , setter ){
+     setApiData(param);
+      console.log('ParamsIs:'+param.data.userId);
+      console.log('apIdataIs'+apiData.data.userId);
+
+ }
+useEffect(()=>{if (apiData){
+
+  console.log('api in useffect'+apiData.data.userId)
 
   // Transformation des données pour les adapter au format utilisé par Recharts
-  const data = USER_ACTIVITY[0].sessions.map((session, index) => ({
+    setLocalData(apiData.data.sessions.map((session, index) => ({
     name: `${index + 1}`, // Nom du jour
     kilograms: session.kilogram, // Poids en kilogrammes
     calories: session.calories, // Calories brûlées
-  }));
-
+  })));
+console.log('dataIs'+localData[0]);
   // Vérification si les données pour le septième jour existent
-  const seventhDayData = data[6]; // Les indices commencent à 0, donc le septième jour est à l'indice 6
-  const hasSeventhDayData = seventhDayData !== undefined;
+
 
   // Recherche du poids minimum dans les données
   const minKilograms = Math.floor(
-    Math.min(...data.map((entry) => entry.kilograms))
+    Math.min(...localData.map((entry) => entry.kilograms))
   );
 
   // Définition du domaine de l'axe Y pour les kilogrammes en commençant à minKilograms
-  const yAxisDomain = [
+ yAxisDomain = [
     minKilograms - 1,
-    Math.ceil(Math.max(...data.map((entry) => entry.kilograms))) + 1,
+    Math.ceil(Math.max(...localData.map((entry) => entry.kilograms))) + 1,
   ];
 
-  const CustomTooltip = ({ active, payload, label }) => {
+  CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
-      const data = payload[0].payload; // Données de la barre survolée
+      const TooltipData = payload[0].payload; // Données de la barre survolée
       return (
         <div className="custom-tooltip">
-          <p>{` ${data.kilograms}kg`}</p>
-          <p>{` ${data.calories}Kcal`}</p>
+          <p>{` ${localData.kilograms}kg`}</p>
+          <p>{` ${localData.calories}Kcal`}</p>
         </div>
       );
     }
     return null;
   };
+  console.log('dataKg'+localData.kilograms+yAxisDomain[0])
+}},[apiData]);
 
-  return (
+
+  return (<>
+    <Api userId={12} getData={getData} />
     <div className="leDiv">
+    <div>{apiData && apiData.data ? apiData.data.useId: 'lolo'}</div>
+   
       <ResponsiveContainer>
         {/* Création du graphique */}
         <div className="header">
@@ -61,7 +81,7 @@ export function FirstGraph() {
           </div>
         </div>
         <BarChart
-          data={data} // Données à afficher
+          data={localData} // Données à afficher
           margin={{ top: 20, right: 30, left: 40, bottom: 30 }} // Marge autour du graphique
           barSize={8} // Taille des barres
         >
@@ -96,7 +116,7 @@ export function FirstGraph() {
             hide
             domain={[
               0,
-              Math.ceil(Math.max(...data.map((entry) => entry.calories))) * 1.1,
+              Math.ceil(Math.max(...localData.map((entry) => entry.calories))) * 1.1,
             ]} // Définit le domaine personnalisé pour les calories
             tick={(
               { x, y, payload } // Configuration des étiquettes
@@ -118,7 +138,7 @@ export function FirstGraph() {
           <CartesianGrid strokeDasharray="3 3" vertical={false} />{" "}
           {/* Lignes de grille horizontales */}
           {/* Affichage des barres pour les kilogrammes */}
-          {hasSeventhDayData && (
+          {(
             <Bar
               dataKey="kilograms"
               fill="#282D30"
@@ -127,7 +147,7 @@ export function FirstGraph() {
             />
           )}
           {/* Affichage des barres pour les calories */}
-          {hasSeventhDayData && (
+          { (
             <Bar
               dataKey="calories"
               fill="#E60000"
@@ -138,5 +158,8 @@ export function FirstGraph() {
         </BarChart>
       </ResponsiveContainer>
     </div>
+    </>
   );
 }
+
+
