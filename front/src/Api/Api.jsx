@@ -2,7 +2,7 @@ import { index } from "d3";
 import "./Api.scss";
 import { useState, useEffect } from "react";
 
-export function Api({ userId,getData }) {
+export function Api({ userId }) {
   let [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -15,9 +15,9 @@ export function Api({ userId,getData }) {
         return response.json();
       })
       .then((data) => {
-        setUserData((userData = data)); // Affichez les données dans la console
+        setUserData( data); // Affichez les données dans la console
         // Assurez-vous de définir les données correctement
-       getData(data);
+console.log(userData);
       })
       .catch((error) => console.error(error)).then(
      
@@ -27,7 +27,7 @@ export function Api({ userId,getData }) {
   // Affichez les données dans votre composant
   return (
     <div className="api">
-  
+  {userData ? userData.data.userId : 'Chargement en cours...'}
     </div>
   );
 }
