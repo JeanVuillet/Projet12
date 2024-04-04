@@ -3,7 +3,7 @@ import "./Api.scss";
 import { useState, useEffect } from "react";
 
 export function Api({ userId, getData }) {
-  let [userData, setUserData] = useState(null);
+  let [activityData, setActivityData] = useState(null);
 
   useEffect(() => {
     // Appel à la route '/user/:id' de votre backend
@@ -15,7 +15,7 @@ export function Api({ userId, getData }) {
         return response.json();
       })
       .then((data) => {
-        setUserData(data); 
+        setActivityData(data); 
         console.log(data); // Affiche les données dans la console
         getData(data); // Appelle getData avec les données mises à jour
       })
@@ -27,7 +27,7 @@ export function Api({ userId, getData }) {
   // Affichez les données dans votre composant
   return (
     <div className="api">
-  {userData ? userData.data.userId : 'Chargement en cours...'}
+  {activityData ? activityData.data.userId : 'Chargement en cours...'}
     </div>
   );
 }
