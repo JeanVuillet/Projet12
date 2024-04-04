@@ -27,7 +27,7 @@ export function Api({ userId, getData }) {
   // Affichez les données dans votre composant
   return (
     <div className="api">
-  {activityData ? activityData.data.userId : 'Chargement en cours...'}
+
     </div>
   );
 }
