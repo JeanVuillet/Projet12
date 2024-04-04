@@ -34,7 +34,7 @@ export function MainDiv(){
             function calculate(){
     setFormatted(calorieCount?.toLocaleString("en-US", { minimumFractionDigits: 0 }));}
     calculate();
- } },[userData])
+ } },[userData, calorieCount])
 
     return(
 <div className="mainDiv">
@@ -52,7 +52,7 @@ export function MainDiv(){
    
     </div>
  <div className="statZone">
-    <StatComp icon={calories} mesure={`${formattedCalorieCount}` +'kCal'} unite={'Calories'}/>
+    <StatComp icon={calories} mesure={formattedCalorieCount?`${formattedCalorieCount}` +'kCal':'non'} unite={'Calories'}/>
     <StatComp icon={proteins} mesure={userData?userData.data.keyData.proteinCount+'g':'non'} unite='Proteines'/>
     <StatComp icon={carbs} mesure={(userData)?userData.data.keyData.carbohydrateCount+'g':'none'} unite='Glucides'/>
     <StatComp icon={fats} mesure={userData?userData.data.keyData.lipidCount+'g':'non'} unite='Lipides'/>
