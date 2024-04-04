@@ -16,7 +16,7 @@ export function Api({ userId, getData }) {
       })
       .then((data) => {
         setActivityData(data); 
-        console.log(data); // Affiche les données dans la console
+     // Affiche les données dans la console
         getData(data); // Appelle getData avec les données mises à jour
       })
       .catch((error) => console.error(error)).then(
@@ -53,7 +53,7 @@ export function UserApi({ userId, getData }){
         })
         .then((data) => {
           setUserData(data); 
-          console.log(userData); // Affiche les données dans la console
+// Affiche les données dans la console
           getData(data); // Appelle getData avec les données mises à jour
         })
         .catch((error) => console.error(error)).then(
@@ -61,6 +61,6 @@ export function UserApi({ userId, getData }){
         ) // Gérez les erreurs de manière appropriée
     }, [userId]); // Assurez-vous de dépendre de userId pour rafraîchir les données si nécessaire
   return(
-    <div className="score">{}</div>
+    <div className="score"></div>
   )
 }

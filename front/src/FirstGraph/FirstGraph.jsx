@@ -21,13 +21,12 @@ export function FirstGraph() {
   var[localData,setLocalData]=useState([])
   function getData(param , setter ){
      setApiData(param);
-      console.log('ParamsIs:'+param.data.userId);
-      console.log('apIdataIs'+apiData.data.userId);
+
 
  }
 useEffect(()=>{if (apiData){
 
-  console.log('api in useffect'+apiData.data.userId)
+
 
   // Transformation des données pour les adapter au format utilisé par Recharts
     setLocalData(apiData.data.sessions.map((session, index) => ({
@@ -35,7 +34,7 @@ useEffect(()=>{if (apiData){
     kilograms: session.kilogram, // Poids en kilogrammes
     calories: session.calories, // Calories brûlées
   })));
-console.log('dataIs'+localData[0]);
+;
   // Vérification si les données pour le septième jour existent
 
 
@@ -62,7 +61,7 @@ console.log('dataIs'+localData[0]);
     }
     return null;
   };
-  console.log('dataKg'+localData.kilograms+yAxisDomain[0])
+
 }},[apiData]);
 
 
