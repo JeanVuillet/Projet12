@@ -1,6 +1,8 @@
 import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { USER_MAIN_DATA } from "../data/data.js";
 import "./PieGraph.scss";
+import { useState,useEffect } from "react";
+import { PieApi } from "../Api/Api.jsx";
 
 const data = USER_MAIN_DATA;
 

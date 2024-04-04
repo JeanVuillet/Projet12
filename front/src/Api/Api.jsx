@@ -2,7 +2,7 @@ import { index } from "d3";
 import "./Api.scss";
 import { useState, useEffect } from "react";
 
-export function Api({ userId, getData, setter }) {
+export function Api({ userId, getData }) {
   let [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -30,4 +30,29 @@ export function Api({ userId, getData, setter }) {
   {userData ? userData.data.userId : 'Chargement en cours...'}
     </div>
   );
+}
+
+
+export function PieApi({ userId, getData }){
+    let [score, setScore] = useState(null);
+
+    useEffect(() => {
+      // Appel à la route '/user/:id' de votre backend
+      fetch(`http://localhost:3000/user/${userId}/activity`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Erreur lors de la récupération des données");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setScore(data); 
+          console.log(data); // Affiche les données dans la console
+          getData(data); // Appelle getData avec les données mises à jour
+        })
+        .catch((error) => console.error(error)).then(
+       
+        ) // Gérez les erreurs de manière appropriée
+    }, [userId]); // Assurez-vous de dépendre de userId pour rafraîchir les données si nécessaire
+  
 }
