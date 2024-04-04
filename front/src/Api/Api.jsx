@@ -3,7 +3,7 @@ import "./Api.scss";
 import { useState, useEffect } from "react";
 
 export function Api({ userId, getData }) {
-  let [activityData, setActivityData] = useState(null);
+  var [activityData, setActivityData] = useState(null);
 
   useEffect(() => {
     // Appel à la route '/user/:id' de votre backend
@@ -63,4 +63,26 @@ export function UserApi({ userId, getData }){
   return(
     <div className="score"></div>
   )
+}
+
+
+export function PerfApi( {userId, getPerf}){
+ var [perf, setPerf]=useState(null);
+
+ useEffect(()=>{
+    fetch(`http://localhost:3000/user/${userId}/performance`)
+ 
+    .then( (response)=>{ 
+        if(!response.ok){throw new Error('data didnt come')}
+    return response.json();
+    }
+        ).then((data)=>{
+            console.log(data)
+            setPerf(data)
+            getPerf(data)})
+   
+        .catch((error) => console.error(error))
+            
+},[userId]);
+
 }
