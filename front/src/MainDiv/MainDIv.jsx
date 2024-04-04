@@ -14,15 +14,31 @@ import { PolygonGraph } from '../PolygonGraph/PolygonGraph.jsx'
 import { AriaGraph } from '../AriaGraph/AriaGraph.jsx'
 import { Api } from '../Api/Api.jsx'
 import { ApiTester } from '../ApiTester.jsx'
+import { useEffect, useState } from 'react'
+import { UserApi } from '../Api/Api.jsx'
 
 export function MainDiv(){
 
+    var [userData, setUserData]=useState();
+    var[calorieCount,setCalorieCout]=useState();
+    var[formattedCalorieCount, setFormatted]=useState();
+
+    function getData(params){
+        setUserData(params);
+    }
     const data=USER_MAIN_DATA;
-    const calorieCount = data[0].keyData.calorieCount;
-    const formattedCalorieCount = calorieCount.toLocaleString("en-US", { minimumFractionDigits: 0 });
+
+    useEffect(()=>{
+        if(userData){
+            setCalorieCout( userData.data.keyData.calorieCount);
+            function calculate(){
+    setFormatted(calorieCount?.toLocaleString("en-US", { minimumFractionDigits: 0 }));}
+    calculate();
+ } },[userData])
 
     return(
 <div className="mainDiv">
+<UserApi userId={12} getData={getData} />
 <div className='header'>
         <Welcome></Welcome>
 </div>
@@ -37,9 +53,9 @@ export function MainDiv(){
     </div>
  <div className="statZone">
     <StatComp icon={calories} mesure={`${formattedCalorieCount}` +'kCal'} unite={'Calories'}/>
-    <StatComp icon={proteins} mesure={data[0].keyData.proteinCount+'g'} unite='Proteines'/>
-    <StatComp icon={carbs} mesure={data[0].keyData.carbohydrateCount+'g'} unite='Glucides'/>
-    <StatComp icon={fats} mesure={data[0].keyData.lipidCount+'g'} unite='Lipides'/>
+    <StatComp icon={proteins} mesure={userData?userData.data.keyData.proteinCount+'g':'non'} unite='Proteines'/>
+    <StatComp icon={carbs} mesure={(userData)?userData.data.keyData.carbohydrateCount+'g':'none'} unite='Glucides'/>
+    <StatComp icon={fats} mesure={userData?userData.data.keyData.lipidCount+'g':'non'} unite='Lipides'/>
  </div>
  <ApiTester/>
 </div>
