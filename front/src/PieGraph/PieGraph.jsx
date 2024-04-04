@@ -2,24 +2,37 @@ import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { USER_MAIN_DATA } from "../data/data.js";
 import "./PieGraph.scss";
 import { useState,useEffect } from "react";
-import { PieApi } from "../Api/Api.jsx";
+import { UserApi } from "../Api/Api.jsx";
 
-const data = USER_MAIN_DATA;
 
-const todayScore = data[0].todayScore * 100;
-const endAngle = 220 + (todayScore * 360) / 100;
 
-const pieData = [
-  {
-    name: "Zone1",
-    value: todayScore
-  }
- 
-];
+
 
 export function PieGraph() {
+
+  var [score, setScore]=useState();
+  let [todayScore,setTodayScore]=useState();
+  let [endAngle,setEndAngle]=useState();
+function getScore(param){
+  setScore(param);
+}
+
+  useEffect(()=>{
+    setTodayScore(score * 100);
+    setEndAngle(220 + (todayScore * 360) / 100);
+    
+    const pieData = [
+      {
+        name: "Zone1",
+        value: todayScore
+      }
+     
+    ];
+    },[score]);
+
   return (
     <div className="pieDiv">
+      <UserApi userId={12} getScore={getScore}/>
       <ResponsiveContainer className="pieContainer">
         <div className="whiteCircle">
             <div className="score">
@@ -31,7 +44,7 @@ export function PieGraph() {
         </div>
         <PieChart>
           <Pie
-            data={pieData}
+            data={score}
             dataKey="value"
             nameKey="name"
             cx="50%"
@@ -46,7 +59,7 @@ export function PieGraph() {
           >
             <Cell
               fill="#FF0000" // Ici, la couleur de remplissage est définie en #FBFBFB
-              className={todayScore > 50 ? "outer-green" : ""}
+              className={{todayScore} > 50 ? "outer-green" : ""}
               cornerRadius={10}
             />
           </Pie>

@@ -33,12 +33,18 @@ export function Api({ userId, getData }) {
 }
 
 
-export function PieApi({ userId, getData }){
-    let [score, setScore] = useState(null);
+export function UserApi({ userId, getData }){
+
+    let [userData,setUserData]=useState(null);
+    // let [score, setScore] = useState(null);
+    // let[calories, setCalories]=useState(null);
+    // let [proteines, setProteines]=useState(null);
+    // let [carbos, setCarbos]=useState(null);
+    // let [lipids, setLipids]=useState(null);
 
     useEffect(() => {
       // Appel à la route '/user/:id' de votre backend
-      fetch(`http://localhost:3000/user/${userId}/activity`)
+      fetch(`http://localhost:3000/user/${userId}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("Erreur lors de la récupération des données");
@@ -46,13 +52,15 @@ export function PieApi({ userId, getData }){
           return response.json();
         })
         .then((data) => {
-          setScore(data); 
-          console.log(data); // Affiche les données dans la console
+          setUserData(data); 
+          console.log(userData); // Affiche les données dans la console
           getData(data); // Appelle getData avec les données mises à jour
         })
         .catch((error) => console.error(error)).then(
        
         ) // Gérez les erreurs de manière appropriée
     }, [userId]); // Assurez-vous de dépendre de userId pour rafraîchir les données si nécessaire
-  
+  return(
+    <div className="score">{}</div>
+  )
 }
