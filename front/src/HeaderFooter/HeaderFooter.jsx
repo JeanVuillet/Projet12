@@ -4,7 +4,7 @@ import logo1 from "../assets/logo1.svg";
 import logo2 from "../assets/logo2.svg";
 import logo3 from "../assets/logo3.svg";
 import logo4 from "../assets/logo4.svg";
-import { FirstGraph, TestComp } from "../FirstGraph/FirstGraph";
+import { FirstGraph, TestComp } from "../Graphs/FirstGraph/FirstGraph";
 
 import { MainDiv } from "../MainDiv/MainDIv";
 

@@ -7,7 +7,7 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
-import { USER_AVERAGE_SESSIONS } from "../data/data";
+import { USER_AVERAGE_SESSIONS } from "../../data/data.js";
 import "./AriaGraph.scss";
 
 export function AriaGraph() {

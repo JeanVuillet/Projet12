@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { ResponsiveContainer, PolarAngleAxis, PolarGrid, Radar, RadarChart, Tooltip } from "recharts";
-import { USER_PERFORMANCE } from "../data/data";
+import { USER_PERFORMANCE } from "../../data/data.js";
 import './PolygonGraph.scss';
-import { PerfApi } from "../Api/Api";
-import { Api2 } from "../Api/Api2";
+import { PerfApi } from "../../Api/Api.jsx";
+import { Api2 } from "../../Api/Api2.js";
 export function PolygonGraph() {
 
 const [perfData, setPerfData]=useState(null);

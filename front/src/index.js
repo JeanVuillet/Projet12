@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { HeaderFooter } from './HeaderFooter/HeaderFooter.jsx';
 import reportWebVitals from './reportWebVitals';
-import { FirstGraph } from './FirstGraph/FirstGraph.jsx';
+import { FirstGraph } from './Graphs/FirstGraph/FirstGraph.jsx';
 import { Welcome } from './Welcome/Welcome.jsx';
 import { MainDiv } from './MainDiv/MainDIv.jsx';
 

@@ -1,8 +1,8 @@
 import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
-import { USER_MAIN_DATA } from "../data/data.js";
+
 import "./PieGraph.scss";
 import { useState,useEffect } from "react";
-import { UserApi } from "../Api/Api.jsx";
+
 
 
 export function PieGraph() {
@@ -34,7 +34,7 @@ export function PieGraph() {
 
   return (
     <div className="pieDiv">
-      <UserApi userId={12} getData={getData} />
+
       <ResponsiveContainer className="pieContainer">
         <div className="whiteCircle">
           <div className="score">{todayScore}%</div>
