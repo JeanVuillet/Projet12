@@ -19,7 +19,7 @@ constructor(origin,id){
 
 
  
-   static  async getActivity(){
+         async getActivity(){
 
         if(this.origin==='api'){
         try{
@@ -32,7 +32,7 @@ constructor(origin,id){
         const sessions= await data.data.sessions
         console.log(console.log(Object.keys(data), sessions))
 
-        return data;
+        return data.data.sessions;
         } catch(error){
             console.log(error)
             return null;

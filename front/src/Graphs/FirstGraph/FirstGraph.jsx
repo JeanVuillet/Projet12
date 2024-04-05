@@ -23,8 +23,11 @@ export function FirstGraph() {
   var [localData, setLocalData] = useState([]);
 
   async function test() {
+    if(sharedData){
     const myVar = await sharedData;
-    console.log("classWorks" + myVar);
+const result= await myVar.getActivity();
+console.log('fialyOk'+result)
+    }
   }
   test();
   useEffect(() => {

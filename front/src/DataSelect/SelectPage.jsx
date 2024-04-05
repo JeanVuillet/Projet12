@@ -24,10 +24,10 @@ export function SelectPage() {
   function select13() {
     setUser(13);
   }
-  function exeApp() {
+   async function exeApp() {
    const  TheUser= new User(origin, id)
-   
-    console.log("user type is" + TheUser.origin, "userDatais" + TheUser.id);
+   const methode=  await TheUser.getActivity();
+    console.log("user type is" + TheUser.origin, "userDatais" + methode);
     setSharedData(TheUser)
   }
   return (
