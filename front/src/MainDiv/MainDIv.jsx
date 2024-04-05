@@ -12,10 +12,9 @@ import proteins from '../assets/proteins.svg'
 import { PieGraph } from '../PieGraph/PieGraph'
 import { PolygonGraph } from '../PolygonGraph/PolygonGraph.jsx'
 import { AriaGraph } from '../AriaGraph/AriaGraph.jsx'
-import { Api } from '../Api/Api.jsx'
-import { ApiTester } from '../ApiTester.jsx'
+
 import { useEffect, useState } from 'react'
-import { UserApi } from '../Api/Api.jsx'
+
 
 export function MainDiv(){
 
@@ -38,7 +37,7 @@ export function MainDiv(){
 
     return(
 <div className="mainDiv">
-<UserApi userId={12} getData={getData} />
+
 <div className='header'>
         <Welcome></Welcome>
 </div>
@@ -57,7 +56,7 @@ export function MainDiv(){
     <StatComp icon={carbs} mesure={(userData)?userData.data.keyData.carbohydrateCount+'g':'none'} unite='Glucides'/>
     <StatComp icon={fats} mesure={userData?userData.data.keyData.lipidCount+'g':'non'} unite='Lipides'/>
  </div>
- <ApiTester/>
+
 </div>
         
     </div>)

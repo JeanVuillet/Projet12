@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {User} from'./../FormatData/dataFormater.js';    
 import {
   BarChart,
   Bar,
@@ -10,7 +11,7 @@ import {
 } from "recharts"; // Importation des composants de Recharts
 
 import "./TestComp.scss"; // Importation du fichier de style CSS
-import { Api } from "../Api/Api";
+
 
 export function FirstGraph() {
  // Initialisation avec une valeur par défaut
@@ -19,11 +20,14 @@ export function FirstGraph() {
 
   var [apiData, setApiData]= useState()
   var[localData,setLocalData]=useState([])
-  function getData(param , setter ){
-     setApiData(param);
+ 
 
-
+ async function test(){
+const user= new User('api',12);
+ const myVar= await user.activitySessions
+console.log('classWorks'+myVar)
  }
+ test();
 useEffect(()=>{if (apiData){
 
 
@@ -66,7 +70,7 @@ useEffect(()=>{if (apiData){
 
 
   return (<>
-    <Api userId={12} getData={getData} />
+
     <div className="leDiv">
     <div>{apiData && apiData.data ? apiData.data.useId: 'lolo'}</div>
    

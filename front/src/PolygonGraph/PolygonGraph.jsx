@@ -13,9 +13,11 @@ const [newValues, setNewValues]=useState([]);
 
 const [maxDataValue, setMaxData]=useState();
 
+let data=null;
 
 useEffect(()=>{
  async function graphMaker(){
+  if (data){
   const data= await (Api2(12));
   setPerfData(data);
 
@@ -34,6 +36,7 @@ useEffect(()=>{
   setNewValues (myValue.reverse());
  }
  calc();
+}
 }
 }
 graphMaker();
