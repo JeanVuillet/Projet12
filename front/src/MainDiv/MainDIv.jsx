@@ -14,6 +14,7 @@ import { PolygonGraph } from '../PolygonGraph/PolygonGraph.jsx'
 import { AriaGraph } from '../AriaGraph/AriaGraph.jsx'
 
 import { useEffect, useState } from 'react'
+import { DataSelector } from '../DataSelect/DataSelect.jsx'
 
 
 export function MainDiv(){
@@ -37,7 +38,7 @@ export function MainDiv(){
 
     return(
 <div className="mainDiv">
-
+<DataSelector/>
 <div className='header'>
         <Welcome></Welcome>
 </div>
