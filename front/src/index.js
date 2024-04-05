@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { FirstGraph } from './Graphs/FirstGraph/FirstGraph.jsx';
 import { Welcome } from './Welcome/Welcome.jsx';
 import { MainDiv } from './MainDiv/MainDIv.jsx';
-
+import { DataProvider } from './DataProvider/DataProvider.jsx';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,10 +14,10 @@ root.render(
   <React.StrictMode>
 
 <HeaderFooter/>
-
+<DataProvider>
 <MainDiv></MainDiv>
 
-
+</DataProvider>
 
 
   </React.StrictMode>

@@ -11,22 +11,24 @@ import {
 } from "recharts"; // Importation des composants de Recharts
 
 import "./TestComp.scss"; // Importation du fichier de style CSS
+import { useData } from '../../DataProvider/DataProvider.jsx';
 
 export function FirstGraph() {
   // Initialisation avec une valeur par défaut
   let yAxisDomain = []; // Initialisation avec une valeur par défaut
   let CustomTooltip = null;
 
+  const { sharedData } = useData();
   var [apiData, setApiData] = useState();
   var [localData, setLocalData] = useState([]);
 
   async function test() {
-    const myVar = await User.getActivity();
+    const myVar = await sharedData;
     console.log("classWorks" + myVar);
   }
-
+  test();
   useEffect(() => {
-    test();
+
     if (apiData) {
       // Transformation des données pour les adapter au format utilisé par Recharts
       setLocalData(

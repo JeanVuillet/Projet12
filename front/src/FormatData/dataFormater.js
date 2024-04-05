@@ -7,13 +7,13 @@ import { DataSelector } from "../DataSelect/SelectPage.jsx";
 
 export  class User {
 
+constructor(origin,id){
 
-    constructor( origin, id){
-    User.type= origin;
-    User.id=id;
-    
+    this.origin = origin;
+    this.id=id;
+             }
   
-  }
+
 
 
 
@@ -21,9 +21,9 @@ export  class User {
  
    static  async getActivity(){
 
-        if(User.type==='api'){
+        if(this.origin==='api'){
         try{
-        const data= await apiActivity(User.id);
+        const data= await apiActivity(this.id);
         if (!data) {
           throw new Error('Les données de l\'API sont vides');
         }
@@ -37,9 +37,9 @@ export  class User {
             console.log(error)
             return null;
         }
-      }else if( User.type==='mock'){
+      }else if( this.origin==='mock'){
         const data=USER_ACTIVITY;
-        const thisData=data.find((element)=>(element.userId=User.id))
+        const thisData=data.find((element)=>(element.userId=this.id))
         return thisData.sessions;
       }
     
