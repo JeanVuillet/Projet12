@@ -22,20 +22,23 @@ export function FirstGraph() {
   var [apiData, setApiData] = useState();
   var [localData, setLocalData] = useState([]);
 
-  async function test() {
-    if(sharedData){
-    const myVar = await sharedData;
-const result= await myVar.getActivity();
-console.log('fialyOk'+result)
-    }
-  }
-  test();
-  useEffect(() => {
 
-    if (sharedData) {
+
+  
+
+    
+  
+
+  useEffect(() => {
+    test();
+    async function test() {
+  if(sharedData){
       // Transformation des données pour les adapter au format utilisé par Recharts
+      const myActiviy= await sharedData.getActivity();
+       console.log('fialyOk'+myActiviy)
+       if (myActiviy) {
       setLocalData(
-        sharedData.sessions.map((session, index) => ({
+        myActiviy.map((session, index) => ({
           name: `${index + 1}`, // Nom du jour
           kilograms: session.kilogram, // Poids en kilogrammes
           calories: session.calories, // Calories brûlées
@@ -67,7 +70,8 @@ console.log('fialyOk'+result)
         return null;
       };
     }
-  }, [apiData, User]);
+  }}
+  }, [sharedData]);
 
   return (
     <>
