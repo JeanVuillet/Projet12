@@ -32,10 +32,10 @@ console.log('fialyOk'+result)
   test();
   useEffect(() => {
 
-    if (apiData) {
+    if (sharedData) {
       // Transformation des données pour les adapter au format utilisé par Recharts
       setLocalData(
-        apiData.data.sessions.map((session, index) => ({
+        sharedData.sessions.map((session, index) => ({
           name: `${index + 1}`, // Nom du jour
           kilograms: session.kilogram, // Poids en kilogrammes
           calories: session.calories, // Calories brûlées

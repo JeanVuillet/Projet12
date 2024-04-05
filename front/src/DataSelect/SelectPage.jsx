@@ -11,6 +11,7 @@ export function SelectPage() {
 
   let [origin, setData] = useState(null);
   let [id, setUser] = useState(0);
+  let [visible, setVisible]= useState(true);
 
   function selectApi() {
     setData("api");
@@ -29,9 +30,10 @@ export function SelectPage() {
    const methode=  await TheUser.getActivity();
     console.log("user type is" + TheUser.origin, "userDatais" + methode);
     setSharedData(TheUser)
+    setVisible('none');
   }
   return (
-    <div className="dataSelector">
+    <div className="dataSelector" style={{display:`${visible}`}}>
       <div className="dataDiv">
         <div className="dataTxt">select your data</div>
         <div className="dataOptions">
