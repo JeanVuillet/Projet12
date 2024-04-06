@@ -2,6 +2,8 @@ import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 
 import "./PieGraph.scss";
 import { useState,useEffect } from "react";
+import { useData } from "../../DataProvider/DataProvider";
+
 
 
 
@@ -11,11 +13,15 @@ export function PieGraph() {
   const [endAngle, setEndAngle] = useState(0);
   const [pieData, setPieData] = useState([]);
 
-  function getData(param) {
-    setScore(param.data.todayScore);
-  }
+  const { sharedData } = useData();
+
+console.log(sharedData);
 
   useEffect(() => {
+
+    async function pieMake(){
+      if( sharedData){
+      const score=  await sharedData.getScore();
     if(score){
     const calculateData = () => {
       const tscore = score * 100;
@@ -30,7 +36,11 @@ export function PieGraph() {
     };
 
     calculateData(); // Appel de la fonction pour calculer les données dès que score est mis à jour
-}}, [score]);
+  }
+}
+}
+pieMake();
+}, [sharedData]);
 
   return (
     <div className="pieDiv">

@@ -68,12 +68,12 @@ async getScore(){
   if(this.origin === "api"){
     try{
 const data= await  userApi(this.id)
-if(!data.ok){
+if(!data){
 throw new Error("Couldn't get user Data Info")
 }
-const todayScore=  await data.data.userInfos.todayScore;
+const todayScore=  await data.data.todayScore;
 
-console.log(console.log(Object.keys(data),todayScore));
+console.log(console.log(Object.keys(data),'todayScore'+todayScore));
 return todayScore;
     }
     catch (error) {
