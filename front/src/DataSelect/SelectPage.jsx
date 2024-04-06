@@ -22,8 +22,8 @@ export function SelectPage() {
   function select12() {
     setUser(12);
   }
-  function select13() {
-    setUser(13);
+  function select18() {
+    setUser(18);
   }
    async function exeApp() {
    const  TheUser= new User(origin, id)
@@ -66,10 +66,10 @@ export function SelectPage() {
           </div>
           <div
             className="user13"
-            onClick={select13}
-            style={{ border: `${id === 13 ? "solid 3px" : "none"}` }}
+            onClick={select18}
+            style={{ border: `${id === 18 ? "solid 3px" : "none"}` }}
           >
-            13
+            18
           </div>
         </div>
       </div>
