@@ -47,6 +47,7 @@ export function MainDiv() {
   return (
     <div className="mainDiv">
       <SelectPage />
+      
       <div className="header">
         <Welcome></Welcome>
       </div>

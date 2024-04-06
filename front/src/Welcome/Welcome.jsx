@@ -1,21 +1,31 @@
 import { USER_MAIN_DATA } from "../data/data";
 import { useState,useEffect } from "react";
 
+import { useData } from "../DataProvider/DataProvider";
 
 
-const data= USER_MAIN_DATA.find(element=>element.id===12);
 
 function Welcome(){
+
+    const {sharedData}=useData();
     var[userData, setUserData]=useState();
-    const getData=(props)=>{
-        setUserData(props)
-return 1
-    }
+
+    useEffect(()=>{
+async function setName(){
+ if (sharedData){
+    const data= await sharedData.getUserName();
+    setUserData(data)
+}
+}
+setName();
+ } ,[sharedData])
+    
+
     return(
         
         <div className="welcomDiv">
 
-        <div className="bonjour">Bonjour <span>{(userData)?userData.data.userInfos.firstName:'Roberto'}</span></div>
+        <div className="bonjour">Bonjour <span>{(userData)?userData:'Roberto'}</span></div>
         <div className="bravo">Félicitation ! Vous avez explosé vos objectifs hier 👏</div>
         </div>
     )

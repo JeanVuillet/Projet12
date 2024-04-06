@@ -12,11 +12,9 @@ import { DataProvider } from './DataProvider/DataProvider.jsx';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-
-<HeaderFooter/>
 <DataProvider>
+<HeaderFooter/>
 <MainDiv></MainDiv>
-
 </DataProvider>
 
 

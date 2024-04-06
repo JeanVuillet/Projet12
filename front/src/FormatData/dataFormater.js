@@ -43,7 +43,7 @@ export class User {
     if(this.origin === "api"){
       try{
 const data= await  userApi(this.id)
-if(!data.ok){
+if(!data){
   throw new Error("Couldn't get user Data Info")
 }
 const name=  await data.data.userInfos.firstName;
