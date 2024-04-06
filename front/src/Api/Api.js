@@ -51,7 +51,7 @@ catch(error){
     
 }
 
-export async  function averageSessions(){
+export async  function averageSessions(userId){
   try{
     const response = await fetch(`http://localhost:3000/user/${userId}/average-sessions`)
   

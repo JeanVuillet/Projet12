@@ -92,10 +92,10 @@ async getKeyData(){
   if(this.origin === "api"){
     try{
 const data= await  userApi(this.id)
-if(!data.ok){
+if(!data){
 throw new Error("Couldn't get user Data Info")
 }
-const keyData=  await data.data.userInfos.keyData;
+const keyData=  await data.data.keyData;
 
 console.log(console.log(Object.keys(data),keyData));
 return keyData;

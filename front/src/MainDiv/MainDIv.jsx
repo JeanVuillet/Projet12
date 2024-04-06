@@ -12,22 +12,28 @@ import proteins from "../assets/proteins.svg";
 import { PolygonGraph } from "../Graphs/PolygonGraph/PolygonGraph.jsx";
 import { AriaGraph } from "../Graphs/AriaGraph/AriaGraph.jsx";
 
+import { useData } from '../DataProvider/DataProvider.jsx';
 import { useEffect, useState } from "react";
 import { SelectPage } from "../DataSelect/SelectPage.jsx";
 
 export function MainDiv() {
+
+    const {sharedData} =  useData();
+
   var [userData, setUserData] = useState();
   var [calorieCount, setCalorieCout] = useState();
   var [formattedCalorieCount, setFormatted] = useState();
 
-  function getData(params) {
-    setUserData(params);
-  }
-  const data = USER_MAIN_DATA;
-
+  let keyData=null;
   useEffect(() => {
-    if (userData) {
-      setCalorieCout(userData.data.keyData.calorieCount);
+    MakeGraph();
+  async function MakeGraph(){
+
+    if (sharedData) {
+  keyData= await sharedData.getKeyData()
+        if(keyData){
+     setUserData(keyData);
+      setCalorieCout(keyData.calorieCount);
       function calculate() {
         setFormatted(
           calorieCount?.toLocaleString("en-US", { minimumFractionDigits: 0 })
@@ -35,7 +41,8 @@ export function MainDiv() {
       }
       calculate();
     }
-  }, [userData, calorieCount]);
+    }}}
+  ,[sharedData, calorieCount, keyData]);
 
   return (
     <div className="mainDiv">
@@ -63,19 +70,19 @@ export function MainDiv() {
           />
           <StatComp
             icon={proteins}
-            mesure={userData ? userData.data.keyData.proteinCount + "g" : "non"}
+            mesure={userData ? userData.proteinCount + "g" : "non"}
             unite="Proteines"
           />
           <StatComp
             icon={carbs}
             mesure={
-              userData ? userData.data.keyData.carbohydrateCount + "g" : "none"
+              userData ? userData.carbohydrateCount + "g" : "none"
             }
             unite="Glucides"
           />
           <StatComp
             icon={fats}
-            mesure={userData ? userData.data.keyData.lipidCount + "g" : "non"}
+            mesure={userData ? userData.lipidCount + "g" : "non"}
             unite="Lipides"
           />
         </div>
