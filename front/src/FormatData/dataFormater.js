@@ -116,7 +116,7 @@ async getPerformance(){
   if(this.origin === "api"){
     try{
 const data= await  perfApi(this.id)
-if(!data.ok){
+if(!data){
 throw new Error("Couldn't get user Data Info")
 }
 const performance=  await data.data;
