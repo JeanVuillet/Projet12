@@ -88,7 +88,7 @@ return todayScore;
 } else if (this.origin === "mock") {
 const data=USER_MAIN_DATA;
 const thisData = data.find((element) => (element.id === this.id));
-return thisData.todayScore;
+return (thisData.todayScore?thisData.todayScore:thisData.score)
 
 }
 }
