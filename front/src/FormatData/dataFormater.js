@@ -1,4 +1,4 @@
-import { apiActivity, userApi,perfApi } from "../Api/Api.js";
+import { apiActivity, userApi,perfApi,averageSessions } from "../Api/Api.js";
 import { data } from "react";
 import {
   USER_MAIN_DATA,
@@ -68,10 +68,15 @@ async getScore(){
   if(this.origin === "api"){
     try{
 const data= await  userApi(this.id)
+let todayScore=null;
 if(!data){
 throw new Error("Couldn't get user Data Info")
 }
-const todayScore=  await data.data.todayScore;
+ todayScore=  await data.data.todayScore;
+if(!todayScore)
+{
+  todayScore= data.data.score;
+} 
 
 console.log(console.log(Object.keys(data),'todayScore'+todayScore));
 return todayScore;
@@ -136,10 +141,11 @@ return thisData;
 }
 
 async getAverageSessions(){
+
   if(this.origin === "api"){
     try{
-const data= await  userApi(this.id)
-if(!data.ok){
+const data= await averageSessions(this.id)
+if(!data){
 throw new Error("Couldn't get user Data Info")
 }
 const averageSession=  await data.data.sessions;
