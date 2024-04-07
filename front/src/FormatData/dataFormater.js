@@ -33,7 +33,7 @@ export class User {
       }
     } else if (this.origin === "mock") {
       const data = USER_ACTIVITY;
-      const thisData = data.find((element) => (element.userId = this.id));
+      const thisData = data.find((element) => (element.userId === this.id));
       return thisData.sessions;
     }
   }
@@ -57,7 +57,7 @@ return name;
     }
   } else if (this.origin === "mock") {
 const data=USER_MAIN_DATA;
-const thisData = data.find((element) => (element.userId = this.id));
+const thisData = data.find((element) => (element.id === this.id));
 return thisData.userInfos.firstName;
 
   }
@@ -87,7 +87,7 @@ return todayScore;
   }
 } else if (this.origin === "mock") {
 const data=USER_MAIN_DATA;
-const thisData = data.find((element) => (element.userId = this.id));
+const thisData = data.find((element) => (element.id === this.id));
 return thisData.todayScore;
 
 }
@@ -110,8 +110,9 @@ return keyData;
       return null;
   }
 } else if (this.origin === "mock") {
-const data=USER_MAIN_DATA;
-const thisData = data.find((element) => (element.userId = this.id));
+const data= USER_MAIN_DATA;
+const thisData = data.find((element) => (element.id === this.id));
+console.log('content='+thisData)
 return thisData.keyData;
 
 }
@@ -135,7 +136,7 @@ return performance;
   }
 } else if (this.origin === "mock") {
 const data=USER_PERFORMANCE;
-const thisData = data.find((element) => (element.userId = this.id));
+const thisData = data.find((element) => (element.userId === this.id));
 return thisData;
 }
 }
@@ -159,7 +160,7 @@ return averageSession;
   }
 } else if (this.origin === "mock") {
 const data=USER_AVERAGE_SESSIONS;
-const thisData = data.find((element) => (element.userId = this.id));
+const thisData = data.find((element) => (element.userId === this.id));
 return thisData.sessions;
 }
 }
