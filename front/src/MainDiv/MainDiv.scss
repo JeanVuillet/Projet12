@@ -13,16 +13,18 @@
 
 .main{
    display:flex;
+   justify-content: space-between;;
     border: solid orange;
     width: 100%;
-    height: -webkit-fill-available;
+    height: fit-content;
     .graphs{
         height: 100%;
-        width: 80%;
+        width: fit-content;
         display:flex;
         flex-direction: column;
         .smallGraphs{
             display: flex;
+            justify-content: space-between;
         }
     }
     .statZone{
