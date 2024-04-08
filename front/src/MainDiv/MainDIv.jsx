@@ -1,7 +1,7 @@
 import "./MainDiv.scss";
 import { Welcome } from "../Welcome/Welcome";
 import { FirstGraph } from "../Graphs/FirstGraph/FirstGraph.jsx";
-import {PieGraph} from "../Graphs/PieGraph/PieGraph.jsx";
+import { PieGraph } from "../Graphs/PieGraph/PieGraph.jsx";
 
 import { StatComp } from "../StatComp/StatComp";
 import { USER_MAIN_DATA } from "../data/data.js";
@@ -12,42 +12,43 @@ import proteins from "../assets/proteins.svg";
 import { PolygonGraph } from "../Graphs/PolygonGraph/PolygonGraph.jsx";
 import { AriaGraph } from "../Graphs/AriaGraph/AriaGraph.jsx";
 
-import { useData } from '../DataProvider/DataProvider.jsx';
+import { useData } from "../DataProvider/DataProvider.jsx";
 import { useEffect, useState } from "react";
 import { SelectPage } from "../DataSelect/SelectPage.jsx";
 
 export function MainDiv() {
-
-    const {sharedData} =  useData();
+  const { sharedData } = useData();
 
   var [userData, setUserData] = useState();
   var [calorieCount, setCalorieCout] = useState();
   var [formattedCalorieCount, setFormatted] = useState();
 
-  let keyData=null;
+  let keyData = null;
   useEffect(() => {
     MakeGraph();
-  async function MakeGraph(){
-
-    if (sharedData) {
-  keyData= await sharedData.getKeyData()
-        if(keyData){
-     setUserData(keyData);
-      setCalorieCout(keyData.calorieCount);
-      function calculate() {
-        setFormatted(
-          calorieCount?.toLocaleString("en-US", { minimumFractionDigits: 0 })
-        );
+    async function MakeGraph() {
+      if (sharedData) {
+        keyData = await sharedData.getKeyData();
+        if (keyData) {
+          setUserData(keyData);
+          setCalorieCout(keyData.calorieCount);
+          function calculate() {
+            setFormatted(
+              calorieCount?.toLocaleString("en-US", {
+                minimumFractionDigits: 0,
+              })
+            );
+          }
+          calculate();
+        }
       }
-      calculate();
     }
-    }}}
-  ,[sharedData, calorieCount, keyData]);
+  }, [sharedData, calorieCount, keyData]);
 
   return (
     <div className="mainDiv">
       <SelectPage />
-      
+
       <div className="header">
         <Welcome></Welcome>
       </div>
@@ -55,9 +56,11 @@ export function MainDiv() {
       <div className="main">
         <div className="graphs">
           <FirstGraph />
-          <PieGraph />
-          <PolygonGraph />
-          <AriaGraph />
+          <div className="smallGraphs">
+            <AriaGraph />
+            <PolygonGraph />
+            <PieGraph />
+          </div>
         </div>
         <div className="statZone">
           <StatComp
@@ -76,9 +79,7 @@ export function MainDiv() {
           />
           <StatComp
             icon={carbs}
-            mesure={
-              userData ? userData.carbohydrateCount + "g" : "none"
-            }
+            mesure={userData ? userData.carbohydrateCount + "g" : "none"}
             unite="Glucides"
           />
           <StatComp

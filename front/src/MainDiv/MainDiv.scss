@@ -19,6 +19,11 @@
     .graphs{
         height: 100%;
         width: 80%;
+        display:flex;
+        flex-direction: column;
+        .smallGraphs{
+            display: flex;
+        }
     }
     .statZone{
         width: 20%;

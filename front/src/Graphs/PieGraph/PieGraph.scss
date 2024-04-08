@@ -2,13 +2,13 @@
  
     background-color:#FBFBFB;
     border:solid;
-    position:absolute;
+
 
     width: 258px;
     height: 263px;
-    left:100px;
-    top:500px;
+
     .pieContainer{
+    position: relative;
      display: flex;
      justify-content: center;
      align-items: center;

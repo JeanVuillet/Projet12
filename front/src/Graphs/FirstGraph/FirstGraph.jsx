@@ -88,8 +88,6 @@ export function FirstGraph() {
   return (
     <>
       <div className="leDiv">
-        <div>{apiData && apiData.data ? apiData.data.useId : "lolo"}</div>
-
         <ResponsiveContainer>
           {/* Création du graphique */}
           <div className="header">
