@@ -15,12 +15,15 @@ import { useData } from '../../DataProvider/DataProvider.jsx';
 
 export function FirstGraph() {
   // Initialisation avec une valeur par défaut
-  let yAxisDomain = []; // Initialisation avec une valeur par défaut
+ // Initialisation avec une valeur par défaut
   let CustomTooltip = null;
 
   const { sharedData } = useData();
-  var [apiData, setApiData] = useState();
-  var [localData, setLocalData] = useState([]);
+  const [apiData, setApiData] = useState();
+  const [localData, setLocalData] = useState([]);
+  const [yAxisDomain, setYaxisDomain]=useState(null);
+
+  
 
 
 
@@ -35,28 +38,36 @@ export function FirstGraph() {
   if(sharedData){
       // Transformation des données pour les adapter au format utilisé par Recharts
       const myActiviy= await sharedData.getActivity();
-       console.log('fialyOk'+myActiviy)
+  
        if (myActiviy) {
-      setLocalData(
-        myActiviy.map((session, index) => ({
+      const theLocal=  myActiviy.map((session, index) => ({
           name: `${index + 1}`, // Nom du jour
           kilograms: session.kilogram, // Poids en kilogrammes
           calories: session.calories, // Calories brûlées
         }))
-      );
+        if(theLocal.length > 0 ){
+      setLocalData(theLocal);
       // Vérification si les données pour le septième jour existent
-
+ if (localData.length>0){
       // Recherche du poids minimum dans les données
-      const minKilograms = Math.floor(
+      const minKg=Math.floor(
         Math.min(...localData.map((entry) => entry.kilograms))
-      );
-
+      )
+  
+      
       // Définition du domaine de l'axe Y pour les kilogrammes en commençant à minKilograms
-      yAxisDomain = [
-        minKilograms - 1,
-        Math.ceil(Math.max(...localData.map((entry) => entry.kilograms))) + 1,
-      ];
+     
+     const domain=[
+      Math.floor(
+        Math.min(...localData.map((entry) => entry.kilograms))
+      ) - 10,
+       Math.ceil(Math.max(...localData.map((entry) => entry.kilograms))) + 1,
+     ];
 
+      setYaxisDomain(domain);
+     }
+   
+    
       CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
           const TooltipData = payload[0].payload; // Données de la barre survolée
@@ -69,8 +80,9 @@ export function FirstGraph() {
         }
         return null;
       };
-    }
-  }}
+    }}
+  }
+  }
   }, [sharedData]);
 
   return (
@@ -121,12 +133,12 @@ export function FirstGraph() {
               yAxisId="calories" // Identifiant de l'axe pour les calories
               orientation="right" // Orientation de l'axe
               hide
-              domain={[
+              domain={localData?[
                 0,
                 Math.ceil(
                   Math.max(...localData.map((entry) => entry.calories))
                 ) * 1.1,
-              ]} // Définit le domaine personnalisé pour les calories
+              ]:'none'} // Définit le domaine personnalisé pour les calories
               tick={(
                 { x, y, payload } // Configuration des étiquettes
               ) => (

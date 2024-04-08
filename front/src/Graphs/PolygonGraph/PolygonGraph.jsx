@@ -53,7 +53,7 @@ graphMaker();
   return (
     <div className="polygonGraph">
       
-      <ResponsiveContainer width={258} height={263}>
+      <ResponsiveContainer className={'responsivCont'}>
         <RadarChart cx="50%" cy="50%" outerRadius='60%' data={newValues?newValues:[]} style={{border:'solid'}}>
           <PolarGrid gridType='polygon' radialLines={false} polarRadius={[0, 8.5, 18, 38, 57, 77]} />
           <PolarAngleAxis dataKey="subject" className="keys"  tick={{ fill: "white" }} radius={0} />

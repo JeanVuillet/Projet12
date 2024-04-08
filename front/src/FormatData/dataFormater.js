@@ -127,7 +127,7 @@ throw new Error("Couldn't get user Data Info")
 }
 const performance=  await data.data;
 
-console.log(console.log(Object.keys(data),performance));
+
 return performance;
     }
     catch (error) {
