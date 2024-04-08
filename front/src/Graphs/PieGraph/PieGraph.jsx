@@ -26,7 +26,9 @@ console.log(sharedData);
     const calculateData = () => {
       const tscore = score * 100;
       setTodayScore(tscore);
-      setEndAngle(220 + (tscore * 360) / 100);
+      console.log('score'+tscore)
+      setEndAngle(220 - (tscore * 360) / 100);
+      console.log('endAngle'+endAngle)
       setPieData([
         {
           name: "Zone1",
@@ -61,8 +63,8 @@ pieMake();
             outerRadius={85}
             label={false}
             labelLine={false}
-            startAngle={endAngle - 30}
-            endAngle={190}
+            startAngle={220}
+            endAngle={endAngle}
           >
             <Cell
               fill="#FF0000"
