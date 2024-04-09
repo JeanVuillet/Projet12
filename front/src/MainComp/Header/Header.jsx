@@ -12,7 +12,7 @@ export function Header() {
         <img src={logo} className="App__header__img" alt="logo" />
 
         <a className="App__header__nav" href="">
-          Acceuil
+          Accueil
         </a>
         <a className="App__header__nav" href="">
           {" "}
