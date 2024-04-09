@@ -1,9 +1,9 @@
 .mainDiv{
-    position: relative;
+
     border:solid red;
 
-    left:117px;
-    top: 91px;
+ 
+   padding-top: 35px;
     display: flex;
     flex-direction: column;
   
@@ -17,6 +17,7 @@
     border: solid orange;
     width: 100%;
     height: fit-content;
+    gap: 90px;
     .graphs{
         height: 100%;
         width: fit-content;
