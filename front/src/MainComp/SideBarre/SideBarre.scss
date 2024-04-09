@@ -1,0 +1,55 @@
+.sideBarre{
+    border:solid orange;
+
+    background-color: black;
+    width: 117px;
+    height: 100%;
+    &__wrapper{
+        width: 100%;
+        background-color: black;
+        padding-top: 30rem;
+        border:solid red;
+        display: flex;
+        flex-direction: column;
+        gap: 10rem;
+    &__nav{
+        display: flex;
+        flex-direction: column;
+        gap:20px;
+
+        align-items: center;
+
+
+    &__logoContainer{
+        background-color: white;
+        width: 64px;
+        height: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &__logo{
+
+        }
+    }
+    }
+    &__textContainer{
+      background-color: black;
+        color:white;
+        display: flex;
+        flex-direction: column;
+        writing-mode: vertical-rl; /* Orientation du texte de bas en haut */
+        transform: rotate(180deg); /* Rotation des lettres */
+      
+        width: 117px;
+        height: fit-content;
+        font-size: 12px;
+        justify-content: center;
+        align-items: center;
+        line-height: 24px;
+        padding-top: 20px;
+    
+      
+
+    }
+}
+}

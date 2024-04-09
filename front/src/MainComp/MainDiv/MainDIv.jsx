@@ -5,10 +5,10 @@ import { PieGraph } from "../../Graphs/PieGraph/PieGraph.jsx";
 
 import { StatComp } from "../../StatComp/StatComp.jsx";
 import { USER_MAIN_DATA } from "../../data/data.js";
-import calories from "../assets/calories.svg";
-import carbs from "../assets/carbs.svg";
-import fats from "../assets/fat.svg";
-import proteins from "../assets/proteins.svg";
+import calories from "../../assets/calories.svg";
+import carbs from "../../assets/carbs.svg";
+import fats from "../../assets/fat.svg";
+import proteins from "../../assets/proteins.svg";
 import { PolygonGraph } from "../../Graphs/PolygonGraph/PolygonGraph.jsx";
 import { AriaGraph } from "../../Graphs/AriaGraph/AriaGraph.jsx";
 
