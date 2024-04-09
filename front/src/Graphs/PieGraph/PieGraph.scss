@@ -6,7 +6,12 @@
 
     width: 258px;
     height: 263px;
-
+    position: relative;
+.txt{
+    position: absolute;
+    top:30px;
+    left:30px;
+}
     .pieContainer{
     position: relative;
      display: flex;

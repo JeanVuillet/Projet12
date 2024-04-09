@@ -1,0 +1,16 @@
+.welcomDiv{
+    display: flex;
+    flex-direction: column;
+    gap:40px;
+    font-size: 18px;
+    .bonjour{
+        font-size: 48px;
+        font-weight: 500;
+        color:black;
+        font-family: roboto;
+   
+        .name{
+            color: red;
+        }
+    }
+}

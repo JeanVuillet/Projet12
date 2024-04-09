@@ -1,9 +1,9 @@
 import "./MainDiv.scss";
-import { Welcome } from "../../Welcome/Welcome.jsx";
+import { Welcome } from "./Welcome/Welcome.jsx";
 import { FirstGraph } from "../../Graphs/FirstGraph/FirstGraph.jsx";
 import { PieGraph } from "../../Graphs/PieGraph/PieGraph.jsx";
 
-import { StatComp } from "../../StatComp/StatComp.jsx";
+import { StatComp } from "./StatComp/StatComp.jsx";
 import { USER_MAIN_DATA } from "../../data/data.js";
 import calories from "../../assets/calories.svg";
 import carbs from "../../assets/carbs.svg";

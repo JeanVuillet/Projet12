@@ -1,20 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { HeaderFooter } from './MainComp/HeaderFooter.jsx';
+import { Header } from './MainComp/Header/Header.jsx';
+import { SideBarre } from './MainComp/SideBarre/SideBarre.jsx';
 import reportWebVitals from './reportWebVitals';
 import { FirstGraph } from './Graphs/FirstGraph/FirstGraph.jsx';
-import { Welcome } from './Welcome/Welcome.jsx';
-import { MainDiv } from './MainComp/MainDiv/MainDIv.jsx';
+import { Welcome } from './MainComp/MainDiv/Welcome/Welcome.jsx';
+import { MainDiv } from './MainComp/MainDiv/MainDiv.jsx';
 import { DataProvider } from './DataProvider/DataProvider.jsx';
+import { MainComp } from './MainComp/MainComp.jsx';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 <DataProvider>
-<HeaderFooter/>
-<MainDiv></MainDiv>
+<MainComp/>
 </DataProvider>
 
 

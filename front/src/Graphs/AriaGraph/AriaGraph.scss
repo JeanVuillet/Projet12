@@ -1,6 +1,18 @@
 .containerDiv{
     width: 258px;
     height:260px;
+    position: relative;
+
+    .txt{
+      color: white;
+      opacity: 50%;
+      width: 150px;
+      top: 30px;
+      left: 20px;
+      position: absolute;
+      text-wrap: wrap;
+
+    }
   } 
   .custom-tooltip{
     background-color: white;
