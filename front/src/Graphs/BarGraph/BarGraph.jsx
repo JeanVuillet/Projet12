@@ -13,7 +13,7 @@ import {
 import "./TestComp.scss"; // Importation du fichier de style CSS
 import { useData } from '../../DataProvider/DataProvider.jsx';
 
-export function FirstGraph() {
+export function BarGraph() {
   // Initialisation avec une valeur par défaut
  // Initialisation avec une valeur par défaut
   let CustomTooltip = null;

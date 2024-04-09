@@ -1,6 +1,6 @@
 import "./MainDiv.scss";
 import { Welcome } from "./Welcome/Welcome.jsx";
-import { FirstGraph } from "../../Graphs/FirstGraph/FirstGraph.jsx";
+import { BarGraph } from "../../Graphs/BarGraph/BarGraph.jsx";
 import { PieGraph } from "../../Graphs/PieGraph/PieGraph.jsx";
 
 import { StatComp } from "./StatComp/StatComp.jsx";
@@ -47,15 +47,13 @@ export function MainDiv() {
 
   return (
     <div className="mainDiv">
-
-
       <div className="header">
         <Welcome></Welcome>
       </div>
 
       <div className="main">
         <div className="graphs">
-          <FirstGraph />
+          <BarGraph />
           <div className="smallGraphs">
             <AriaGraph />
             <PolygonGraph />

@@ -3,7 +3,7 @@ import "./DataSelector.scss";
 import { User } from "../../FormatData/dataFormater.js";
 import { useData } from "../../DataProvider/DataProvider.jsx";
 
-import { userObject } from "../../Graphs/FirstGraph/FirstGraph.jsx";
+import { userObject } from "../../Graphs/BarGraph/BarGraph.jsx";
 
 export function SelectPage() {
   const { sharedData, setSharedData } = useData();
