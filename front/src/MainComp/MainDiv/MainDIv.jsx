@@ -14,7 +14,7 @@ import { AriaGraph } from "../../Graphs/AriaGraph/AriaGraph.jsx";
 
 import { useData } from "../../DataProvider/DataProvider.jsx";
 import { useEffect, useState } from "react";
-import { SelectPage } from "../../DataSelect/SelectPage.jsx";
+import { SelectPage } from "../SelectPage/SelectPage.jsx";
 
 export function MainDiv() {
   const { sharedData } = useData();
@@ -47,7 +47,7 @@ export function MainDiv() {
 
   return (
     <div className="mainDiv">
-      <SelectPage />
+
 
       <div className="header">
         <Welcome></Welcome>

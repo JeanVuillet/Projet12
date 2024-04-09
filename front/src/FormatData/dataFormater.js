@@ -7,7 +7,7 @@ import {
   USER_PERFORMANCE,
 } from "../data/data.js";
 
-import { DataSelector } from "../DataSelect/SelectPage.jsx";
+import { DataSelector } from "../MainComp/SelectPage/SelectPage.jsx";
 
 export class User {
   constructor(origin, id) {
