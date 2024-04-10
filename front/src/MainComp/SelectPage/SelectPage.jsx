@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./DataSelector.scss";
+import "./SelectPage.scss";
 import { User } from "../../FormatData/dataFormater.js";
 import { useData } from "../../DataProvider/DataProvider.jsx";
 
