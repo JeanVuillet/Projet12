@@ -17,6 +17,8 @@ export function BarGraph() {
 
   let CustomTooltip = null;
 
+// sharedData est un objet recuperer grace a useContext qui a acces
+// a plusieurs methodes pour recuperer les data(voir FormData)
   const { sharedData } = useData();
   const [localData, setLocalData] = useState([]);
   const [yAxisDomain, setYaxisDomain]=useState(null);
@@ -26,12 +28,14 @@ export function BarGraph() {
     getData();
     setDomain();
     CustomTooltip();
-    //getData est une fonction asynchrone pour ramener les informations du mock ou de l api
-    //et les stocker dans un State (localData)
-    
-    // sharedData est un objet recuperer grace a useContext qui a acces
-    // a plusieurs methodes pour recuperer les data(voir FormData)
-    async function getData() {
+    //getData est une fonction asynchrone pour ramener les data du mock ou de l api
+    //les mapper dans une liste d objets type:
+    // {name:indice+1 de session 
+    //  kilograms:kilogrames de session 
+    //  calories:calories brulees de session
+  //   }
+    //et la stocker dans un State (localData)
+  async function getData() {
 
   if(sharedData){
   
@@ -56,6 +60,29 @@ export function BarGraph() {
     }}
 
   }
+
+//SetDomaine genere le domaine de l'axe Y pour les kilogrammes 
+//en commençant à la valeur min des kilogrames de localData-10
+// et en finissant à la valeur max des kilogrames de localData+1
+  function   setDomain(){
+    if (localData.length>0){
+   
+   
+         // Définition
+        
+        const domain=[
+         Math.floor(
+           Math.min(...localData.map((entry) => entry.kilograms))
+         ) - 10,
+          Math.ceil(Math.max(...localData.map((entry) => entry.kilograms))) + 1,
+        ];
+   
+         setYaxisDomain(domain);
+        }
+       }
+
+//CustomTooltip cree le Tooltip (div qui suit la souris dans le graph)
+  // il contient les kilos et les calories de  cette section
   function   CustomTooltip  () {
 
     if(localData){
@@ -68,23 +95,6 @@ export function BarGraph() {
     }
     else{ return 'could not get data'}
 };
-  function   setDomain(){
-    if (localData.length>0){
-   
-   
-         // Définition du domaine de l'axe Y pour les kilogrammes en commençant à minKilograms-10
-         // et en finissant a maxKilograms+1
-        
-        const domain=[
-         Math.floor(
-           Math.min(...localData.map((entry) => entry.kilograms))
-         ) - 10,
-          Math.ceil(Math.max(...localData.map((entry) => entry.kilograms))) + 1,
-        ];
-   
-         setYaxisDomain(domain);
-        }
-       }
   }
   , [sharedData]);
 
@@ -107,20 +117,19 @@ export function BarGraph() {
           >
             {/* Configuration de l'axe X */}
             <XAxis dataKey="name" />{" "}
-            {/* Utilise les noms des jours comme étiquettes */}
-            {/* Configuration de l'axe Y pour les kilogrammes */}
+
             <YAxis
-              yAxisId="kilograms" // Identifiant de l'axe pour les kilogrammes
-              orientation="right" // Orientation de l'axe (côté droit)
-              domain={yAxisDomain} // Définit le domaine personnalisé pour les kilogrammes
+              yAxisId="kilograms" 
+              orientation="right"
+              domain={yAxisDomain} 
               tickCount={4}
               tick={(
-                { x, y, payload } // Configuration des étiquettes
+                { x, y, payload } 
               ) => (
                 <text
-                  x={x + 15} // Position horizontale du texte décalée de 15 pixels par rapport à l'axe
-                  y={y} // Position verticale du texte alignée avec l'axe
-                  dy={4} // Décalage vertical supplémentaire du texte de 4 unités vers le bas
+                  x={x + 15} 
+                  y={y} 
+                  dy={4} 
                   textAnchor="start" // Ancrage du texte à "start" (alignement à gauche)
                   fill="#666" // Couleur de remplissage du texte en gris foncé
                   className="couou" // Classe CSS attribuée au texte
@@ -152,7 +161,7 @@ export function BarGraph() {
                   className="couou"
                 >
                   {Math.round(payload.value)}{" "}
-                  {/* Conversion des calories en pixels */}
+            
                 </text>
               )}
             />

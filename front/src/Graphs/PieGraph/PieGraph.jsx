@@ -14,35 +14,55 @@ export function PieGraph() {
   const [pieData, setPieData] = useState([]);
 
   const { sharedData } = useData();
+  let tscore=null;
 
 console.log(sharedData);
 
+//calcule le pourcentage et le stock dans un usteState tscore
+function getPercentage(){
+  if (score>0){
+   tscore = score * 100;
+  setTodayScore(tscore);
+  }
+}
+//calcule l angle final a partir de tscore
+function getEndAngle(){
+  if(tscore){
+  setEndAngle(220 - (tscore * 360) / 100);
+  }
+}
+
+// definie le useState pieData comme un objet {name: zone1  value :tscore}
+function SetPieData(){
+  if (tscore){
+  setPieData([
+    {
+      name: "Zone1",
+      value: tscore
+    }
+  ]);
+}
+}
+
   useEffect(() => {
 
+    //cette fonction recupere le score le stock dans un useEffect (myScore)
+    // et appelle les 3 fonctions de calcule des data
     async function pieMake(){
       if( sharedData){
-      const score=  await sharedData.getScore();
-    if(score){
-    const calculateData = () => {
-      const tscore = score * 100;
-      setTodayScore(tscore);
-      console.log('score'+tscore)
-      setEndAngle(220 - (tscore * 360) / 100);
-      console.log('endAngle'+endAngle)
-      setPieData([
-        {
-          name: "Zone1",
-          value: tscore
-        }
-      ]);
-    };
-
-    calculateData(); // Appel de la fonction pour calculer les données dès que score est mis à jour
-  }
+      const myScore=  await sharedData.getScore();
+     
+      if(myScore){
+    setScore(myScore);
+    getPercentage()
+    getEndAngle()
+    SetPieData()
+ ; // Appel de la fonction pour calculer les données dès que score est mis à jour
+     }
 }
 }
 pieMake();
-}, [sharedData]);
+}, [sharedData, score]);
 
   return (
     <div className="pieDiv">

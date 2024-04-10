@@ -61,7 +61,7 @@ export function AriaGraph() {
       <div className="calcDiv"></div>
       <div className="rightDiv" style={{ width: `${rightDiv}px` }}></div>
 <div className="txt">Durée moyenne des sessions</div>
-      <ResponsiveContainer width={258} height={260} className="container">
+      <ResponsiveContainer className="container">
         <AreaChart
           data={graphData}
           margin={{ top: 10, right: 10, left: 10, bottom: 0 }}
