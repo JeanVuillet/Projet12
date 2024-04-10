@@ -19,6 +19,8 @@ let {sharedData}=useData();
 
 let myValue=null;
 
+// cette fonction calcule et stock la valeur max et et tableau de myValue a l envers
+//car l ordre des donnes recu est inverse par rapport au graphique
 let calc=()=>{
   if (myValue){
   setMaxData( Math.max( myValue.map(element => element.value)));
@@ -27,7 +29,9 @@ let calc=()=>{
   }
  }
 
-
+ //cette fonction mapp perfData en une liste d objets
+ //{ subject : element du tableau mySubject value:cette valeur de perfData}
+ //et appelle calculate()
  function mapper(){
   if(perfData){
 
@@ -48,7 +52,7 @@ useEffect(()=>{
   const data= await sharedData.getPerformance();
 
   if (data){
-  setPerfData(data.data);
+setPerfData(data.data);
 
 mapper();
 calc();
