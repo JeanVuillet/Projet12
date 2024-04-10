@@ -17,9 +17,8 @@ export function BarGraph() {
   // Initialisation avec une valeur par défaut
  // Initialisation avec une valeur par défaut
   let CustomTooltip = null;
-
+// mise dans des useState des valeurs a mettre dans les props
   const { sharedData } = useData();
-  const [apiData, setApiData] = useState();
   const [localData, setLocalData] = useState([]);
   const [yAxisDomain, setYaxisDomain]=useState(null);
 
@@ -34,27 +33,27 @@ export function BarGraph() {
 
   useEffect(() => {
     test();
+    //fonction asynchrone pour ramener les informations du mock ou de l api
     async function test() {
+      //verification arrivee de l objet contenant les donnees
   if(sharedData){
-      // Transformation des données pour les adapter au format utilisé par Recharts
+      // Recuperation des donnees
       const myActiviy= await sharedData.getActivity();
-  
+  //verification presense des donnees
        if (myActiviy) {
+        //creation du tableau d objets utilisee comme data dans les props
       const theLocal=  myActiviy.map((session, index) => ({
           name: `${index + 1}`, // Nom du jour
           kilograms: session.kilogram, // Poids en kilogrammes
           calories: session.calories, // Calories brûlées
         }))
         if(theLocal.length > 0 ){
+          //enregistrement du tableau dans le useState
       setLocalData(theLocal);
-      // Vérification si les données pour le septième jour existent
+    
  if (localData.length>0){
-      // Recherche du poids minimum dans les données
-      const minKg=Math.floor(
-        Math.min(...localData.map((entry) => entry.kilograms))
-      )
-  
-      
+
+
       // Définition du domaine de l'axe Y pour les kilogrammes en commençant à minKilograms
      
      const domain=[
@@ -67,7 +66,7 @@ export function BarGraph() {
       setYaxisDomain(domain);
      }
    
-    
+    //creation du toolTip pour afficher les valeurs lorsque la souris se deplace dans le graphique
       CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
           const TooltipData = payload[0].payload; // Données de la barre survolée
