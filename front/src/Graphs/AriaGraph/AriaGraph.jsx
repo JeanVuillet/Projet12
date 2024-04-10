@@ -17,27 +17,51 @@ export function AriaGraph() {
   const [graphData, setGraphData] = useState(null);
   const [maxValue, setMaxValue] = useState(null);
   const [minValue, setMinValue] = useState(null);
+  const days = ["L", "M", "M", "J", "V", "S", "D"];
 
   let { sharedData } = useData();
+  let newData=null;
+  let data2=null;
+
+  //cette fonction map newData en une liste d objets
+  // {day:le jour time:dure de la session index: l'index de la session}
+  // et appel setValues()
+  async function getNewData(){
+    if (data2) {
+      newData = await data2.map((element, index) => ({
+       day: days[index],
+       time: element.sessionLength,
+       index: index,
+     }));
+
+setValues();
+
+  }
+}
+//cette fonction stock dans des useState newData, le temps max de newData et le temps min de newData
+//(pour les props du graphique)
+  function setValues(){
+    if (newData){
+      setGraphData(newData);
+      setMaxValue(Math.max(...newData.map((element) => element.time)));
+      setMinValue(Math.min(...newData.map((element) => element.time)));
+    }
+    }
 
   useEffect(() => {
+    // cette fonction recupere le data de AverageSessions grace a l objet sherdData
     async function makeAriagraph() {
       if (sharedData) {
-        const data2 = await sharedData.getAverageSessions();
-        const days = ["L", "M", "M", "J", "V", "S", "D"];
-
-        if (data2) {
-          const newData = await data2.map((element, index) => ({
-            day: days[index],
-            time: element.sessionLength,
-            index: index,
-          }));
-          setGraphData(newData);
-          setMaxValue(Math.max(...newData.map((element) => element.time)));
-          setMinValue(Math.min(...newData.map((element) => element.time)));
+        data2 = await sharedData.getAverageSessions();
+       
+        getNewData()
+        // if (data2 && newData){
+        // setValues()
+        // }
+   
         }
       }
-    }
+    
     makeAriagraph();
   }, [sharedData]);
 
@@ -86,3 +110,4 @@ export function AriaGraph() {
     </div>
   );
 }
+
