@@ -6,7 +6,7 @@ import { SideBarre } from './MainComp/SideBarre/SideBarre.jsx';
 import reportWebVitals from './reportWebVitals';
 import { BarGraph } from './Graphs/BarGraph/BarGraph.jsx';
 import { Welcome } from './MainComp/MainDiv/Welcome/Welcome.jsx';
-import { MainDiv } from './MainComp/MainDiv/MainDIv.jsx';
+import { MainDiv } from './MainComp/MainDiv/MainDiv.jsx';
 import { DataProvider } from './DataProvider/DataProvider.jsx';
 import { MainComp } from './MainComp/MainComp.jsx';
 

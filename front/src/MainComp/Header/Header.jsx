@@ -3,7 +3,7 @@ import "./Header.scss";
 
 import { BarGraph, TestComp } from "../../Graphs/BarGraph/BarGraph";
 
-import { MainDiv } from "../MainDiv/MainDIv";
+import { MainDiv } from "../MainDiv/MainDiv";
 
 export function Header() {
   return (
