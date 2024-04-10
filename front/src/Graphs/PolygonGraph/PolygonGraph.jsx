@@ -16,47 +16,37 @@ const [maxDataValue, setMaxData]=useState();
 
 
 let {sharedData}=useData();
-let myValue=null;
-
 
 
 
 useEffect(()=>{
-  graphMaker();
-  //cette fonction recupere les datasPerformance grace a l objet sharedData
-  //stock l objet dans le useEffect perfData et appelle la fonction mapper()
  async function graphMaker(){
   if (sharedData){
   const data= await sharedData.getPerformance();
 
-  if (data.data){
+  if (data){
   setPerfData(data.data);
-  mapper()
 
-}
-}
- }
- //cette fonction mapp perfData en une liste d objets
- //{ subject : element du tableau mySubject value:cette valeur de perfData}
- //et appelle calculate()
- function mapper(){ 
-  if(perfData){
+   if(perfData){
 
-const mySubject = ['Cardio', 'Energie', 'Endurance', 'Force', 'Vitesse', 'Intensité'];
+  const mySubject = ['Cardio', 'Energie', 'Endurance', 'Force', 'Vitesse', 'Intensité'];
 
-  myValue= perfData.map((element, index) => ({
-  subject: mySubject[index],
-  value: element.value
-}));
-}
-calculate();
-}
-// cette fonction calcule et stock la valeur max et et tableau de myValue a l envers
-//car l ordre des donnes recu est inverse par rapport au graphique
-function  calculate(){
+   let myValue= perfData.map((element, index) => ({
+    subject: mySubject[index],
+    value: element.value
+  }));
+
+ let calc=()=>{
   setMaxData( Math.max( myValue.map(element => element.value)));
+
   setNewValues (myValue.reverse());
  }
+ calc();
+}
+}
+}
+ }
+graphMaker();
 },[sharedData, perfData])
 
 

@@ -38,8 +38,7 @@ setValues();
 
   }
 }
-//cette fonction stock dans des useState newData, le temps max de newData et le temps min de newData
-//(pour les props du graphique)
+//cette fonction stock dans des useState newData, le temps max de newData et le temps min de newData(pour les props du graphique)
   function setValues(){
     if (newData){
       setGraphData(newData);
@@ -63,7 +62,7 @@ setValues();
       }
     
     makeAriagraph();
-  }, [sharedData]);
+  }, [sharedData, newData]);
 
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
