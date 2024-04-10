@@ -41,6 +41,8 @@ let calc=()=>{
  }
 }
 useEffect(()=>{
+    //cette fonction recupere les datasPerformance grace a l objet sharedData
+  //stock l objet dans le useEffect perfData et appelle la fonction mapper()
  async function graphMaker(){
   if (sharedData){
   const data= await sharedData.getPerformance();
