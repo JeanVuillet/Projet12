@@ -14,75 +14,79 @@ import "./TestComp.scss"; // Importation du fichier de style CSS
 import { useData } from '../../DataProvider/DataProvider.jsx';
 
 export function BarGraph() {
-  // Initialisation avec une valeur par défaut
- // Initialisation avec une valeur par défaut
+
   let CustomTooltip = null;
-// mise dans des useState des valeurs a mettre dans les props
+
   const { sharedData } = useData();
   const [localData, setLocalData] = useState([]);
   const [yAxisDomain, setYaxisDomain]=useState(null);
 
-  
-
-
-
-  
-
-    
-  
 
   useEffect(() => {
-    test();
-    //fonction asynchrone pour ramener les informations du mock ou de l api
-    async function test() {
-      //verification arrivee de l objet contenant les donnees
+    getData();
+    setDomain();
+    CustomTooltip();
+    //getData est une fonction asynchrone pour ramener les informations du mock ou de l api
+    //et les stocker dans un State (localData)
+    
+    // sharedData est un objet recuperer grace a useContext qui a acces
+    // a plusieurs methodes pour recuperer les data(voir FormData)
+    async function getData() {
+
   if(sharedData){
-      // Recuperation des donnees
+  
       const myActiviy= await sharedData.getActivity();
-  //verification presense des donnees
+
        if (myActiviy) {
         //creation du tableau d objets utilisee comme data dans les props
       const theLocal=  myActiviy.map((session, index) => ({
-          name: `${index + 1}`, // Nom du jour
-          kilograms: session.kilogram, // Poids en kilogrammes
-          calories: session.calories, // Calories brûlées
+          name: `${index + 1}`, 
+          kilograms: session.kilogram, 
+          calories: session.calories, 
         }))
         if(theLocal.length > 0 ){
           //enregistrement du tableau dans le useState
       setLocalData(theLocal);
-    
- if (localData.length>0){
-
-
-      // Définition du domaine de l'axe Y pour les kilogrammes en commençant à minKilograms
-     
-     const domain=[
-      Math.floor(
-        Math.min(...localData.map((entry) => entry.kilograms))
-      ) - 10,
-       Math.ceil(Math.max(...localData.map((entry) => entry.kilograms))) + 1,
-     ];
-
-      setYaxisDomain(domain);
-     }
-   
-    //creation du toolTip pour afficher les valeurs lorsque la souris se deplace dans le graphique
-      CustomTooltip = ({ active, payload, label }) => {
-        if (active && payload && payload.length) {
-          const TooltipData = payload[0].payload; // Données de la barre survolée
-          return (
-            <div className="custom-tooltip">
-              <p>{` ${localData.kilograms}kg`}</p>
-              <p>{` ${localData.calories}Kcal`}</p>
-            </div>
-          );
         }
-        return null;
-      };
+
+ 
+ 
+    //creation du toolTip pour afficher les valeurs lorsque la souris se deplace dans le graphique
+
     }}
+
   }
+  function   CustomTooltip  () {
+
+    if(localData){
+    return (
+      <div className="custom-tooltip">
+        <p>{` ${localData.kilograms}kg`}</p>
+        <p>{` ${localData.calories}Kcal`}</p>
+      </div>
+    );
+    }
+    else{ return 'could not get data'}
+};
+  function   setDomain(){
+    if (localData.length>0){
+   
+   
+         // Définition du domaine de l'axe Y pour les kilogrammes en commençant à minKilograms-10
+         // et en finissant a maxKilograms+1
+        
+        const domain=[
+         Math.floor(
+           Math.min(...localData.map((entry) => entry.kilograms))
+         ) - 10,
+          Math.ceil(Math.max(...localData.map((entry) => entry.kilograms))) + 1,
+        ];
+   
+         setYaxisDomain(domain);
+        }
+       }
   }
-  }, [sharedData]);
+  , [sharedData]);
 
   return (
     <>
