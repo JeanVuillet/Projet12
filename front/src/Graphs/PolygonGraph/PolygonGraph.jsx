@@ -17,8 +17,29 @@ const [maxDataValue, setMaxData]=useState();
 
 let {sharedData}=useData();
 
+let myValue=null;
+
+let calc=()=>{
+  if (myValue){
+  setMaxData( Math.max( myValue.map(element => element.value)));
+
+  setNewValues (myValue.reverse());
+  }
+ }
 
 
+ function mapper(){
+  if(perfData){
+
+ const mySubject = ['Cardio', 'Energie', 'Endurance', 'Force', 'Vitesse', 'Intensité'];
+
+
+   myValue= perfData.map((element, index) => ({
+   subject: mySubject[index],
+   value: element.value
+ }));
+ }
+}
 useEffect(()=>{
  async function graphMaker(){
   if (sharedData){
@@ -27,25 +48,12 @@ useEffect(()=>{
   if (data){
   setPerfData(data.data);
 
-   if(perfData){
-
-  const mySubject = ['Cardio', 'Energie', 'Endurance', 'Force', 'Vitesse', 'Intensité'];
-
-   let myValue= perfData.map((element, index) => ({
-    subject: mySubject[index],
-    value: element.value
-  }));
-
- let calc=()=>{
-  setMaxData( Math.max( myValue.map(element => element.value)));
-
-  setNewValues (myValue.reverse());
- }
- calc();
+mapper();
+calc();
 }
 }
 }
- }
+ 
 graphMaker();
 },[sharedData, perfData])
 
