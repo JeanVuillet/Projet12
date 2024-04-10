@@ -34,7 +34,7 @@ export function BarGraph() {
     //  kilograms:kilogrames de session 
     //  calories:calories brulees de session
   //   }
-    //et la stocker dans un State (localData)
+    //et stocker cette liste dans dans un State (localData)
   async function getData() {
 
   if(sharedData){

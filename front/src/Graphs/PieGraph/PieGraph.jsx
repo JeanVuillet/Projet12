@@ -33,6 +33,7 @@ function getEndAngle(){
 }
 
 // definie le useState pieData comme un objet {name: zone1  value :tscore}
+//qui sera utilisee en props
 function SetPieData(){
   if (tscore){
   setPieData([
@@ -47,7 +48,7 @@ function SetPieData(){
   useEffect(() => {
 
     //cette fonction recupere le score le stock dans un useEffect (myScore)
-    // et appelle les 3 fonctions de calcule des data
+    // et appelle les 3 fonctions de calcule des data des que le score est mis a jour
     async function pieMake(){
       if( sharedData){
       const myScore=  await sharedData.getScore();
@@ -57,7 +58,7 @@ function SetPieData(){
     getPercentage()
     getEndAngle()
     SetPieData()
- ; // Appel de la fonction pour calculer les données dès que score est mis à jour
+ ; 
      }
 }
 }

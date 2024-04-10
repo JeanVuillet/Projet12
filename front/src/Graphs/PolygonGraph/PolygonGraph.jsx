@@ -30,8 +30,10 @@ let calc=()=>{
  }
 
  //cette fonction mapp perfData en une liste d objets
- //{ subject : element du tableau mySubject value:cette valeur de perfData}
- //et appelle calculate()
+ //{ subject : element du tableau mySubject 
+ //value:cette valeur de perfData
+ //}
+
  function mapper(){
   if(perfData){
 
@@ -46,14 +48,14 @@ let calc=()=>{
 }
 useEffect(()=>{
     //cette fonction recupere les datasPerformance grace a l objet sharedData
-  //stock l objet dans le useEffect perfData et appelle la fonction mapper()
+  //stock l objet dans le useEffect perfData 
+  //et appelle la fonction mapper() et la fonction calc()
  async function graphMaker(){
   if (sharedData){
   const data= await sharedData.getPerformance();
 
   if (data){
 setPerfData(data.data);
-
 mapper();
 calc();
 }
