@@ -77,7 +77,7 @@ export function PerfApi( {userId, getPerf}){
     return response.json();
     }
         ).then((data)=>{
-            console.log(data)
+         
             setPerf(data)
             getPerf(data)})
    

@@ -3,7 +3,7 @@ import { ResponsiveContainer, PolarAngleAxis, PolarGrid, Radar, RadarChart, Tool
 import { USER_PERFORMANCE } from "../../data/data.js";
 import './PolygonGraph.scss';
 import { PerfApi } from "../../Api/Api.jsx";
-import { Api2 } from "../../Api/Api2.js";
+
 import { useData } from "../../DataProvider/DataProvider.jsx";
 export function PolygonGraph() {
 

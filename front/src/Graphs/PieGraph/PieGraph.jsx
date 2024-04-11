@@ -16,7 +16,7 @@ export function PieGraph() {
   const { sharedData } = useData();
   let tscore=null;
 
-console.log(sharedData);
+
 
 //calcule le pourcentage et le stock dans un usteState tscore
 function getPercentage(){

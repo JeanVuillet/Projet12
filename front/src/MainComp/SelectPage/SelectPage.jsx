@@ -27,7 +27,7 @@ export function SelectPage() {
   async function exeApp() {
     const TheUser = new User(origin, id);
     const methode = await TheUser.getActivity();
-    console.log("user type is" + TheUser.origin, "userDatais" + methode);
+
     setSharedData(TheUser);
     setVisible("none");
   }

@@ -21,10 +21,10 @@ export class User {
         const data = await apiActivity(this.id);
         if (!data) {
           throw new Error("Les données de l'API sont vides");
-        } else console.log("dataIs" + data);
+        }
 
         const sessions = await data.data.sessions;
-        console.log(console.log(Object.keys(data), sessions));
+
 
         return data.data.sessions;
       } catch (error) {
@@ -48,7 +48,7 @@ if(!data){
 }
 const name=  await data.data.userInfos.firstName;
 
-console.log(console.log(Object.keys(data),name));
+
 return name;
       }
       catch (error) {
@@ -78,7 +78,6 @@ if(!todayScore)
   todayScore= data.data.score;
 } 
 
-console.log(console.log(Object.keys(data),'todayScore'+todayScore));
 return todayScore;
     }
     catch (error) {
@@ -102,7 +101,7 @@ throw new Error("Couldn't get user Data Info")
 }
 const keyData=  await data.data.keyData;
 
-console.log(console.log(Object.keys(data),keyData));
+
 return keyData;
     }
     catch (error) {
@@ -112,7 +111,7 @@ return keyData;
 } else if (this.origin === "mock") {
 const data= USER_MAIN_DATA;
 const thisData = data.find((element) => (element.id === this.id));
-console.log('content='+thisData)
+
 return thisData.keyData;
 
 }
@@ -151,7 +150,6 @@ throw new Error("Couldn't get user Data Info")
 }
 const averageSession=  await data.data.sessions;
 
-console.log(console.log(Object.keys(data),averageSession));
 return averageSession;
     }
     catch (error) {
