@@ -67,7 +67,7 @@ pieMake();
 
   return (
     <div className="pieDiv">
-<div className="txt">Score</div>
+<div className="title">Score</div>
       <ResponsiveContainer className="pieContainer">
         <div className="whiteCircle">
           <div className="score">{todayScore}%</div>
