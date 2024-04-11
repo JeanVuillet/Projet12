@@ -3,12 +3,12 @@
     border:solid orange;
 
     background-color: black;
-    width: 117px;
+    width: 8.125vw;
     height: 100%;
     &__wrapper{
         width: 100%;
         background-color: black;
-        padding-top: 14rem;
+        padding-top: 29.5vh;
         border:solid red;
         display: flex;
         flex-direction: column;
@@ -41,7 +41,7 @@
         writing-mode: vertical-rl; /* Orientation du texte de bas en haut */
         transform: rotate(180deg); /* Rotation des lettres */
       
-        width: 117px;
+     
         height: fit-content;
         font-size: 12px;
         justify-content: center;

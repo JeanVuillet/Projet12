@@ -1,4 +1,4 @@
-import "./Api.scss";
+
 
 export async function apiActivity( userId ) {
   try {

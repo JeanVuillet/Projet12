@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ResponsiveContainer, PolarAngleAxis, PolarGrid, Radar, RadarChart, Tooltip } from "recharts";
 import { USER_PERFORMANCE } from "../../data/data.js";
 import './PolygonGraph.scss';
-import { PerfApi } from "../../Api/Api.jsx";
+
 
 import { useData } from "../../DataProvider/DataProvider.jsx";
 export function PolygonGraph() {
