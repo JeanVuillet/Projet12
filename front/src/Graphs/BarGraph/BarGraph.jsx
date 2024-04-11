@@ -100,10 +100,10 @@ export function BarGraph() {
 
   return (
     <>
-      <div className="leDiv">
+      <div className="barDiv">
         <ResponsiveContainer>
           {/* Création du graphique */}
-          <div className="header">
+          <div className="barHeader">
             <div className="title"> Activité quotidienne</div>
             <div className="legend">
               <span className="circle1 round"></span>poids (kg)
@@ -112,7 +112,7 @@ export function BarGraph() {
           </div>
           <BarChart
             data={localData} // Données à afficher
-            margin={{ top: 20, right: 30, left: 40, bottom: 30 }} // Marge autour du graphique
+            // margin={{ top: 20, right: 30, left: 40, bottom: 30 }} // Marge autour du graphique
             barSize={8} // Taille des barres
           >
             {/* Configuration de l'axe X */}

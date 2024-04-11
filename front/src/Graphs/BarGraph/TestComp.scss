@@ -1,13 +1,14 @@
-.leDiv{
+.barDiv{
 
 border:solid pink;
-width: 835px;
-height: 320px;
-margin-bottom: 3rem;
+
+height: 31.25vh;
+padding-bottom: 2.93vh;
 }
-.header{
+.barHeader{
     display: flex;
     width: 100%;
+    height: 10.94vh;
     justify-content: space-between;
 }
 
@@ -24,20 +25,18 @@ stroke:transparent;
     border:solid green;
 }
 .title{
-    padding-top:15px;
-    padding-left:15px;
+
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 }
 .legend{
-    padding-top:15px;
-    padding-right: 15px;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+   
 }
 .round{
     display: flex;

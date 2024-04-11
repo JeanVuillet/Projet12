@@ -80,7 +80,7 @@ setValues();
     );
   };
   return (
-    <div className="containerDiv">
+    <div className="ariaDiv">
       <div className="calcDiv"></div>
       <div className="rightDiv" style={{ width: `${rightDiv}px` }}></div>
 <div className="txt">Durée moyenne des sessions</div>

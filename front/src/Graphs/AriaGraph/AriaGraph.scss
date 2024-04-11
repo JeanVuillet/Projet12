@@ -1,14 +1,15 @@
-.containerDiv{
-    width: 258px;
-    height:260px;
+.ariaDiv{
+    width: 31%;
+    height: 33.53vh;
+ 
     position: relative;
 
     .txt{
       color: white;
       opacity: 50%;
-      width: 150px;
+      width:16.25vw;
       top: 30px;
-      left: 20px;
+      left: 2.167vw;
       position: absolute;
       text-wrap: wrap;
 
@@ -34,14 +35,13 @@
     display: none;
   }
 
-  .remaining{ background-color: orange;
- height: 263px;}
+
 
  .rightDiv{
     position: absolute;
     background-color: black;
     opacity: 0.1;
-    height: 268px;
+
     right: 0;
  }
 

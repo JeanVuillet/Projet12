@@ -3,10 +3,16 @@
     border:solid red;
 
  
-   padding-top: 35px;
+
     display: flex;
     flex-direction: column;
+    height: 91.11vh;
+    width: 78.19vw;
   
+    .header{
+        height: 16.80vh ;
+        padding-top: 5.96vh;
+    }
     
 }
 
@@ -16,20 +22,21 @@
    justify-content: flex-start;
     border: solid orange;
     width: 100%;
-    height: fit-content;
-    gap: 90px;
+
+    gap: 2.15vw;
     .graphs{
         height: 100%;
-        width: fit-content;
+        width: 57.99vw;
         display:flex;
         flex-direction: column;
         .smallGraphs{
             display: flex;
             justify-content: space-between;
+            height: 25.71vh;
         }
     }
     .statZone{
-        width: 20%;
+        width: 22.73%;
         height: 100%;
         display: flex;
         flex-direction: column;
