@@ -111,8 +111,9 @@ export function BarGraph() {
             </div>
           </div>
           <BarChart
+          className="barChart"
             data={localData} // Données à afficher
-            // margin={{ top: 20, right: 30, left: 40, bottom: 30 }} // Marge autour du graphique
+            margin={{ top: 10, right: 30, left: 40, bottom: 30 }} // Marge autour du graphique
             barSize={8} // Taille des barres
           >
             {/* Configuration de l'axe X */}
