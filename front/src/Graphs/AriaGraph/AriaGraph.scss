@@ -1,5 +1,6 @@
 .ariaDiv{
     width: 31%;
+    max-width: 28vh;
     height: 25.68vh;
  
     position: relative;
@@ -7,11 +8,12 @@
     .txt{
       color: white;
       opacity: 50%;
-      width:16.25vw;
-      top: 30px;
+      width:60%;
+      top: 5.5%;
       left: 2.167vw;
       position: absolute;
       text-wrap: wrap;
+      font-size: 15px;
 
     }
   } 

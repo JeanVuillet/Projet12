@@ -22,14 +22,14 @@
    justify-content: flex-start;
     border: solid orange;
     width: 100%;
-    height: -webkit-fill-available;
+
     gap: 2.15vw;
     .graphs{
         height: 100%;
         width: 57.99vw;
         display:flex;
         flex-direction: column;
-        justify-content: space-between;
+  gap:5vh;
         .smallGraphs{
             display: flex;
             justify-content: space-between;

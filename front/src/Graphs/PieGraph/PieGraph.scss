@@ -5,13 +5,15 @@
 
 
     width: 31%;
+    max-width: 28vh;
     height: 100%;
     position: relative;
 .title{
+    z-index: 3;
     position: absolute;
-    top:30px;
-    left:30px;
-    font-size: 15px;
+    top: 2vh;
+    left: 1.1vw;
+    font-size: 2vh;
     font-weight: 500;
     color: #20253A;
     padding: 0;

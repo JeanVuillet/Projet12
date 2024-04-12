@@ -106,8 +106,12 @@ export function BarGraph() {
           <div className="barHeader">
             <div className="title"> Activité quotidienne</div>
             <div className="legend">
-              <span className="circle1 round"></span>poids (kg)
-              <span className="circle2 round"></span>Calories brûlées (Kcal)
+              <div className="poids">
+               <span className="circle1 round"></span>poids (kg) 
+              </div>
+              <div className="calories">
+              <span className="circle2 round"></span> Calories brûlées (Kcal)
+              </div>
             </div>
           </div>
           <BarChart
