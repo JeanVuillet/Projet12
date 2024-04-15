@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import {
   AreaChart,
   Area,
@@ -11,6 +12,7 @@ import { USER_AVERAGE_SESSIONS } from "../../data/data.js";
 import "./AriaGraph.scss";
 import { useData } from "../../DataProvider/DataProvider.jsx";
 
+
 export function AriaGraph() {
   const [rightDiv, setRightDiv] = useState(null);
   const [toolTime, setToolTime] = useState(null);
@@ -21,7 +23,7 @@ export function AriaGraph() {
 
   let { sharedData } = useData();
   let newData=null;
-
+ let navigate=useNavigate();
 
   //cette fonction map newData en une liste d objets
   // {day:le jour time:dure de la session index: l'index de la session}
@@ -52,11 +54,16 @@ setValues(newData);
     async function makeAriagraph() {
       if (sharedData) {
      const   data2 = await sharedData.getAverageSessions();
-       
+       try{
+        if(!data2){
+          throw new Error('no averageSession data')
+        }
+       }catch(error){
+        console.log(error)
+        navigate('/404')
+       }
         getNewData(data2)
-        // if (data2 && newData){
-        // setValues()
-        // }
+   
    
         }
       }

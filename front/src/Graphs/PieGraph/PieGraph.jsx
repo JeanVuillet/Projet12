@@ -4,7 +4,7 @@ import "./PieGraph.scss";
 import { useState,useEffect } from "react";
 import { useData } from "../../DataProvider/DataProvider";
 
-
+import { useNavigate } from 'react-router-dom';
 
 
 export function PieGraph() {
@@ -14,6 +14,7 @@ export function PieGraph() {
   const [pieData, setPieData] = useState([]);
 
   const { sharedData } = useData();
+  let navigate=useNavigate();
   let tscore=null;
 
 
@@ -52,7 +53,14 @@ function SetPieData(){
     async function pieMake(){
       if( sharedData){
       const myScore=  await sharedData.getScore();
-     
+     try{
+      if(!myScore){
+        throw new Error('noMyScore');
+      }
+     } catch(error){
+      console.log(error)
+      navigate('/404')
+     }
  
     setScore(myScore);
     getPercentage()

@@ -63,11 +63,12 @@ export function BarGraph() {
 
     }
     else {
-      throw  new Error('noData')
+      throw  new Error('noBargraphData')
     }
       }
       catch(error)
       {
+        console.log(error)
         navigate('/404')
       }
   }

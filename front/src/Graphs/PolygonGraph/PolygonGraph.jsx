@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ResponsiveContainer, PolarAngleAxis, PolarGrid, Radar, RadarChart, Tooltip } from "recharts";
 import { USER_PERFORMANCE } from "../../data/data.js";
 import './PolygonGraph.scss';
-
+import { useNavigate } from 'react-router-dom';
 
 import { useData } from "../../DataProvider/DataProvider.jsx";
 export function PolygonGraph() {
@@ -14,7 +14,7 @@ const [newValues, setNewValues]=useState(null);
 
 const [maxDataValue, setMaxData]=useState();
 
-
+const navigate=useNavigate();
 let {sharedData}=useData();
 
 let myValue=null;
@@ -53,7 +53,11 @@ useEffect(()=>{
  async function graphMaker(){
   if (sharedData){
   const data= await sharedData.getPerformance();
-
+try{ if(!data){throw new Error('noPolygonData')}}
+catch(error){
+  console.log(error);
+  navigate('/404')
+}
   if (data){
 setPerfData(data.data);
 mapper();
