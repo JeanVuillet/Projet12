@@ -21,7 +21,7 @@ export function AriaGraph() {
 
   let { sharedData } = useData();
   let newData=null;
-  let data2=null;
+
 
   //cette fonction map newData en une liste d objets
   // {day:le jour time:dure de la session index: l'index de la session}
@@ -51,7 +51,7 @@ setValues(newData);
     // cette fonction recupere le data de AverageSessions grace a l objet sherdData
     async function makeAriagraph() {
       if (sharedData) {
-        data2 = await sharedData.getAverageSessions();
+     const   data2 = await sharedData.getAverageSessions();
        
         getNewData(data2)
         // if (data2 && newData){
@@ -84,7 +84,7 @@ setValues(newData);
       <div className="calcDiv"></div>
       <div className="rightDiv" style={{ width: `${rightDiv}px` }}></div>
 <div className="txt">Durée moyenne des sessions</div>
-      <ResponsiveContainer className="container">
+      <ResponsiveContainer className="ariaContainer">
         <AreaChart
           data={graphData}
           margin={{ top: 10, right: 10, left: 10, bottom: 0 }}
