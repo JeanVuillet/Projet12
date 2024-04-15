@@ -7,7 +7,6 @@ import './MainComp.scss'
 export function MainComp() {
   return (
     <>
-      <SelectPage />
       <Header />
       <div className="mainComp">
         <SideBarre />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { User } from "../../FormatData/dataFormater.js";
+
+import { useNavigate } from 'react-router-dom';
 import {
   BarChart,
   Bar,
@@ -13,10 +14,11 @@ import {
 import "./TestComp.scss"; // Importation du fichier de style CSS
 import { useData } from '../../DataProvider/DataProvider.jsx';
 
+
 export function BarGraph() {
 
   let CustomTooltip = null;
-
+  const navigate= useNavigate();
 // sharedData est un objet recuperer grace a useContext qui a acces
 // a plusieurs methodes pour recuperer les data(voir FormData)
   const { sharedData } = useData();
@@ -26,8 +28,9 @@ export function BarGraph() {
 
   useEffect(() => {
     getData();
-    setDomain();
-    CustomTooltip();
+
+
+    
     //getData est une fonction asynchrone pour ramener les data du mock ou de l api
     //les mapper dans une liste d objets type:
     // {name:indice+1 de session 
@@ -41,6 +44,7 @@ export function BarGraph() {
   
       const myActiviy= await sharedData.getActivity();
 
+      try{
        if (myActiviy) {
         //creation du tableau d objets utilisee comme data dans les props
       const theLocal=  myActiviy.map((session, index) => ({
@@ -48,16 +52,25 @@ export function BarGraph() {
           kilograms: session.kilogram, 
           calories: session.calories, 
         }))
-        if(theLocal.length > 0 ){
+   
           //enregistrement du tableau dans le useState
       setLocalData(theLocal);
-        }
+     
 
  
- 
+      setDomain();
     //creation du toolTip pour afficher les valeurs lorsque la souris se deplace dans le graphique
 
-    }}
+    }
+    else {
+      throw  new Error('noData')
+    }
+      }
+      catch(error)
+      {
+        navigate('/404')
+      }
+  }
 
   }
 
@@ -78,6 +91,8 @@ export function BarGraph() {
         ];
    
          setYaxisDomain(domain);
+
+         CustomTooltip();
         }
        }
 

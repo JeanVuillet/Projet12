@@ -53,13 +53,13 @@ function SetPieData(){
       if( sharedData){
       const myScore=  await sharedData.getScore();
      
-      if(myScore){
+ 
     setScore(myScore);
     getPercentage()
     getEndAngle()
     SetPieData()
  ; 
-     }
+     
 }
 }
 pieMake();
