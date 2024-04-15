@@ -21,12 +21,12 @@ export function AriaGraph() {
 
   let { sharedData } = useData();
   let newData=null;
-  let data2=null;
+
 
   //cette fonction map newData en une liste d objets
   // {day:le jour time:dure de la session index: l'index de la session}
   // et appel setValues()
-  async function getNewData(){
+  async function getNewData(data2){
     if (data2) {
       newData = await data2.map((element, index) => ({
        day: days[index],
@@ -34,12 +34,12 @@ export function AriaGraph() {
        index: index,
      }));
 
-setValues();
+setValues(newData);
 
   }
 }
 //cette fonction stock dans des useState newData, le temps max de newData et le temps min de newData(pour les props du graphique)
-  function setValues(){
+  function setValues(newData){
     if (newData){
       setGraphData(newData);
       setMaxValue(Math.max(...newData.map((element) => element.time)));
@@ -51,9 +51,9 @@ setValues();
     // cette fonction recupere le data de AverageSessions grace a l objet sherdData
     async function makeAriagraph() {
       if (sharedData) {
-        data2 = await sharedData.getAverageSessions();
+     const   data2 = await sharedData.getAverageSessions();
        
-        getNewData()
+        getNewData(data2)
         // if (data2 && newData){
         // setValues()
         // }
