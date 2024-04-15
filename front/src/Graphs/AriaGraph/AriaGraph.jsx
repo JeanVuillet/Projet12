@@ -86,7 +86,6 @@ setValues();
 <div className="txt">Durée moyenne des sessions</div>
       <ResponsiveContainer className="container">
         <AreaChart
-        className="areaChart"
           data={graphData}
           margin={{ top: 10, right: 10, left: 10, bottom: 0 }}
           fill="none"
