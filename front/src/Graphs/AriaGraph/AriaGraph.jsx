@@ -71,7 +71,7 @@ export function AriaGraph() {
       const {  time, index } = payload[0].payload;
       setToolTime(time);
       // Calcul de la largeur restante jusqu'à dimanche
-      const rightSpace = (6 - index) * (239 / 6) + 10; // 258 est la largeur du graphique
+      const rightSpace = (6 - index) * (100 / 6.5) +4; // 258 est la largeur du graphique
 
       setRightDiv(rightSpace);
     }
@@ -84,7 +84,7 @@ export function AriaGraph() {
   return (
     <div className="ariaDiv">
       <div className="calcDiv"></div>
-      <div className="rightDiv" style={{ width: `${rightDiv}px` }}></div>
+      <div className="rightDiv" style={{ width: `${rightDiv}%` }}></div>
       <div className="txt">Durée moyenne des sessions</div>
       <ResponsiveContainer className="ariaContainer">
         <AreaChart
