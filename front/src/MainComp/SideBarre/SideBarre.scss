@@ -3,14 +3,14 @@
     border:solid orange;
 
     background-color: black;
-    width: 8.125vw;
+    width: 8.89vh;
    
     display: flex;
     align-items: flex-end;
    
     &__wrapper{
         width: 100%;
-    
+      
         background-color: black;
 
         border:solid red;
@@ -27,14 +27,14 @@
 
 
     &__logoContainer{
-        background-color: white;
-        width: 64px;
+
+       
         
         display: flex;
         justify-content: center;
         align-items: center;
         &__logo{
-
+         width: 60%;
         }
     }
     }

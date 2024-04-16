@@ -10,30 +10,31 @@ export function SideBarre(){
 
     return(
 <div className="sideBarre">
+  <div className="sideBarre__empty"></div>
 <div className="sideBarre__wrapper">
   <nav className="sideBarre__wrapper__nav">
-    <div className="sideBarre__nav__logoContainer">
+    <div className="sideBarre__wrapper__nav__logoContainer">
       <img
         src={logo1} alt='logo1'
-        className="sideBarre__nav__logoContainer__logo"
+        className="sideBarre__wrapper__nav__logoContainer__logo"
       ></img>
     </div>
-    <div className="sideBarre__nav__logoContainer">
+    <div className="sideBarre__wrapper__nav__logoContainer">
       <img
         src={logo2} alt='logo2'
-        className="sideBarre__nav__logoContainer__logo"
+        className="sideBarre__wrapper__nav__logoContainer__logo"
       ></img>
     </div>
-    <div className="sideBarre__nav__logoContainer">
+    <div className="sideBarre__wrapper__nav__logoContainer">
       <img
         src={logo3} alt='logo3'
-        className="sideBarre__nav__logoContainer__logo"
+        className="sideBarre__wrapper__nav__logoContainer__logo"
       ></img>
     </div>
-    <div className="sideBarre__nav__logoContainer">
+    <div className="sideBarre__wrapper__nav__logoContainer">
       <img
         src={logo4} alt='logo4'
-        className="sideBarre__nav__logoContainer__logo"
+        className="sideBarre__wrapper__nav__logoContainer__logo"
       ></img>
     </div>
   </nav>

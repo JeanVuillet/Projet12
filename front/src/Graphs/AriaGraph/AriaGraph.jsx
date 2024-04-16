@@ -21,7 +21,7 @@ export function AriaGraph() {
   const [minValue, setMinValue] = useState(null);
   const days = ["L", "M", "M", "J", "V", "S", "D"];
 
-  let { sharedData } = useData();
+  let { sharedData, errorMessage, setErrorMessage } = useData();
   let newData=null;
  let navigate=useNavigate();
 
@@ -59,7 +59,7 @@ setValues(newData);
           throw new Error('no averageSession data')
         }
        }catch(error){
-        console.log(error)
+       setErrorMessage('error details:'+error)
         navigate('/404')
        }
         getNewData(data2)

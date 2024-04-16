@@ -15,7 +15,7 @@ const [newValues, setNewValues]=useState(null);
 const [maxDataValue, setMaxData]=useState();
 
 const navigate=useNavigate();
-let {sharedData}=useData();
+let {sharedData, setErrorMessage}=useData();
 
 let myValue=null;
 
@@ -55,7 +55,7 @@ useEffect(()=>{
   const data= await sharedData.getPerformance();
 try{ if(!data){throw new Error('noPolygonData')}}
 catch(error){
-  console.log(error);
+ setErrorMessage('error details:'+error)
   navigate('/404')
 }
   if (data){

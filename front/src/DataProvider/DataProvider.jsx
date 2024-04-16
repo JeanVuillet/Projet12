@@ -4,9 +4,9 @@ const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [sharedData, setSharedData] = useState(null);
-
+  const [ errorMessage, setErrorMessage]=useState(null)
   return (
-    <DataContext.Provider value={{ sharedData, setSharedData }}>
+    <DataContext.Provider value={{ sharedData, setSharedData,errorMessage,setErrorMessage }}>
       {children}
     </DataContext.Provider>
   );

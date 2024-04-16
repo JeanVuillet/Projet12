@@ -13,7 +13,7 @@ export function PieGraph() {
   const [endAngle, setEndAngle] = useState(0);
   const [pieData, setPieData] = useState([]);
 
-  const { sharedData } = useData();
+  const { sharedData, errorMessge, setErrorMessage } = useData();
   let navigate=useNavigate();
   let tscore=null;
 
@@ -58,7 +58,7 @@ function SetPieData(){
         throw new Error('noMyScore');
       }
      } catch(error){
-      console.log(error)
+      setErrorMessage('error details:'+errorMessge+error)
       navigate('/404')
      }
  
