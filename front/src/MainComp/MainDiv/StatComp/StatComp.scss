@@ -1,17 +1,17 @@
-.statCompDiv{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    background-color: #FBFBFB;
-    width: 17.92vw;
-    height: 12.11vh;
-    gap: 1.67vw;
+.statCompDiv {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: #fbfbfb;
+  width: 17.92vw;
+  height: 12.11vh;
+  gap: 1.67vw;
 
-    .text{
-        .mesures{
-            font-weight: bold;
-            font-size: 20px;
-            font-family: Roboto;
-        }
+  .text {
+    .mesures {
+      font-weight: bold;
+      font-size: 20px;
+      font-family: Roboto;
     }
+  }
 }

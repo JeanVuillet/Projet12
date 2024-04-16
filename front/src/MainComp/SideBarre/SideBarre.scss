@@ -1,61 +1,56 @@
+.sideBarre {
+  border: solid orange;
 
-.sideBarre{
-    border:solid orange;
+  background-color: black;
+  width: 6%;
 
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  &__wrapper {
+    height: 73%;
+    width: 100%;
     background-color: black;
-    width: 6%;;
-   
+    border: solid red;
     display: flex;
-    align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    &__wrapper{
-        height: 73%;
-        width: 100%;
-        background-color: black;
-        border: solid red;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    &__nav{
-        display: flex;
-        flex-direction: column;
-        gap:20px;
+    &__nav {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
 
-        align-items: center;
+      align-items: center;
 
-
-    &__logoContainer{
+      &__logoContainer {
         background-color: white;
-       
-        
+
         display: flex;
         justify-content: center;
         align-items: center;
         width: 53%;
-        &__logo{
-width: 100%;
+        &__logo {
+          width: 100%;
         }
+      }
     }
-    }
-    &__textContainer{
+    &__textContainer {
       background-color: black;
-        color:white;
-        display: flex;
-        flex-direction: column;
-        writing-mode: vertical-rl; /* Orientation du texte de bas en haut */
-        transform: rotate(180deg); /* Rotation des lettres */
-      
-     
-        height: fit-content;
-        font-size: 12px;
-        justify-content: center;
-        align-items: center;
-        line-height: 24px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      writing-mode: vertical-rl; /* Orientation du texte de bas en haut */
+      transform: rotate(180deg); /* Rotation des lettres */
 
-        padding-top:20%;
-        text-wrap: nowrap;
+      height: fit-content;
+      font-size: 12px;
+      justify-content: center;
+      align-items: center;
+      line-height: 24px;
 
+      padding-top: 20%;
+      text-wrap: nowrap;
     }
-}
+  }
 }

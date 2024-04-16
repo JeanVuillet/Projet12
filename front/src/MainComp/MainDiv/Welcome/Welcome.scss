@@ -1,21 +1,20 @@
-.welcomDiv{
-    display: flex;
-    flex-direction: column;
-    gap:3.91vh;
-    font-size: 18px;
-    padding-bottom: 80px;
-    height: 24%;
+.welcomDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 3.91vh;
+  font-size: 18px;
+  padding-bottom: 80px;
+  height: 24%;
 
-    .bonjour{
-        font-size: 48px;
-        font-weight: 500;
-        color:black;
-        font-family: roboto;
-        line-height: 40px;
-   
-        .name{
-            color: red;
-        }
+  .bonjour {
+    font-size: 48px;
+    font-weight: 500;
+    color: black;
+    font-family: roboto;
+    line-height: 40px;
+
+    .name {
+      color: red;
     }
-
+  }
 }

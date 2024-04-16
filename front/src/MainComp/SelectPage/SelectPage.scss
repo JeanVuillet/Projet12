@@ -1,123 +1,111 @@
-.dataSelector{
+.dataSelector {
+  width: 100%;
+  height: 100%;
 
-    width: 100%;
-    height: 100%;
-
-    background-color: pink;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-.dataDiv{
-
+  background-color: pink;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  .dataDiv {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap:2rem;
+    gap: 2rem;
 
-.dataTxt{
-    display: flex;
-    justify-content: center;
-    color: blue;
-    font-size: 40px;
-    font-weight: bold;
-
-
-}
-.dataOptions{
-    position: relative;
-    display: flex;
-    justify-content:center;
-    gap:4rem;
-
-
- 
-
-    .api{
+    .dataTxt {
+      display: flex;
+      justify-content: center;
+      color: blue;
+      font-size: 40px;
+      font-weight: bold;
+    }
+    .dataOptions {
       position: relative;
- display: flex;
- justify-content: center;
- align-items: center;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+
+      .api {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         display: flex;
         width: 4rem;
         height: 4rem;
         background-color: yellow;
-    }
-    .mock{
+      }
+      .mock {
         display: flex;
- justify-content: center;
- align-items: center;
-   position: relative;
+        justify-content: center;
+        align-items: center;
+        position: relative;
 
-   background-color: orange;
-   
+        background-color: orange;
+
         width: 4rem;
         height: 4rem;
         display: flex;
-      
+      }
     }
-}
-}
-.userDiv{
+  }
+  .userDiv {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap:2rem;
-    .userTxt{
+    gap: 2rem;
+    .userTxt {
+      display: flex;
+      justify-content: center;
+      color: blue;
+      font-size: 40px;
+      font-weight: bold;
+    }
+    .userOptions {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+
+      .user12 {
         display: flex;
         justify-content: center;
-        color: blue;
-        font-size: 40px;
-        font-weight: bold;
-    }
-    .userOptions{
+        align-items: center;
         position: relative;
+
+        background-color: orange;
+
+        width: 4rem;
+        height: 4rem;
         display: flex;
-        justify-content:center;
-        gap:4rem;
+      }
+      .user13 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
 
+        background-color: orange;
 
-        .user12{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-              position: relative;
-           
-              background-color: orange;
-              
-                   width: 4rem;
-                   height: 4rem;
-                   display: flex;
-                 
-        }
-        .user13{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-              position: relative;
-           
-              background-color: orange;
-              
-                   width: 4rem;
-                   height: 4rem;
-                   display: flex;
-        }
+        width: 4rem;
+        height: 4rem;
+        display: flex;
+      }
     }
- 
-   }
+  }
 
-   .live{
-display: flex;
-justify-content: center;
-height: 4rem;
+  .live {
+    display: flex;
+    justify-content: center;
+    height: 4rem;
 
-.liveButton{
-width: 6rem;
-background-color: black;
-color: red;
-font-weight: bold;
-font-size: 20px;
+    .liveButton {
+      width: 6rem;
+      background-color: black;
+      color: red;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
 }
-   }
-}
-

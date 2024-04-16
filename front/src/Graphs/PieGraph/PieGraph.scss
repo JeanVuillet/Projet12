@@ -1,64 +1,58 @@
-.pieDiv{
- 
-    background-color:#FBFBFB;
-    border:solid;
-
-
-    width: 31%;
-    max-width: 28vh;
-    height: 100%;
-    position: relative;
-.title{
+.pieDiv {
+  background-color: #fbfbfb;
+  border: solid;
+  width: 31%;
+  max-width: 28vh;
+  height: 100%;
+  position: relative;
+  .title {
     z-index: 3;
     position: absolute;
     top: 2vh;
     left: 1.1vw;
     font-size: 2vh;
     font-weight: 500;
-    color: #20253A;
+    color: #20253a;
     padding: 0;
-}
-    .pieContainer{
+  }
+  .pieContainer {
     position: relative;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-    .whiteCircle{
-        font-family: roboto;
-position: absolute;
-    background-color: white;
-    width: 159px;
-    height: 159px;
-    border-radius: 50%;
-
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    .whiteCircle {
+      font-family: roboto;
+      position: absolute;
+      background-color: white;
+      width: 159px;
+      height: 159px;
+      border-radius: 50%;
 
-    .score{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .score {
         font-size: 26px;
         font-weight: bold;
-        color: #282D30;
-    }
-    .text{
+        color: #282d30;
+      }
+      .text {
         font-size: 16px;
         font-weight: 400;
-        color: #74798C;
+        color: #74798c;
         text-wrap: wrap;
         width: 40%;
-    }
-}
-
-    }
-
-
-    .recharts-pie-label-line {
-        stroke: red; // Couleur de la bordure rouge
-        stroke-width: 1px; // Épaisseur de la bordure
-        stroke-dasharray: 4; // Style de la bordure (pointillés)
-        rx: 5px; // Rayon de courbure horizontal
-        ry: 5px; // Rayon de courbure vertical
       }
-
     }
+  }
+
+  .recharts-pie-label-line {
+    stroke: red; // Couleur de la bordure rouge
+    stroke-width: 1px; // Épaisseur de la bordure
+    stroke-dasharray: 4; // Style de la bordure (pointillés)
+    rx: 5px; // Rayon de courbure horizontal
+    ry: 5px; // Rayon de courbure vertical
+  }
+}

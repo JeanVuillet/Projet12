@@ -1,48 +1,42 @@
-.mainDiv{
+.mainDiv {
+  border: solid red;
 
-    border:solid red;
+  display: flex;
+  flex-direction: column;
+  height: 91.11vh;
+  width: 78.19vw;
 
- 
-
-    display: flex;
-    flex-direction: column;
-    height: 91.11vh;
-    width: 78.19vw;
-  
-    .header{
-        height: 17% ;
-        padding-top: 5.96vh;
-    }
-    
+  .header {
+    height: 17%;
+    padding-top: 5.96vh;
+  }
 }
 
-.main{
+.main {
+  display: flex;
+  justify-content: flex-start;
+  border: solid orange;
+  width: 100%;
+  height: 100%;
+  gap: 2.15vw;
 
-   display:flex;
-   justify-content: flex-start;
-    border: solid orange;
-    width: 100%;
-
-    gap: 2.15vw;
-
-    .graphs{
-        height: 100%;
-        width: 57.99vw;
-        display:flex;
-        flex-direction: column;
-  gap:5vh;
-        .smallGraphs{
-            display: flex;
-            justify-content: space-between;
-            height: 25.71vh;
-        }
+  .graphs {
+    height: 100%;
+    width: 57.99vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .smallGraphs {
+      display: flex;
+      justify-content: space-between;
+      height: 25.71vh;
     }
-    .statZone{
-        width: 22.73%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
+  }
+  .statZone {
+    width: 22.73%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }

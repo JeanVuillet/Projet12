@@ -27,7 +27,6 @@ export class User {
 
         return data.data.sessions;
       } catch (error) {
-        console.log(error);
         return null;
       }
     } else if (this.origin === "mock") {
@@ -48,7 +47,6 @@ export class User {
 
         return name;
       } catch (error) {
-        console.log(error);
         return null;
       }
     } else if (this.origin === "mock") {
@@ -73,7 +71,6 @@ export class User {
 
         return todayScore;
       } catch (error) {
-        console.log(error);
         return null;
       }
     } else if (this.origin === "mock") {
@@ -93,7 +90,6 @@ export class User {
 
         return keyData;
       } catch (error) {
-        console.log(error);
         return null;
       }
     } else if (this.origin === "mock") {
@@ -115,7 +111,6 @@ export class User {
 
         return performance;
       } catch (error) {
-        console.log(error);
         return null;
       }
     } else if (this.origin === "mock") {
@@ -136,7 +131,6 @@ export class User {
 
         return averageSession;
       } catch (error) {
-        console.log(error);
         return null;
       }
     } else if (this.origin === "mock") {

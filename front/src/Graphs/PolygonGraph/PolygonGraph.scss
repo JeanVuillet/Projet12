@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
 
-
   width: 31%;
   max-width: 28vh;
   height: 25.68vh;
@@ -23,10 +22,9 @@
   .recharts-polar-angle-axis-tick-value {
     fill: white; // Couleur des labels
     font-size: 14px; // Taille de police des labels
-
   }
-  .recharts-polar-angle-axis-tick{
-fill: white;
+  .recharts-polar-angle-axis-tick {
+    fill: white;
   }
   tspan {
     font-size: 12px;
@@ -34,5 +32,4 @@ fill: white;
   .angleAxis {
     stroke: transparent;
   }
-
 }

@@ -3,9 +3,7 @@ import "./SelectPage.scss";
 import { User } from "../../FormatData/dataFormater.js";
 import { useData } from "../../DataProvider/DataProvider.jsx";
 
-import { useNavigate } from 'react-router-dom';
-
-
+import { useNavigate } from "react-router-dom";
 
 export function SelectPage() {
   const { sharedData, setSharedData } = useData();
@@ -14,7 +12,7 @@ export function SelectPage() {
   let [id, setUser] = useState(0);
   let [visible, setVisible] = useState(true);
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   function selectApi() {
     setData("api");
@@ -34,7 +32,7 @@ export function SelectPage() {
 
     setSharedData(TheUser);
     setVisible("none");
-    navigate('/homepage')
+    navigate("/homepage");
   }
   return (
     <div className="dataSelector" style={{ display: `${visible}` }}>

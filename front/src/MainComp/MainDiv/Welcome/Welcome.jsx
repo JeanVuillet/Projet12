@@ -2,7 +2,7 @@ import { USER_MAIN_DATA } from "../../../data/data";
 import { useState, useEffect } from "react";
 
 import { useData } from "../../../DataProvider/DataProvider";
-import './Welcome.scss';
+import "./Welcome.scss";
 
 function Welcome() {
   const { sharedData } = useData();

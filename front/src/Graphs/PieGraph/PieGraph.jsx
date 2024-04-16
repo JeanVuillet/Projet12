@@ -1,11 +1,10 @@
 import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 
 import "./PieGraph.scss";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useData } from "../../DataProvider/DataProvider";
 
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 export function PieGraph() {
   const [score, setScore] = useState(0);
@@ -14,68 +13,63 @@ export function PieGraph() {
   const [pieData, setPieData] = useState([]);
 
   const { sharedData, errorMessge, setErrorMessage } = useData();
-  let navigate=useNavigate();
-  let tscore=null;
+  let navigate = useNavigate();
+  let tscore = null;
 
-
-
-//calcule le pourcentage et le stock dans un usteState tscore
-function getPercentage(){
-  if (score>0){
-   tscore = score * 100;
-  setTodayScore(tscore);
-  }
-}
-//calcule l angle final a partir de tscore
-function getEndAngle(){
-  if(tscore){
-  setEndAngle(220 - (tscore * 360) / 100);
-  }
-}
-
-// definie le useState pieData comme un objet {name: zone1  value :tscore}
-//qui sera utilisee en props
-function SetPieData(){
-  if (tscore){
-  setPieData([
-    {
-      name: "Zone1",
-      value: tscore
+  //calcule le pourcentage et le stock dans un usteState tscore
+  function getPercentage() {
+    if (score > 0) {
+      tscore = score * 100;
+      setTodayScore(tscore);
     }
-  ]);
-}
-}
+  }
+  //calcule l angle final a partir de tscore
+  function getEndAngle() {
+    if (tscore) {
+      setEndAngle(220 - (tscore * 360) / 100);
+    }
+  }
+
+  // definie le useState pieData comme un objet {name: zone1  value :tscore}
+  //qui sera utilisee en props
+  function SetPieData() {
+    if (tscore) {
+      setPieData([
+        {
+          name: "Zone1",
+          value: tscore,
+        },
+      ]);
+    }
+  }
 
   useEffect(() => {
-
     //cette fonction recupere le score le stock dans un useEffect (myScore)
     // et appelle les 3 fonctions de calcule des data des que le score est mis a jour
-    async function pieMake(){
-      if( sharedData){
-      const myScore=  await sharedData.getScore();
-     try{
-      if(!myScore){
-        throw new Error('noMyScore');
+    async function pieMake() {
+      if (sharedData) {
+        const myScore = await sharedData.getScore();
+        try {
+          if (!myScore) {
+            throw new Error("noMyScore");
+          }
+        } catch (error) {
+          setErrorMessage("error details:" + errorMessge + error);
+          navigate("/404");
+        }
+
+        setScore(myScore);
+        getPercentage();
+        getEndAngle();
+        SetPieData();
       }
-     } catch(error){
-      setErrorMessage('error details:'+errorMessge+error)
-      navigate('/404')
-     }
- 
-    setScore(myScore);
-    getPercentage()
-    getEndAngle()
-    SetPieData()
- ; 
-     
-}
-}
-pieMake();
-}, [sharedData, score]);
+    }
+    pieMake();
+  }, [sharedData, score]);
 
   return (
     <div className="pieDiv">
-<div className="title">Score</div>
+      <div className="title">Score</div>
       <ResponsiveContainer className="pieContainer">
         <div className="whiteCircle">
           <div className="score">{todayScore}%</div>

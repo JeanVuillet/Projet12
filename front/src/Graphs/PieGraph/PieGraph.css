@@ -1,5 +1,5 @@
 .pieDiv {
-  background-color: #FBFBFB;
+  background-color: #fbfbfb;
   border: solid;
   position: absolute;
   width: 258px;
@@ -29,4 +29,4 @@
   stroke-dasharray: 4;
   rx: 5px;
   ry: 5px;
-}/*# sourceMappingURL=PieGraph.css.map */
+} /*# sourceMappingURL=PieGraph.css.map */
