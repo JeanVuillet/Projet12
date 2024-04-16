@@ -132,7 +132,7 @@ export function BarGraph() {
                   dy={4}
                   textAnchor="start" // Ancrage du texte à "start" (alignement à gauche)
                   fill="#666" // Couleur de remplissage du texte en gris foncé
-                  className="couou" // Classe CSS attribuée au texte
+
                 >
                   {payload.value} {/* Affichage des valeurs des kilogrammes */}
                 </text>
@@ -162,9 +162,9 @@ export function BarGraph() {
                   dy={4}
                   textAnchor="start"
                   fill="#666"
-                  className="couou"
+           
                 >
-                  {Math.round(payload.value)}{" "}
+                  {Math.round(payload.value)}
                 </text>
               )}
             />
