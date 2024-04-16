@@ -2,9 +2,7 @@ import "./MainDiv.scss";
 import { Welcome } from "./Welcome/Welcome.jsx";
 import { BarGraph } from "../../Graphs/BarGraph/BarGraph.jsx";
 import { PieGraph } from "../../Graphs/PieGraph/PieGraph.jsx";
-
 import { StatComp } from "./StatComp/StatComp.jsx";
-import { USER_MAIN_DATA } from "../../data/data.js";
 import calories from "../../assets/calories.svg";
 import carbs from "../../assets/carbs.svg";
 import fats from "../../assets/fat.svg";
@@ -14,7 +12,6 @@ import { AriaGraph } from "../../Graphs/AriaGraph/AriaGraph.jsx";
 
 import { useData } from "../../DataProvider/DataProvider.jsx";
 import { useEffect, useState } from "react";
-import { SelectPage } from "../SelectPage/SelectPage.jsx";
 
 export function MainDiv() {
   const { sharedData } = useData();
@@ -23,27 +20,31 @@ export function MainDiv() {
   var [calorieCount, setCalorieCout] = useState();
   var [formattedCalorieCount, setFormatted] = useState();
 
-  let keyData = null;
+
   useEffect(() => {
     MakeGraph();
     async function MakeGraph() {
       if (sharedData) {
-        keyData = await sharedData.getKeyData();
-        if (keyData) {
+      let  keyData = await sharedData.getKeyData();
+    
           setUserData(keyData);
           setCalorieCout(keyData.calorieCount);
-          function calculate() {
+        
+          //Cette fonction formate le nombre de calories pour qu'il soit affiché 
+          //avec des séparateurs de milliers
+          // et stock le resultat dans un useEffect Formatted
+          function calculate(calorieCount) {
             setFormatted(
               calorieCount?.toLocaleString("en-US", {
                 minimumFractionDigits: 0,
               })
             );
           }
-          calculate();
-        }
+          calculate( calorieCount);
+        
       }
     }
-  }, [sharedData, calorieCount, keyData]);
+  }, [sharedData, calorieCount]);
 
   return (
     <div className="mainDiv">

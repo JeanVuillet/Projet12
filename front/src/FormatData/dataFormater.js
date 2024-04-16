@@ -1,5 +1,5 @@
 import { apiActivity, userApi, perfApi, averageSessions } from "../Api/Api.js";
-import { data } from "react";
+
 import {
   USER_MAIN_DATA,
   USER_ACTIVITY,
@@ -7,7 +7,6 @@ import {
   USER_PERFORMANCE,
 } from "../data/data.js";
 
-import { DataSelector } from "../MainComp/SelectPage/SelectPage.jsx";
 
 export class User {
   constructor(origin, id) {

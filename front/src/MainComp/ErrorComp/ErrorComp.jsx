@@ -9,7 +9,7 @@ export function ErrorComp() {
   return (
     <div className="container">
       <div className="error">Error 404</div>
-      <div className="message"> Data not found</div>
+      <div className="message"> Data not found or not selected</div>
       <div className="detail">{errorMessage}</div>
       <Link to="/" className="link">
         {" "}

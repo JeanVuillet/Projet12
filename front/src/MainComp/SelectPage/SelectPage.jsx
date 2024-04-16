@@ -8,17 +8,16 @@ import { useNavigate } from "react-router-dom";
 export function SelectPage() {
   const { sharedData, setSharedData } = useData();
 
-  let [origin, setData] = useState(null);
+  let [origin, setOrigin] = useState(null);
   let [id, setUser] = useState(0);
-  let [visible, setVisible] = useState(true);
 
   const navigate = useNavigate();
 
   function selectApi() {
-    setData("api");
+    setOrigin("api");
   }
   function selectMock() {
-    setData("mock");
+    setOrigin("mock");
   }
   function select12() {
     setUser(12);
@@ -27,15 +26,21 @@ export function SelectPage() {
     setUser(18);
   }
   async function exeApp() {
+
+    if(origin && id){
     const TheUser = new User(origin, id);
-    const methode = await TheUser.getActivity();
+
 
     setSharedData(TheUser);
-    setVisible("none");
+
     navigate("/homepage");
+    }
+    else{
+      navigate('/404')
+    }
   }
   return (
-    <div className="dataSelector" style={{ display: `${visible}` }}>
+    <div className="dataSelector" >
       <div className="dataDiv">
         <div className="dataTxt">select your data</div>
         <div className="dataOptions">

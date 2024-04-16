@@ -7,7 +7,7 @@ import {
   RadarChart,
   Tooltip,
 } from "recharts";
-import { USER_PERFORMANCE } from "../../data/data.js";
+
 import "./PolygonGraph.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +15,6 @@ import { useData } from "../../DataProvider/DataProvider.jsx";
 export function PolygonGraph() {
   const [perfData, setPerfData] = useState(null);
 
-  const [values, setValues] = useState([]);
   const [newValues, setNewValues] = useState(null);
 
   const [maxDataValue, setMaxData] = useState();
@@ -57,28 +56,30 @@ export function PolygonGraph() {
       }));
     }
   }
-  useEffect(() => {
-    //cette fonction recupere les datasPerformance grace a l objet sharedData
+      //cette fonction recupere les datasPerformance grace a l objet sharedData
     //stock l objet dans le useEffect perfData
     //et appelle la fonction mapper() et la fonction calc()
-    async function graphMaker() {
-      if (sharedData) {
-        const data = await sharedData.getPerformance();
-        try {
-          if (!data) {
-            throw new Error("noPolygonData");
-          }
-        } catch (error) {
-          setErrorMessage("error details:" + error);
-          navigate("/404");
+
+  async function graphMaker() {
+    if (sharedData) {
+      const data = await sharedData.getPerformance();
+      try {
+        if (!data) {
+          throw new Error("noPolygonData");
         }
-        if (data) {
-          setPerfData(data.data);
-          mapper();
-          calc();
-        }
+      } catch (error) {
+        setErrorMessage("error details:" + error);
+        navigate("/404");
+      }
+      if (data) {
+        setPerfData(data.data);
+        mapper();
+        calc();
       }
     }
+  }
+  useEffect(() => {
+
 
     graphMaker();
   }, [sharedData, perfData]);

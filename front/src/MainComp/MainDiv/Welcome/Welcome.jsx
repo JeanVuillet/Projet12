@@ -1,4 +1,3 @@
-import { USER_MAIN_DATA } from "../../../data/data";
 import { useState, useEffect } from "react";
 
 import { useData } from "../../../DataProvider/DataProvider";
