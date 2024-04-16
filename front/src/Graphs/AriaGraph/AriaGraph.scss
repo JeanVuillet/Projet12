@@ -1,52 +1,44 @@
-.ariaDiv{
-    width: 31%;
-    max-width: 28vh;
-    height: 25.68vh;
- 
-    position: relative;
+.ariaDiv {
+  width: 31%;
+  max-width: 28vh;
+  height: 25.68vh;
 
-    .txt{
-      color: white;
-      opacity: 50%;
-      width:60%;
-      top: 5.5%;
-      left: 2.167vw;
-      position: absolute;
-      text-wrap: wrap;
-      font-size: 15px;
+  position: relative;
 
-    }
-  } 
-  .custom-tooltip{
-    background-color: white;
-    color: black;
-  }
-  .recharts-tooltip-cursor{
-    stroke: transparent;
-  }
-    .ariaContainer{
-        background-color: red;
-
-        
-    }
-
-
-
-   
-.custom-tooltip .recharts-tooltip-cursor {
-    display: none;
-  }
-
-
-
- .rightDiv{
+  .txt {
+    color: white;
+    opacity: 50%;
+    width: 60%;
+    top: 5.5%;
+    left: 2.167vw;
     position: absolute;
-    background-color: black;
-    opacity: 0.1;
+    text-wrap: wrap;
+    font-size: 15px;
+  }
+}
+.custom-tooltip {
+  background-color: white;
+  color: black;
+}
+.recharts-tooltip-cursor {
+  stroke: transparent;
+}
+.ariaContainer {
+  background-color: red;
+}
 
-    right: 0;
- }
+.custom-tooltip .recharts-tooltip-cursor {
+  display: none;
+}
 
-.areaChart{
-margin-bottom: 30px;
+.rightDiv {
+  position: absolute;
+  background-color: black;
+  opacity: 0.1;
+
+  right: 0;
+}
+
+.areaChart {
+  margin-bottom: 30px;
 }

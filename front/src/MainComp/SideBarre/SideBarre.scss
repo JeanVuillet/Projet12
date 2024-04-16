@@ -3,20 +3,19 @@
     border:solid orange;
 
     background-color: black;
-    width: 8.89vh;
+    width: 6%;;
    
     display: flex;
-    align-items: flex-end;
-   
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
     &__wrapper{
+        height: 73%;
         width: 100%;
-      
         background-color: black;
-
-        border:solid red;
+        border: solid red;
         display: flex;
         flex-direction: column;
-        gap: 13.3vh;
         justify-content: space-between;
     &__nav{
         display: flex;
@@ -27,14 +26,15 @@
 
 
     &__logoContainer{
-
+        background-color: white;
        
         
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 53%;
         &__logo{
-         width: 60%;
+width: 100%;
         }
     }
     }
@@ -53,7 +53,7 @@
         align-items: center;
         line-height: 24px;
 
-        padding-top:6.25vh;
+        padding-top:20%;
         text-wrap: nowrap;
 
     }

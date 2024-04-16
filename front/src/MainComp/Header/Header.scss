@@ -1,29 +1,33 @@
-.App{
-    border:solid;
-    width: 100vw;
-    height: 100vh;
-    &__header{
-        background-color: black;
-        display:flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 100%;
-        height: 8.89vh;
-    
-        &__img{
-        
-         
-                width: 178px;
-                height: 60.93px;
-            
-        }
-        &__nav{
- text-decoration: none;
- color: white;
- font-weight: medium;
- font-size: 24px;
-        }
+.App {
+  border: solid;
+  width: 100vw;
+  height: 100vh;
+  &__header {
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 8.89vh;
+    &__imgDiv {
+      width: 20%;
+      padding-left: 1.5%;
+      &__img {
+       
+    width: 20vh;
+      }
     }
- 
-
+    &__nav {
+      width: 80%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      &__link {
+        text-decoration: none;
+        color: white;
+        font-weight: medium;
+        font-size: 24px;
+      }
+    }
+  }
 }

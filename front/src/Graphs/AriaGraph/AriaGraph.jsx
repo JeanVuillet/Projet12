@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import {
   AreaChart,
   Area,
@@ -12,7 +12,6 @@ import { USER_AVERAGE_SESSIONS } from "../../data/data.js";
 import "./AriaGraph.scss";
 import { useData } from "../../DataProvider/DataProvider.jsx";
 
-
 export function AriaGraph() {
   const [rightDiv, setRightDiv] = useState(null);
   const [toolTime, setToolTime] = useState(null);
@@ -22,52 +21,49 @@ export function AriaGraph() {
   const days = ["L", "M", "M", "J", "V", "S", "D"];
 
   let { sharedData, errorMessage, setErrorMessage } = useData();
-  let newData=null;
- let navigate=useNavigate();
+  let newData = null;
+  let navigate = useNavigate();
 
   //cette fonction map newData en une liste d objets
   // {day:le jour time:dure de la session index: l'index de la session}
   // et appel setValues()
-  async function getNewData(data2){
+  async function getNewData(data2) {
     if (data2) {
       newData = await data2.map((element, index) => ({
-       day: days[index],
-       time: element.sessionLength,
-       index: index,
-     }));
+        day: days[index],
+        time: element.sessionLength,
+        index: index,
+      }));
 
-setValues(newData);
-
+      setValues(newData);
+    }
   }
-}
-//cette fonction stock dans des useState newData, le temps max de newData et le temps min de newData(pour les props du graphique)
-  function setValues(newData){
-    if (newData){
+  //cette fonction stock dans des useState newData, le temps max de newData et le temps min de newData(pour les props du graphique)
+  function setValues(newData) {
+    if (newData) {
       setGraphData(newData);
       setMaxValue(Math.max(...newData.map((element) => element.time)));
       setMinValue(Math.min(...newData.map((element) => element.time)));
     }
-    }
+  }
 
   useEffect(() => {
     // cette fonction recupere le data de AverageSessions grace a l objet sherdData
     async function makeAriagraph() {
       if (sharedData) {
-     const   data2 = await sharedData.getAverageSessions();
-       try{
-        if(!data2){
-          throw new Error('no averageSession data')
+        const data2 = await sharedData.getAverageSessions();
+        try {
+          if (!data2) {
+            throw new Error("no averageSession data");
+          }
+        } catch (error) {
+          setErrorMessage("error details:" + error);
+          navigate("/404");
         }
-       }catch(error){
-       setErrorMessage('error details:'+error)
-        navigate('/404')
-       }
-        getNewData(data2)
-   
-   
-        }
+        getNewData(data2);
       }
-    
+    }
+
     makeAriagraph();
   }, [sharedData, newData]);
 
@@ -90,7 +86,7 @@ setValues(newData);
     <div className="ariaDiv">
       <div className="calcDiv"></div>
       <div className="rightDiv" style={{ width: `${rightDiv}px` }}></div>
-<div className="txt">Durée moyenne des sessions</div>
+      <div className="txt">Durée moyenne des sessions</div>
       <ResponsiveContainer className="ariaContainer">
         <AreaChart
           data={graphData}
@@ -116,4 +112,3 @@ setValues(newData);
     </div>
   );
 }
-

@@ -8,22 +8,25 @@ import { MainDiv } from "../MainDiv/MainDiv";
 export function Header() {
   return (
     <header className="App__header">
-      <img src={logo} className="App__header__img" alt="logo" />
-
-      <a className="App__header__nav" href="">
+      <div className="App__header__imgDiv">
+      <img src={logo} className="App__header__imgDiv__img" alt="logo" />
+      </div>
+      <div className="App__header__nav">
+      <a className="App__header__nav__link" href="">
         Accueil
       </a>
-      <a className="App__header__nav" href="">
+      <a className="App__header__nav__link" href="">
         {" "}
         Profil
       </a>
-      <a className="App__header__nav" href="">
+      <a className="App__header__nav__link" href="">
         {" "}
         Réglage
       </a>
-      <a className="App__header__nav" href="">
+      <a className="App__header__nav__link" href="">
         Communauté
       </a>
+      </div>
     </header>
   );
 }
