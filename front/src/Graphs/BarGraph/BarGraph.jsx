@@ -12,7 +12,7 @@ import {
 } from "recharts";
 
 import "./TestComp.scss";
-import { useData } from "../../DataProvider/DataProvider.jsx";
+import { useData } from "../../data/DataProvider.jsx";
 
 export function BarGraph() {
   let CustomTooltip = null;

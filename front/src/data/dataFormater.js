@@ -1,11 +1,11 @@
-import { apiActivity, userApi, perfApi, averageSessions } from "./Api.js";
+import { apiActivity, userApi, perfApi, averageSessions } from "./api.js";
 
 import {
   USER_MAIN_DATA,
   USER_ACTIVITY,
   USER_AVERAGE_SESSIONS,
   USER_PERFORMANCE,
-} from "./data.js";
+} from "./mock.js";
 
 export class User {
   constructor(origin, id) {

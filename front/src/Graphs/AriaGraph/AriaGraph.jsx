@@ -9,7 +9,7 @@ import {
   Tooltip,
 } from "recharts";
 import "./AriaGraph.scss";
-import { useData } from "../../DataProvider/DataProvider.jsx";
+import { useData } from "../../data/DataProvider.jsx";
 
 export function AriaGraph() {
   const [rightDiv, setRightDiv] = useState(null);
@@ -65,16 +65,18 @@ export function AriaGraph() {
 
     makeAriagraph();
   }, [sharedData, newData]);
-
+ 
   const CustomTooltip = ({ active, payload }) => {
+    useEffect(() => {
     if (active && payload && payload.length) {
-      const {  time, index } = payload[0].payload;
+      const { time, index } = payload[0].payload;
       setToolTime(time);
       // Calcul de la largeur restante jusqu'à dimanche
-      const rightSpace = (6 - index) * (100 / 6.5) +4; // 258 est la largeur du graphique
+      const rightSpace = (6 - index) * (100 / 6.5) + 4; // 258 est la largeur du graphique
 
       setRightDiv(rightSpace);
     }
+  }, [active, payload]);
     return (
       <div className="custom-tooltip" style={{ lineHeight: 0 }}>
         <p className="label">{`${toolTime} min`}</p>

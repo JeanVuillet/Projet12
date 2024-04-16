@@ -11,7 +11,7 @@ import {
 import "./PolygonGraph.scss";
 import { useNavigate } from "react-router-dom";
 
-import { useData } from "../../DataProvider/DataProvider.jsx";
+import { useData } from "../../data/DataProvider.jsx";
 export function PolygonGraph() {
   const [perfData, setPerfData] = useState(null);
 
@@ -26,8 +26,6 @@ export function PolygonGraph() {
   //car l ordre des donnes recu est inverse par rapport au graphique
   let calc = () => {
     if (myValue) {
-
-
       setNewValues(myValue.reverse());
     }
   };
@@ -54,9 +52,9 @@ export function PolygonGraph() {
       }));
     }
   }
-      //cette fonction recupere les datasPerformance grace a l objet sharedData
-    //stock l objet dans le useEffect perfData
-    //et appelle la fonction mapper() et la fonction calc()
+  //cette fonction recupere les datasPerformance grace a l objet sharedData
+  //stock l objet dans le useEffect perfData
+  //et appelle la fonction mapper() et la fonction calc()
 
   async function graphMaker() {
     if (sharedData) {
@@ -77,8 +75,6 @@ export function PolygonGraph() {
     }
   }
   useEffect(() => {
-
-
     graphMaker();
   }, [sharedData, perfData]);
 

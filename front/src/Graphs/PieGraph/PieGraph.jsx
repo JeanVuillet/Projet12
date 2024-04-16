@@ -2,7 +2,7 @@ import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 
 import "./PieGraph.scss";
 import { useState, useEffect } from "react";
-import { useData } from "../../DataProvider/DataProvider";
+import { useData } from "../../data/DataProvider";
 
 import { useNavigate } from "react-router-dom";
 
