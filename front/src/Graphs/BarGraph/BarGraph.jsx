@@ -9,9 +9,9 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-} from "recharts"; // Importation des composants de Recharts
+} from "recharts"; 
 
-import "./TestComp.scss"; // Importation du fichier de style CSS
+import "./TestComp.scss"; 
 import { useData } from '../../DataProvider/DataProvider.jsx';
 
 
