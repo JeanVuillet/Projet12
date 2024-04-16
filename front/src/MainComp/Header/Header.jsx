@@ -1,10 +1,6 @@
 import logo from "../../assets/logo.svg";
 import "./Header.scss";
 
-import { BarGraph, TestComp } from "../../Graphs/BarGraph/BarGraph";
-
-import { MainDiv } from "../MainDiv/MainDiv";
-
 export function Header() {
   return (
     <header className="App__header">

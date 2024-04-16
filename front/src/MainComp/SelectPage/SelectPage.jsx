@@ -6,7 +6,7 @@ import { useData } from "../../DataProvider/DataProvider.jsx";
 import { useNavigate } from "react-router-dom";
 
 export function SelectPage() {
-  const { sharedData, setSharedData } = useData();
+  const {  setSharedData } = useData();
 
   let [origin, setOrigin] = useState(null);
   let [id, setUser] = useState(0);

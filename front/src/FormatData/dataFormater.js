@@ -22,7 +22,6 @@ export class User {
           throw new Error("Les données de l'API sont vides");
         }
 
-        const sessions = await data.data.sessions;
 
         return data.data.sessions;
       } catch (error) {

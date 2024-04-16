@@ -19,7 +19,7 @@ export function AriaGraph() {
   const [minValue, setMinValue] = useState(null);
   const days = ["L", "M", "M", "J", "V", "S", "D"];
 
-  let { sharedData, errorMessage, setErrorMessage } = useData();
+  let { sharedData, setErrorMessage } = useData();
   let newData = null;
   let navigate = useNavigate();
 
@@ -68,7 +68,7 @@ export function AriaGraph() {
 
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
-      const { day, time, index } = payload[0].payload;
+      const {  time, index } = payload[0].payload;
       setToolTime(time);
       // Calcul de la largeur restante jusqu'à dimanche
       const rightSpace = (6 - index) * (239 / 6) + 10; // 258 est la largeur du graphique

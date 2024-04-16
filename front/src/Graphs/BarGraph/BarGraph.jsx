@@ -19,7 +19,7 @@ export function BarGraph() {
   const navigate = useNavigate();
   // sharedData est un objet recuperer grace a useContext qui a acces
   // a plusieurs methodes pour recuperer les data(voir FormData)
-  const { sharedData, errorMessage, setErrorMessage } = useData();
+  const { sharedData, setErrorMessage } = useData();
   const [localData, setLocalData] = useState([]);
   const [yAxisDomain, setYaxisDomain] = useState(null);
 

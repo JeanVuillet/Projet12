@@ -66,7 +66,7 @@ export function MainDiv() {
             icon={calories}
             mesure={
               formattedCalorieCount
-                ? `${formattedCalorieCount}` + "kCal"
+                ? `${formattedCalorieCount} kCal` 
                 : "non"
             }
             unite={"Calories"}

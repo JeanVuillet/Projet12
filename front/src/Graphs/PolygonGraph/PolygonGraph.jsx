@@ -17,18 +17,16 @@ export function PolygonGraph() {
 
   const [newValues, setNewValues] = useState(null);
 
-  const [maxDataValue, setMaxData] = useState();
-
   const navigate = useNavigate();
   let { sharedData, setErrorMessage } = useData();
 
   let myValue = null;
 
-  // cette fonction calcule et stock la valeur max et et tableau de myValue a l envers
+  // cette fonction stock le tableau de myValue a l envers
   //car l ordre des donnes recu est inverse par rapport au graphique
   let calc = () => {
     if (myValue) {
-      setMaxData(Math.max(myValue.map((element) => element.value)));
+
 
       setNewValues(myValue.reverse());
     }
