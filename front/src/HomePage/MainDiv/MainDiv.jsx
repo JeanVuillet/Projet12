@@ -17,32 +17,32 @@ export function MainDiv() {
   const { sharedData } = useData();
 
   var [userData, setUserData] = useState();
-  var [calorieCount, setCalorieCout] = useState();
-  var [formattedCalorieCount, setFormatted] = useState();
-
+  var [Formatted, setFormatted] = useState();
+ let keyData=null;
   useEffect(() => {
     MakeGraph();
     async function MakeGraph() {
       if (sharedData) {
-        let keyData = await sharedData.getKeyData();
-
+         keyData = await sharedData.getKeyData();
+      if (keyData){
         setUserData(keyData);
-        setCalorieCout(keyData.calorieCount);
-
+        formate(keyData.calorieCount);
+      }
         //Cette fonction formate le nombre de calories pour qu'il soit affiché
         //avec des séparateurs de milliers
         // et stock le resultat dans un useEffect Formatted
-        function calculate(calorieCount) {
-          setFormatted(
-            calorieCount?.toLocaleString("en-US", {
-              minimumFractionDigits: 0,
-            })
-          );
+
+
+        function formate(calorieCount) {
+          let formatted=calorieCount?.toLocaleString("en-US", {
+            minimumFractionDigits: 0,
+          })
+          setFormatted(formatted);
         }
-        calculate(calorieCount);
+        
       }
     }
-  }, [sharedData, calorieCount]);
+  }, [sharedData, keyData]);
 
   return (
     <div className="mainDiv">
@@ -63,9 +63,9 @@ export function MainDiv() {
           <StatComp
             icon={calories}
             mesure={
-              formattedCalorieCount ? `${formattedCalorieCount} kCal` : "non"
+              Formatted ? `${Formatted} kCal` : "non"
             }
-            unite={"Calories"}
+            unite="Calories"
           />
           <StatComp
             icon={proteins}
