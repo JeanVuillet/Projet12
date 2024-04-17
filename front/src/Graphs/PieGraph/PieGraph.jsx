@@ -91,7 +91,6 @@ export function PieGraph() {
           >
             <Cell
               fill="#FF0000"
-              className={todayScore > 50 ? "outer-green" : ""}
               cornerRadius={10}
             />
           </Pie>
