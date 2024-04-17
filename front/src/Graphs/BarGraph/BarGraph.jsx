@@ -153,20 +153,7 @@ export function BarGraph() {
                     ]
                   : "none"
               } // Définit le domaine personnalisé pour les calories
-              tick={(
-                { x, y, payload } // Configuration des étiquettes
-              ) => (
-                <text
-                  x={x + 15}
-                  y={y}
-                  dy={4}
-                  textAnchor="start"
-                  fill="#666"
-           
-                >
-                  {Math.round(payload.value)}
-                </text>
-              )}
+            
             />
             <Tooltip content={CustomTooltip} />
             <CartesianGrid strokeDasharray="3 3" vertical={false} />{" "}
