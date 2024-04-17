@@ -21,7 +21,8 @@ export function BarGraph() {
   // a plusieurs methodes pour recuperer les data(voir FormData)
   const { sharedData, setErrorMessage } = useData();
   const [localData, setLocalData] = useState([]);
-  const [yAxisDomain, setYaxisDomain] = useState(null);
+  const [kilogramsDomain, setKilogramsDomain] = useState(null);
+  const [caloriesDomain, setCaloriesDomain]=useState(null);
 
 
     //CustomTooltip cree le Tooltip (div qui suit la souris dans le graph)
@@ -88,13 +89,20 @@ export function BarGraph() {
       if (localData.length > 0) {
         // Définition
 
-        const domain = [
+        const kilogramsDomain = [
           Math.floor(Math.min(...localData.map((entry) => entry.kilograms))) -
             10,
           Math.ceil(Math.max(...localData.map((entry) => entry.kilograms))) + 1,
         ];
 
-        setYaxisDomain(domain);
+        setKilogramsDomain(kilogramsDomain);
+        const caloriesDomain=[
+          0,
+          Math.ceil(
+            Math.max(...localData.map((entry) => entry.calories))
+          ) * 1.1,
+        ]
+        setCaloriesDomain(caloriesDomain)
 
      
       }
@@ -132,7 +140,7 @@ export function BarGraph() {
             <YAxis
               yAxisId="kilograms"
               orientation="right"
-              domain={yAxisDomain}
+              domain={kilogramsDomain}
               tickCount={4}
               tick={({ x, y, payload }) => (
                 <text
@@ -154,12 +162,7 @@ export function BarGraph() {
               hide
               domain={
                 localData
-                  ? [
-                      0,
-                      Math.ceil(
-                        Math.max(...localData.map((entry) => entry.calories))
-                      ) * 1.1,
-                    ]
+                  ? caloriesDomain
                   : "none"
               } // Définit le domaine personnalisé pour les calories
             

@@ -82,8 +82,6 @@ export function PieGraph() {
             data={pieData}
             dataKey="value"
             nameKey="name"
-            cx="50%"
-            cy="50%"
             innerRadius={79}
             outerRadius={85}
             label={false}
