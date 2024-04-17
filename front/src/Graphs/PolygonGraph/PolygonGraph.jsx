@@ -13,13 +13,12 @@ import { useNavigate } from "react-router-dom";
 
 import { useData } from "../../data/DataProvider.jsx";
 export function PolygonGraph() {
-
   const [polygonData, setPolygonData] = useState(null);
 
   const navigate = useNavigate();
   let { sharedData, setErrorMessage } = useData();
 
-  let data=null;
+  let data = null;
 
   useEffect(() => {
     graphMaker();
@@ -30,7 +29,7 @@ export function PolygonGraph() {
 
   async function graphMaker() {
     if (sharedData) {
-       data = await sharedData.getPerformance();
+      data = await sharedData.getPerformance();
       try {
         if (!data) {
           throw new Error("noPolygonData");
@@ -40,9 +39,7 @@ export function PolygonGraph() {
         navigate("/404");
       }
       if (data) {
-     
         mapper(data.data);
-     
       }
     }
   }
@@ -63,15 +60,14 @@ export function PolygonGraph() {
         "Intensité",
       ];
 
-     const myValue = perfData.map((element, index) => ({
+      const myValue = perfData.map((element, index) => ({
         subject: mySubject[index],
         value: element.value,
       }));
       reverse(myValue);
     }
-  
   }
-  
+
   // cette fonction stock le tableau de myValue a l envers
   //car l ordre des donnes recu est inverse par rapport au graphique
   let reverse = (myValue) => {
@@ -80,14 +76,10 @@ export function PolygonGraph() {
     }
   };
 
-  
-
-
   return (
     <div className="polygonGraph">
       <ResponsiveContainer className={"responsivCont"}>
         <RadarChart
-      
           outerRadius="60%"
           data={polygonData ? polygonData : []}
           style={{ border: "solid" }}
@@ -97,10 +89,7 @@ export function PolygonGraph() {
             radialLines={false}
             polarRadius={[0, 8.5, 18, 38, 57, 77]}
           />
-          <PolarAngleAxis
-            dataKey="subject"
-            className="keys"
-          />
+          <PolarAngleAxis dataKey="subject" className="keys" />
           <Radar name="Mike" dataKey="value" fill="#FF0101" fillOpacity={0.7} />
         </RadarChart>
       </ResponsiveContainer>
