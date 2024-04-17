@@ -87,8 +87,7 @@ export function PolygonGraph() {
     <div className="polygonGraph">
       <ResponsiveContainer className={"responsivCont"}>
         <RadarChart
-          cx="50%"
-          cy="50%"
+      
           outerRadius="60%"
           data={polygonData ? polygonData : []}
           style={{ border: "solid" }}
@@ -101,12 +100,8 @@ export function PolygonGraph() {
           <PolarAngleAxis
             dataKey="subject"
             className="keys"
-            tick={{ fill: "white" }}
-            radius={0}
           />
           <Radar name="Mike" dataKey="value" fill="#FF0101" fillOpacity={0.7} />
-
-          <Tooltip />
         </RadarChart>
       </ResponsiveContainer>
     </div>
