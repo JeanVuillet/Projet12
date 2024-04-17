@@ -1,13 +1,13 @@
 import { Header } from "./Header/Header.jsx";
 import { MainDiv } from "./MainDiv/MainDiv.jsx";
 import { SideBarre } from "./SideBarre/SideBarre.jsx";
-import "./MainComp.scss";
+import "./HomePage.scss";
 
-export function MainComp() {
+export function HomePage() {
   return (
     <>
       <Header />
-      <div className="mainComp">
+      <div className="homePage">
         <SideBarre />
         <MainDiv />
       </div>

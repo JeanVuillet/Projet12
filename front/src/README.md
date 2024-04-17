@@ -1,23 +1,22 @@
 I Lancement du projet
 A Acces au projet
 
-cloner le repository 
-
+cloner le repository
 
 Se rendre dans le dossier back, creer un terminal et lancer la commande
 yarn install
 yarn start
-Se rendre ensuite dans le back et lancer la commande 
+Se rendre ensuite dans le back et lancer la commande
 Yarn start
 
 II Architecture du projet
 
 A Racine du projet
 le projet utilise React.
-son composant racine, MainComp  est place dans index.js et est wrape dans un composant dataProvider qui permet de transmettre aux sous composants l'id et le type de data selectionne par l'utilisateur
+son composant racine, HomePage est place dans index.js et est wrape dans un composant dataProvider qui permet de transmettre aux sous composants l'id et le type de data selectionne par l'utilisateur
 
-B MainComp
-MainComp contient trois sous composants:
+B HomePage
+HomePage contient trois sous composants:
 -SelectPage(la page de selection de l'id et du type de Data)
 -Header (le header avec la barre de navigation)
 -SideBarre (la barre latereale)
@@ -27,9 +26,8 @@ C MainDiv
 MainDiv contient deux parties
 -un header qui contient le composant Welcome (avec un message de bienvenue et le nom de l'utilisateur)
 -un main qui contient deux sous divs:
-    -graphs (avec les graphiques)
-    -statZone (avec les statistiques principales de l'utilisateur)
-
+-graphs (avec les graphiques)
+-statZone (avec les statistiques principales de l'utilisateur)
 
 III Fonctionnement des graphiques
 
@@ -38,9 +36,9 @@ tous les graphiques sont wrappes dans un composant responsiveContainer
 
 A BarGraph
 -dans le corps du composant, le data correspondant a UserActivity est recupere et mape dans un tableau d objets localData{
-    name:index du jour (en commençant a 1)
-    kilogrames:kilogrames de ce jour
-    calories:calories de ce jour
+name:index du jour (en commençant a 1)
+kilogrames:kilogrames de ce jour
+calories:calories de ce jour
 }
 -ce tableau est utilise comme prop dans le composant BarChart, base du graphique
 
