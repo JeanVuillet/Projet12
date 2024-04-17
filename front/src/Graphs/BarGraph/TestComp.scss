@@ -66,7 +66,7 @@
 .circle2 {
   background-color: red;
 }
-.custom-tooltip {
+.barrTooltip {
   top: 5px;
 
   display: flex;
@@ -75,11 +75,11 @@
   align-items: center;
   width: 39px;
   height: 63px;
-  color: white;
-  background-color: #e60000;
+  background: #e60000;
   font-family: roboto;
   font-weight: medium;
   font-size: 7px;
+  color: white;
 }
 .barChart {
   margin-top: 20;

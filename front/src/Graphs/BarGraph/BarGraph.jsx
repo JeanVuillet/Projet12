@@ -15,7 +15,7 @@ import "./TestComp.scss";
 import { useData } from "../../data/DataProvider.jsx";
 
 export function BarGraph() {
-  let CustomTooltip = null;
+
   const navigate = useNavigate();
   // sharedData est un objet recuperer grace a useContext qui a acces
   // a plusieurs methodes pour recuperer les data(voir FormData)
@@ -23,7 +23,20 @@ export function BarGraph() {
   const [localData, setLocalData] = useState([]);
   const [yAxisDomain, setYaxisDomain] = useState(null);
 
+  function CustomTooltip({ active, payload }) {
+    if (active && payload && payload.length) {
+      const { kilograms, calories } = payload[0].payload;
+      return (
+        <div className="barrTooltip">
+          <p>{`${kilograms}kg`}</p>
+          <p>{`${calories}Kcal`}</p>
+        </div>
+      );
+    }
+    return null;
+  }
   useEffect(() => {
+   
     getData();
 
     //getData est une fonction asynchrone pour ramener les data du mock ou de l api
@@ -76,24 +89,15 @@ export function BarGraph() {
 
         setYaxisDomain(domain);
 
-        CustomTooltip();
+     
       }
     }
 
     //CustomTooltip cree le Tooltip (div qui suit la souris dans le graph)
     // il contient les kilos et les calories de  cette section
-    function CustomTooltip() {
-      if (localData) {
-        return (
-          <div className="custom-tooltip">
-            <p>{` ${localData.kilograms}kg`}</p>
-            <p>{` ${localData.calories}Kcal`}</p>
-          </div>
-        );
-      } else {
-        return "could not get data";
-      }
-    }
+
+   
+
   }, [sharedData]);
 
   return (
@@ -155,7 +159,7 @@ export function BarGraph() {
               } // Définit le domaine personnalisé pour les calories
             
             />
-            <Tooltip content={CustomTooltip} />
+            <Tooltip content={<CustomTooltip/>} />
             <CartesianGrid strokeDasharray="3 3" vertical={false} />{" "}
             {/* Lignes de grille horizontales */}
             {/* Affichage des barres pour les kilogrammes */}

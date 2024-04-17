@@ -17,8 +17,15 @@
   }
 }
 .custom-tooltip {
+  display: flex;
+  align-items: center;
+  height: auto ;
+  width: 100%;
+  padding: 15%;
+
   background-color: white;
   color: black;
+  font-size: 7px;
 }
 .recharts-tooltip-cursor {
   stroke: transparent;
