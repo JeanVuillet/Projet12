@@ -20,15 +20,36 @@ export function AriaGraph() {
   const days = ["L", "M", "M", "J", "V", "S", "D"];
 
   let { sharedData, setErrorMessage } = useData();
-  let newData = null;
+ 
   let navigate = useNavigate();
+  let data2=null;
 
+  useEffect(() => {
+    makeAriagraph();
+    // cette fonction recupere le data de AverageSessions grace a l objet sherdData
+    async function makeAriagraph() {
+      if (sharedData) {
+        const data2 = await sharedData.getAverageSessions();
+        try {
+          if (!data2) {
+            throw new Error("no averageSession data");
+          }
+        } catch (error) {
+          setErrorMessage("error details:" + error);
+          navigate("/404");
+        }
+        getNewData(data2);
+      }
+    }
+
+  }, [sharedData, data2]);
+  
   //cette fonction map newData en une liste d objets
   // {day:le jour time:dure de la session index: l'index de la session}
   // et appel setValues()
   async function getNewData(data2) {
     if (data2) {
-      newData = await data2.map((element, index) => ({
+    let  newData = await data2.map((element, index) => ({
         day: days[index],
         time: element.sessionLength,
         index: index,
@@ -46,25 +67,7 @@ export function AriaGraph() {
     }
   }
 
-  useEffect(() => {
-    // cette fonction recupere le data de AverageSessions grace a l objet sherdData
-    async function makeAriagraph() {
-      if (sharedData) {
-        const data2 = await sharedData.getAverageSessions();
-        try {
-          if (!data2) {
-            throw new Error("no averageSession data");
-          }
-        } catch (error) {
-          setErrorMessage("error details:" + error);
-          navigate("/404");
-        }
-        getNewData(data2);
-      }
-    }
 
-    makeAriagraph();
-  }, [sharedData, newData]);
  
   const CustomTooltip = ({ active, payload }) => {
     useEffect(() => {

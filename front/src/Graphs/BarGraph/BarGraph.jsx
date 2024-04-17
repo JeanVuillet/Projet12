@@ -23,6 +23,9 @@ export function BarGraph() {
   const [localData, setLocalData] = useState([]);
   const [yAxisDomain, setYaxisDomain] = useState(null);
 
+
+    //CustomTooltip cree le Tooltip (div qui suit la souris dans le graph)
+    // il contient les kilos et les calories de  cette section
   function CustomTooltip({ active, payload }) {
     if (active && payload && payload.length) {
       const { kilograms, calories } = payload[0].payload;
@@ -52,6 +55,17 @@ export function BarGraph() {
 
         try {
           if (myActiviy) {
+          mapData(myActiviy)
+   
+          } else {
+            throw new Error("noBargraphData");
+          }
+        } catch (error) {
+          setErrorMessage("error details:" + error);
+          navigate("/404");
+        }
+
+        function mapData(myActiviy){
             //creation du tableau d objets utilisee comme data dans les props
             const theLocal = myActiviy.map((session, index) => ({
               name: `${index + 1}`,
@@ -61,15 +75,8 @@ export function BarGraph() {
 
             //enregistrement du tableau dans le useState
             setLocalData(theLocal);
-
-            setDomain();
-            //creation du toolTip pour afficher les valeurs lorsque la souris se deplace dans le graphique
-          } else {
-            throw new Error("noBargraphData");
-          }
-        } catch (error) {
-          setErrorMessage("error details:" + error);
-          navigate("/404");
+            // appel de la fonction setDomain
+            setDomain(localData);
         }
       }
     }
@@ -77,7 +84,7 @@ export function BarGraph() {
     //SetDomaine genere le domaine de l'axe Y pour les kilogrammes
     //en commençant à la valeur min des kilogrames de localData-10
     // et en finissant à la valeur max des kilogrames de localData+1
-    function setDomain() {
+    function setDomain(localData) {
       if (localData.length > 0) {
         // Définition
 
@@ -93,8 +100,6 @@ export function BarGraph() {
       }
     }
 
-    //CustomTooltip cree le Tooltip (div qui suit la souris dans le graph)
-    // il contient les kilos et les calories de  cette section
 
    
 
