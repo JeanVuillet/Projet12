@@ -67,14 +67,14 @@ export function PolygonGraph() {
         subject: mySubject[index],
         value: element.value,
       }));
-      calc(myValue);
+      reverse(myValue);
     }
   
   }
   
   // cette fonction stock le tableau de myValue a l envers
   //car l ordre des donnes recu est inverse par rapport au graphique
-  let calc = (myValue) => {
+  let reverse = (myValue) => {
     if (myValue) {
       setPolygonData(myValue.reverse());
     }
