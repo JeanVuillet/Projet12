@@ -47,9 +47,9 @@ export function AriaGraph() {
   //cette fonction map newData en une liste d objets
   // {day:le jour time:dure de la session index: l'index de la session}
   // et appel setValues()
-  async function getNewData(data2) {
+  function getNewData(data2) {
     if (data2) {
-    let  newData = await data2.map((element, index) => ({
+    let  newData =  data2.map((element, index) => ({
         day: days[index],
         time: element.sessionLength,
         index: index,

@@ -13,29 +13,46 @@ import { useNavigate } from "react-router-dom";
 
 import { useData } from "../../data/DataProvider.jsx";
 export function PolygonGraph() {
-  const [perfData, setPerfData] = useState(null);
 
-  const [newValues, setNewValues] = useState(null);
+  const [polygonData, setPolygonData] = useState(null);
 
   const navigate = useNavigate();
   let { sharedData, setErrorMessage } = useData();
 
-  let myValue = null;
+  let data=null;
 
-  // cette fonction stock le tableau de myValue a l envers
-  //car l ordre des donnes recu est inverse par rapport au graphique
-  let calc = () => {
-    if (myValue) {
-      setNewValues(myValue.reverse());
+  useEffect(() => {
+    graphMaker();
+  }, [sharedData, data]);
+  //cette fonction recupere les datasPerformance grace a l objet sharedData
+  //stock l objet dans le useEffect perfData
+  //et appelle la fonction mapper() et la fonction calc()
+
+  async function graphMaker() {
+    if (sharedData) {
+       data = await sharedData.getPerformance();
+      try {
+        if (!data) {
+          throw new Error("noPolygonData");
+        }
+      } catch (error) {
+        setErrorMessage("error details:" + error);
+        navigate("/404");
+      }
+      if (data) {
+     
+        mapper(data.data);
+     
+      }
     }
-  };
+  }
 
   //cette fonction mapp perfData en une liste d objets
   //{ subject : element du tableau mySubject
   //value:cette valeur de perfData
   //}
 
-  function mapper() {
+  function mapper(perfData) {
     if (perfData) {
       const mySubject = [
         "Cardio",
@@ -46,37 +63,25 @@ export function PolygonGraph() {
         "Intensité",
       ];
 
-      myValue = perfData.map((element, index) => ({
+     const myValue = perfData.map((element, index) => ({
         subject: mySubject[index],
         value: element.value,
       }));
+      calc(myValue);
     }
+  
   }
-  //cette fonction recupere les datasPerformance grace a l objet sharedData
-  //stock l objet dans le useEffect perfData
-  //et appelle la fonction mapper() et la fonction calc()
+  
+  // cette fonction stock le tableau de myValue a l envers
+  //car l ordre des donnes recu est inverse par rapport au graphique
+  let calc = (myValue) => {
+    if (myValue) {
+      setPolygonData(myValue.reverse());
+    }
+  };
 
-  async function graphMaker() {
-    if (sharedData) {
-      const data = await sharedData.getPerformance();
-      try {
-        if (!data) {
-          throw new Error("noPolygonData");
-        }
-      } catch (error) {
-        setErrorMessage("error details:" + error);
-        navigate("/404");
-      }
-      if (data) {
-        setPerfData(data.data);
-        mapper();
-        calc();
-      }
-    }
-  }
-  useEffect(() => {
-    graphMaker();
-  }, [sharedData, perfData]);
+  
+
 
   return (
     <div className="polygonGraph">
@@ -85,7 +90,7 @@ export function PolygonGraph() {
           cx="50%"
           cy="50%"
           outerRadius="60%"
-          data={newValues ? newValues : []}
+          data={polygonData ? polygonData : []}
           style={{ border: "solid" }}
         >
           <PolarGrid

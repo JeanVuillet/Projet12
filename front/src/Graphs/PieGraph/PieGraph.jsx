@@ -17,6 +17,7 @@ export function PieGraph() {
    let myScore=null;
 
   useEffect(() => {
+    pieMake();
     //cette fonction recupere le score le stock dans un useEffect (myScore)
     // et appelle les 3 fonctions de calcule des data des que le score est mis a jour
     async function pieMake() {
@@ -36,7 +37,7 @@ export function PieGraph() {
    
       }
     }
-    pieMake();
+
   }, [sharedData,myScore ]);
   //calcule le pourcentage et le stock dans un usteState tscore
   function getPercentage(myScore) {
@@ -54,7 +55,7 @@ export function PieGraph() {
       SetPieData(tscore);
     }
   }
-
+   //Formatage
   // definie le useState pieData comme un objet {name: zone1  value :tscore}
   //qui sera utilisee en props
   function SetPieData(tscore) {

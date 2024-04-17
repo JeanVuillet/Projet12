@@ -64,7 +64,7 @@ export function BarGraph() {
           setErrorMessage("error details:" + error);
           navigate("/404");
         }
-
+// Formatage Des donnees
         function mapData(myActiviy){
             //creation du tableau d objets utilisee comme data dans les props
             const theLocal = myActiviy.map((session, index) => ({
