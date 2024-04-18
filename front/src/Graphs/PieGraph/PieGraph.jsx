@@ -69,8 +69,7 @@ export function PieGraph() {
 
   /**
    *   Formatage
-   * definie le useState pieData comme un objet {name: zone1  value :tscore}
-   * qui sera utilisee en props
+   * definie le useState pieData comme un objet {name: zone1  value :tscore}qui sera utilisee en props
    * @param {*} tscore 
    */
   function SetPieData(tscore) {
@@ -97,8 +96,8 @@ export function PieGraph() {
             data={pieData}
             dataKey="value"
             nameKey="name"
-            innerRadius={79}
-            outerRadius={85}
+            innerRadius={76}
+            outerRadius={82}
             label={false}
             labelLine={false}
             startAngle={220}

@@ -1,6 +1,6 @@
 .pieDiv {
   background-color: #fbfbfb;
-
+  border: solid;
   width: 31%;
   max-width: 28vh;
   height: 100%;
@@ -8,7 +8,7 @@
   .title {
     z-index: 3;
     position: absolute;
-    top: 2vh;
+    top: 1.8vh;
     left: 1.1vw;
     font-size: 2vh;
     font-weight: 500;
@@ -24,8 +24,8 @@
       font-family: roboto;
       position: absolute;
       background-color: white;
-      width: 159px;
-      height: 159px;
+      width: 151px;
+      height: 151px;
       border-radius: 50%;
 
       display: flex;
@@ -52,5 +52,6 @@
     stroke: red; // Couleur de la bordure rouge
     stroke-width: 1px; // Épaisseur de la bordure
     stroke-dasharray: 4; // Style de la bordure (pointillés)
+
   }
 }
