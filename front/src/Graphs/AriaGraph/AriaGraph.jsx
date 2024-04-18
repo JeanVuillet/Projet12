@@ -26,7 +26,11 @@ export function AriaGraph() {
 
   useEffect(() => {
     makeAriagraph();
-    // cette fonction recupere le data de AverageSessions grace a l objet sherdData
+    /**
+     * cette fonction recupere le data de 
+     * AverageSessions grace a l objet sherdData
+     */
+   
     async function makeAriagraph() {
       if (sharedData) {
         const data2 = await sharedData.getAverageSessions();
@@ -43,10 +47,13 @@ export function AriaGraph() {
     }
 
   }, [sharedData, data2]);
-  
-  //cette fonction map newData en une liste d objets
-  // {day:le jour time:dure de la session index: l'index de la session}
-  // et appel setValues()
+  /**
+   *   cette fonction map newData en une liste d objets
+   {day:le jour time:dure de la session index: l'index de la session}
+   et appel setValues()
+    @param {*} data2 
+   */
+
   function getNewData(data2) {
     if (data2) {
     let  newData =  data2.map((element, index) => ({
@@ -58,7 +65,13 @@ export function AriaGraph() {
       setValues(newData);
     }
   }
-  //cette fonction stock dans des useState newData, le temps max de newData et le temps min de newData(pour les props du graphique)
+
+  /**
+   * cette fonction stock dans des useState newData,
+   *  le temps max de newData
+   *  et le temps min de newData(pour les props du graphique)
+   * @param {*} newData 
+   */
   function setValues(newData) {
     if (newData) {
       setGraphData(newData);
@@ -68,7 +81,15 @@ export function AriaGraph() {
   }
 
 
- 
+ /**
+  * 
+  * @param {*} param0 
+  * Cette fonction destructure le contenu de payload[0].payload
+  * pour acceder a l index courrant
+  * il devini ToolTime a index courrant et
+  * calucle la largeur du div droit grace a index
+  * @returns un div qui contient le temps en min
+  */
   const CustomTooltip = ({ active, payload }) => {
     useEffect(() => {
     if (active && payload && payload.length) {

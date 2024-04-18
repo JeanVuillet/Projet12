@@ -23,10 +23,13 @@ export function PolygonGraph() {
   useEffect(() => {
     graphMaker();
   }, [sharedData, data]);
-  //cette fonction recupere les datasPerformance grace a l objet sharedData
-  //stock l objet dans le useEffect perfData
-  //et appelle la fonction mapper() et la fonction calc()
 
+
+  /**
+   *   cette fonction recupere les datasPerformance grace a l objet sharedData
+   * stock l objet dans le useEffect perfData
+   * et appelle la fonction mapper() et la fonction calc()
+   */
   async function graphMaker() {
     if (sharedData) {
       data = await sharedData.getPerformance();
@@ -44,11 +47,14 @@ export function PolygonGraph() {
     }
   }
 
-  //cette fonction mapp perfData en une liste d objets
-  //{ subject : element du tableau mySubject
-  //value:cette valeur de perfData
-  //}
-
+  
+/**
+ * cette fonction mapp perfData en une liste d objets
+ * { subject : element du tableau mySubject
+ * value:cette valeur de perfData
+ * }
+ * @param {*} perfData 
+ */
   function mapper(perfData) {
     if (perfData) {
       const mySubject = [
@@ -68,8 +74,12 @@ export function PolygonGraph() {
     }
   }
 
-  // cette fonction stock le tableau de myValue a l envers
-  //car l ordre des donnes recu est inverse par rapport au graphique
+
+  /**
+   * cette fonction stock le tableau de myValue a l envers
+   * car l ordre des donnes recu est inverse par rapport au graphique
+   * @param {*} myValue 
+   */
   let reverse = (myValue) => {
     if (myValue) {
       setPolygonData(myValue.reverse());

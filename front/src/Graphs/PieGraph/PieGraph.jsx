@@ -18,8 +18,12 @@ export function PieGraph() {
 
   useEffect(() => {
     pieMake();
-    //cette fonction recupere le score le stock dans un useEffect (myScore)
-    // et appelle les 3 fonctions de calcule des data des que le score est mis a jour
+
+    /**
+     * cette fonction recupere le score le stock dans un useEffect (myScore)
+     * et appelle les 3 fonctions de calcule des 
+     * data des que le score est mis a jour
+     */
     async function pieMake() {
       if (sharedData) {
         myScore = await sharedData.getScore();
@@ -39,7 +43,10 @@ export function PieGraph() {
     }
 
   }, [sharedData,myScore ]);
-  //calcule le pourcentage et le stock dans un usteState tscore
+  /**
+   * calcule le pourcentage et le stock dans un usteState tscore
+   * @param {*} myScore 
+   */
   function getPercentage(myScore) {
     if (myScore > 0) {
     let  tscore = myScore * 100;
@@ -48,16 +55,24 @@ export function PieGraph() {
 
     }
   }
-  //calcule l angle final a partir de tscore
+
+  /**
+   * calcule l angle final a partir de tscore
+   * @param {*} tscore 
+   */
   function getEndAngle(tscore) {
     if (tscore) {
       setEndAngle(220 - (tscore * 360) / 100);
       SetPieData(tscore);
     }
   }
-   //Formatage
-  // definie le useState pieData comme un objet {name: zone1  value :tscore}
-  //qui sera utilisee en props
+
+  /**
+   *   Formatage
+   * definie le useState pieData comme un objet {name: zone1  value :tscore}
+   * qui sera utilisee en props
+   * @param {*} tscore 
+   */
   function SetPieData(tscore) {
     if (tscore) {
       setPieData([

@@ -8,6 +8,9 @@ function Welcome() {
   var [userData, setUserData] = useState();
 
   useEffect(() => {
+    /**
+     * cette fonction recupere les donnes et les stock dans userData
+     */
     async function setName() {
       if (sharedData) {
         const data = await sharedData.getUserName();

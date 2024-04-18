@@ -12,19 +12,39 @@ export function SelectPage() {
   let [id, setUser] = useState(0);
 
   const navigate = useNavigate();
-
+/**
+ * cette fonction defini origin comme api
+ */
   function selectApi() {
     setOrigin("api");
   }
+  /**
+ * cette fonction defini origin comme mock
+ */
   function selectMock() {
     setOrigin("mock");
   }
+  /**
+ * cette fonction defini user comme 12
+ */
   function select12() {
     setUser(12);
   }
+    /**
+ * cette fonction defini user comme 18
+ */
   function select18() {
     setUser(18);
   }
+  /**
+   * Cette fonction cree un objet User avec en parametre origin et id
+   * precedement definis et stockes
+   * puis stock cet objet dans un useContext (sharedData)
+   * puis envoie l utilisateur sur la page/homepage
+   * 
+   * dans le cas ou origin et id n ont pas ete selectionnes
+   * l utilisateur est envoye sur la page d erreur 404
+   */
   async function exeApp() {
     if (origin && id) {
       const TheUser = new User(origin, id);

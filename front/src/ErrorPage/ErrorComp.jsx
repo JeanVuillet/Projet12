@@ -3,7 +3,10 @@ import "./ErrorComp.scss";
 import { useData } from "../data/DataProvider";
 import { Link } from "react-router-dom";
 
-// Composant principal qui contient l'ErrorBoundary
+/**
+ * Composant de l erreur contient un message et
+ * le message d erreur transmis va useContext
+ */
 export function ErrorComp() {
   let { errorMessage } = useData();
   return (

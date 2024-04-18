@@ -17,16 +17,23 @@ import { useData } from "../../data/DataProvider.jsx";
 export function BarGraph() {
 
   const navigate = useNavigate();
-  // sharedData est un objet recuperer grace a useContext qui a acces
-  // a plusieurs methodes pour recuperer les data(voir FormData)
+  /**
+   * sharedData est un objet recuperer grace a useContext qui a acces
+   * a plusieurs methodes pour recuperer les data(voir FormData)
+   */
+
   const { sharedData, setErrorMessage } = useData();
   const [localData, setLocalData] = useState([]);
   const [kilogramsDomain, setKilogramsDomain] = useState(null);
   const [caloriesDomain, setCaloriesDomain]=useState(null);
+/**
+ * CustomTooltip cree le Tooltip (div qui suit la souris dans le graph)
+ * il contient les kilos et les calories de  cette section
+ * @param {*} param0 
+ * @returns div avec kilogrames et calories
+ */
 
-
-    //CustomTooltip cree le Tooltip (div qui suit la souris dans le graph)
-    // il contient les kilos et les calories de  cette section
+    //
   function CustomTooltip({ active, payload }) {
     if (active && payload && payload.length) {
       const { kilograms, calories } = payload[0].payload;
@@ -42,14 +49,16 @@ export function BarGraph() {
   useEffect(() => {
    
     getData();
-
-    //getData est une fonction asynchrone pour ramener les data du mock ou de l api
-    //les mapper dans une liste d objets type:
-    // {name:indice+1 de session
-    //  kilograms:kilogrames de session
-    //  calories:calories brulees de session
-    //   }
-    //et stocker cette liste dans dans un State (localData)
+/**
+ * getData est une fonction asynchrone pour ramener les data du mock ou de l api
+ * les mapper dans une liste d objets type:
+ * {name:indice+1 de session
+ * kilograms:kilogrames de session
+ * calories:calories brulees de session
+ * }
+ * et stocker cette liste dans dans un State (localData)
+ */
+    
     async function getData() {
       if (sharedData) {
         const myActiviy = await sharedData.getActivity();
@@ -65,9 +74,15 @@ export function BarGraph() {
           setErrorMessage("error details:" + error);
           navigate("/404");
         }
-// Formatage Des donnees
+        /**
+         * Formatage Des donnees
+         * et creation du tableau d objets utilisee
+         *  comme data dans les props
+         * @param {*} myActiviy 
+         */
+ 
         function mapData(myActiviy){
-            //creation du tableau d objets utilisee comme data dans les props
+
             const theLocal = myActiviy.map((session, index) => ({
               name: `${index + 1}`,
               kilograms: session.kilogram,
@@ -81,10 +96,13 @@ export function BarGraph() {
         }
       }
     }
-
-    //SetDomaine genere le domaine de l'axe Y pour les kilogrammes
-    //en commençant à la valeur min des kilogrames de localData-10
-    // et en finissant à la valeur max des kilogrames de localData+1
+/**
+ *  SetDomaine genere le domaine de l'axe Y pour les kilogrammes
+    en commençant à la valeur min des kilogrames de localData-10
+    et en finissant à la valeur max des kilogrames de localData+1
+ * @param {*} localData 
+ */
+ 
     function setDomain(localData) {
       if (localData.length > 0) {
         // Définition
@@ -103,14 +121,8 @@ export function BarGraph() {
           ) * 1.1,
         ]
         setCaloriesDomain(caloriesDomain)
-
-     
       }
     }
-
-
-   
-
   }, [sharedData]);
 
   return (

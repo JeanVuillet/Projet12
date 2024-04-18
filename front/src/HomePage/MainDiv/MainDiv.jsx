@@ -21,6 +21,9 @@ export function MainDiv() {
  let keyData=null;
   useEffect(() => {
     MakeGraph();
+    /**
+     * Cette fonction recupere les donnes et les stock dans userData
+     */
     async function MakeGraph() {
       if (sharedData) {
          keyData = await sharedData.getKeyData();
@@ -28,11 +31,14 @@ export function MainDiv() {
         setUserData(keyData);
         formate(keyData.calorieCount);
       }
-        //Cette fonction formate le nombre de calories pour qu'il soit affiché
-        //avec des séparateurs de milliers
-        // et stock le resultat dans un useEffect Formatted
+       
 
-
+/**
+ *  Cette fonction formate le nombre de calories pour qu'il soit affiché
+ * avec des séparateurs de milliers
+ * et stock le resultat dans un useEffect Formatted
+ * @param {*} calorieCount 
+ */
         function formate(calorieCount) {
           let formatted=calorieCount?.toLocaleString("en-US", {
             minimumFractionDigits: 0,
