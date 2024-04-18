@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Graphs/AriaGraph/AriaGraph.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Graphs/AriaGraph/AriaGraph.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  AreaChart,
+  Area,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from "recharts";
+import "./AriaGraph.scss";
+import { useData } from "../../data/DataProvider.jsx";
+
+export function AriaGraph() {
+  const [rightDiv, setRightDiv] = useState(null);
+  const [toolTime, setToolTime] = useState(null);
+  const [graphData, setGraphData] = useState(null);
+  const [maxValue, setMaxValue] = useState(null);
+  const [minValue, setMinValue] = useState(null);
+  const days = ["L", "M", "M", "J", "V", "S", "D"];
+
+  let { sharedData, setErrorMessage } = useData();
+ 
+  let navigate = useNavigate();
+  let data2=null;
+
+  useEffect(() => {
+    makeAriagraph();
+    /**
+     * cette fonction recupere le data de 
+     * AverageSessions grace a l objet sherdData
+     */
+   
+    async function makeAriagraph() {
+      if (sharedData) {
+        const data2 = await sharedData.getAverageSessions();
+        try {
+          if (!data2) {
+            throw new Error("no averageSession data");
+          }
+        } catch (error) {
+          setErrorMessage("error details:" + error);
+          navigate("/404");
+        }
+        getNewData(data2);
+      }
+    }
+
+  }, [sharedData, data2]);
+  /**
+   *   cette fonction map newData en une liste d objets
+   {day:le jour time:dure de la session index: l'index de la session}
+   et appel setValues()
+    @param {*} data2 
+   */
+
+  function getNewData(data2) {
+    if (data2) {
+    let  newData =  data2.map((element, index) => ({
+        day: days[index],
+        time: element.sessionLength,
+        index: index,
+      }));
+
+      setValues(newData);
+    }
+  }
+
+  /**
+   * cette fonction stock dans des useState newData,
+   *  le temps max de newData
+   *  et le temps min de newData(pour les props du graphique)
+   * @param {*} newData 
+   */
+  function setValues(newData) {
+    if (newData) {
+      setGraphData(newData);
+      setMaxValue(Math.max(...newData.map((element) => element.time)));
+      setMinValue(Math.min(...newData.map((element) => element.time)));
+    }
+  }
+
+
+ /**
+  * 
+  * @param {*} param0 
+  * Cette fonction destructure le contenu de payload[0].payload
+  * pour acceder a l index courrant
+  * il devini ToolTime a index courrant et
+  * calucle la largeur du div droit grace a index
+  * @returns un div qui contient le temps en min
+  */
+  const CustomTooltip = ({ active, payload }) => {
+    useEffect(() => {
+    if (active &amp;&amp; payload &amp;&amp; payload.length) {
+      const { time, index } = payload[0].payload;
+      setToolTime(time);
+      // Calcul de la largeur restante jusqu'à dimanche
+      const rightSpace = (6 - index) * (100 / 6.5) + 4; // 258 est la largeur du graphique
+
+      setRightDiv(rightSpace);
+    }
+  }, [active, payload]);
+    return (
+      &lt;div className="custom-tooltip" style={{ lineHeight: 0 }}>
+        &lt;p className="label">{`${toolTime} min`}&lt;/p>
+      &lt;/div>
+    );
+  };
+  return (
+    &lt;div className="ariaDiv">
+      &lt;div className="calcDiv">&lt;/div>
+      &lt;div className="rightDiv" style={{ width: `${rightDiv}%` }}>&lt;/div>
+      &lt;div className="txt">Durée moyenne des sessions&lt;/div>
+      &lt;ResponsiveContainer className="ariaContainer">
+        &lt;AreaChart
+          data={graphData}
+          margin={{ top: 10, right: 10, left: 10, bottom: 0 }}
+          fill="none"
+        >
+          &lt;XAxis
+            dataKey="day"
+            domain={[-1, 8]}
+            padding={{ left: 0, right: 0 }}
+          />
+          &lt;YAxis domain={[minValue - 30, maxValue + 30]} hide={true} />
+          &lt;Tooltip content={&lt;CustomTooltip />} hide={true} />
+          &lt;Area
+            dataKey="time"
+            stroke="white"
+            strokeWidth="2"
+            fill="none"
+            type="natural"
+          />
+        &lt;/AreaChart>
+      &lt;/ResponsiveContainer>
+    &lt;/div>
+  );
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ErrorComp">ErrorComp</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Apr 18 2024 08:46:41 GMT-0500 (heure de l’Équateur)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
