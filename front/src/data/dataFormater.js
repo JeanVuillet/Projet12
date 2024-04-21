@@ -1,4 +1,4 @@
-import { apiActivity, userApi, perfApi, averageSessions } from "./api.js";
+import { apiActivity, userApi, perfApi, averageSessions } from "./Api.js";
 
 import {
   USER_MAIN_DATA,
